@@ -6,7 +6,7 @@ const Users = () => {
   const numberOfUsers = users.length;
 
   const handleDeleteUser = (id) => {
-    setUsersArray(users.filter((user) => user._id !== id));
+    setUsersArray((prevState) => prevState.filter((user) => user._id !== id));
   };
 
   const calcNumberUsers = () => {
