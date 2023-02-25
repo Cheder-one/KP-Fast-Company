@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Qualities = () => {
+const Qualities = ({ user }) => {
+  // TODO сократить пропсы
   return (
     <>
       <td>{user.name}</td>

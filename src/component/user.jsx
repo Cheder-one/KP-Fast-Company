@@ -5,9 +5,10 @@ import Bookmark from "./bookmark";
 const User = ({ user, onDeleteUser }) => {
   return (
     <tr>
-      <td>{<Bookmark />}</td>
+      <Qualities user={user} />
+      <td className="text-center">{<Bookmark />}</td>
       <td>
-        <button className="btn btn-danger" onClick={onDeleteUser}>
+        <button className="btn btn-outline-dark btn-sm" onClick={onDeleteUser}>
           Delete
         </button>
       </td>

@@ -127,8 +127,6 @@ const users = [
    },
 ]
 
-// console.log(users[10].qualities[1].name);
-
 export function fetchAll() {
    return users
 }
