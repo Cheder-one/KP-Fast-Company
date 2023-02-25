@@ -1,29 +1,12 @@
 import React, { useState } from "react";
-import API from "../api/index.api";
 import SearchStatus from "./searchStatus";
+import API from "../api/index.api";
 
 const Users = () => {
   const [users, setUsersArray] = useState(API.users.fetchAll());
-  const numberOfUsers = users.length;
 
   const handleDeleteUser = (id) => {
     setUsersArray((prevState) => prevState.filter((user) => user._id !== id));
-  };
-
-  const calcNumberUsers = () => {
-    return numberOfUsers
-      ? `${numberOfUsers} Человек готовы встретиться с тобой`
-      : "Список встреч пуст";
-  };
-
-  const renderBadge = () => {
-    const badgeClass = numberOfUsers > 0 ? "primary" : "danger";
-    const badgeText = calcNumberUsers();
-    return (
-      <h5>
-        <span className={`badge bg-${badgeClass}`}>{badgeText}</span>
-      </h5>
-    );
   };
 
   const renderUsersTable = () => {
@@ -70,7 +53,7 @@ const Users = () => {
 
   return (
     <>
-      {renderBadge()}
+      {<SearchStatus users={users} />}
       {renderUsersTable()}
     </>
   );

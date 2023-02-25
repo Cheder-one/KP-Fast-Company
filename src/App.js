@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import Users from "./component/users";
+import Users from "./component/usersList";
 import SearchStatus from "./component/searchStatus";
-import API from "../api/index.api";
+import API from "./api/index.api";
 
 const App = () => {
+  // return (
+
+  // )
 }
 
 export default App
