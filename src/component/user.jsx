@@ -4,7 +4,7 @@ import Bookmark from "./bookmark";
 
 const User = ({ user, onDeleteUser }) => {
   return (
-    <tr key={user._id}>
+    <tr>
       <td>{user.name}</td>
       <td>
         {user.qualities.map((el) => (

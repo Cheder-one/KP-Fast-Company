@@ -25,7 +25,11 @@ const Users = () => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <User user={user} onDeleteUser={() => handleDeleteUser(user._id)} />
+            <User
+              key={user._id}
+              user={user}
+              onDeleteUser={() => handleDeleteUser(user._id)}
+            />
           ))}
         </tbody>
       </table>
