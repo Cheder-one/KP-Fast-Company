@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import SearchStatus from "./searchStatus";
 import API from "../api/index.api";
+import User from "./user";
 
 const Users = () => {
-  const [users, setUsersArray] = useState(API.users.fetchAll());
+  const [users, setUsers] = useState(API.users.fetchAll());
 
   const handleDeleteUser = (id) => {
-    setUsersArray((prevState) => prevState.filter((user) => user._id !== id));
+    setUsers((prevState) => prevState.filter((user) => user._id !== id));
   };
 
   const renderUsersTable = () => {
@@ -24,27 +25,7 @@ const Users = () => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user._id}>
-              <td>{user.name}</td>
-              <td>
-                {user.qualities.map((el) => (
-                  <span className={`badge bg-${el.color}`} key={el._id}>
-                    {el.name}
-                  </span>
-                ))}
-              </td>
-              <td key={user.profession._id}>{user.profession.name}</td>
-              <td>{user.completedMeetings}</td>
-              <td>{user.rate}/5</td>
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => handleDeleteUser(user._id)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
+            <User user={user} onDeleteUser={() => handleDeleteUser(user._id)} />
           ))}
         </tbody>
       </table>
