@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import API from "../api/index.api";
+import SearchStatus from "./searchStatus";
 
 const Users = () => {
   const [users, setUsersArray] = useState(API.users.fetchAll());

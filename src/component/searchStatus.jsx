@@ -1,5 +1,5 @@
 import React, { useState } from "react";
 
-const SearchStatus = () => {};
+const SearchStatus = (props) => {};
 
 export default SearchStatus;
