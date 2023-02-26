@@ -3,7 +3,7 @@ import SearchStatus from "./searchStatus";
 import API from "../api/index.api";
 import User from "./user";
 
-const Users = () => {
+const UsersList = () => {
   const [users, setUsers] = useState(API.users.fetchAll());
 
   const handleDeleteUser = (id) => {
@@ -45,4 +45,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default UsersList;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Bookmark = () => {
-  const [add, seAdd] = useState(false);
+  const [add, setAdd] = useState(false);
 
   const bookmarkLike = (
     <svg
@@ -29,7 +29,7 @@ const Bookmark = () => {
   );
 
   const handleBookmark = () => {
-    seAdd((prevState) => !prevState);
+    setAdd((prevState) => !prevState);
   };
 
   return (
