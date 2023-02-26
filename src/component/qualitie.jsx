@@ -1,20 +1,23 @@
 import React from "react";
 
-const Qualities = ({ user }) => {
-  // TODO сократить пропсы
+const Qualities = (props) => {
+  const {
+    user: { name, profession, qualities, completedMeetings, rate, ...rest },
+  } = props;
+
   return (
     <>
-      <td>{user.name}</td>
+      <td>{name}</td>
       <td>
-        {user.qualities.map((el) => (
+        {qualities.map((el) => (
           <span className={`badge bg-${el.color}`} key={el._id}>
             {el.name}
           </span>
         ))}
       </td>
-      <td key={user.profession._id}>{user.profession.name}</td>
-      <td>{user.completedMeetings}</td>
-      <td>{user.rate}/5</td>
+      <td key={profession._id}>{profession.name}</td>
+      <td>{completedMeetings}</td>
+      <td>{rate}/5</td>
     </>
   );
 };
