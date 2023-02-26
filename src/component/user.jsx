@@ -6,7 +6,9 @@ const User = ({ user, onDeleteUser }) => {
   return (
     <tr>
       <Qualities user={user} />
-      <td className="text-center">{<Bookmark />}</td>
+      <td className="text-center">
+        <Bookmark />
+      </td>
       <td>
         <button className="btn btn-outline-dark btn-sm" onClick={onDeleteUser}>
           Delete
