@@ -2,7 +2,14 @@ import React from "react";
 
 const Qualities = (props) => {
   const {
-    user: { name, profession, qualities, completedMeetings, rate, ...rest },
+    user: {
+      name,
+      profession,
+      qualities,
+      completedMeetings,
+      rate,
+      ...otherProps
+    },
   } = props;
 
   return (
