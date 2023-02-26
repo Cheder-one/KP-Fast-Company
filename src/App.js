@@ -4,8 +4,13 @@ import SearchStatus from "./component/searchStatus";
 import API from "./api/index.api";
 
 const App = () => {
-  return (
+  const [users, setUsers] = useState(API.users.fetchAll());
 
+  return (
+    <>
+      <SearchStatus users={users} />
+      <UsersList users={users} setUsers={setUsers} />
+    </>
   )
 }
 

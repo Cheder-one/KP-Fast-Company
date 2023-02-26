@@ -1,11 +1,7 @@
-import React, { useState } from "react";
-import SearchStatus from "./searchStatus";
-import API from "../api/index.api";
+import React from "react";
 import User from "./user";
 
-const UsersList = () => {
-  const [users, setUsers] = useState(API.users.fetchAll());
-
+const UsersList = ({ users, setUsers }) => {
   const handleDeleteUser = (id) => {
     setUsers((prevState) => prevState.filter((user) => user._id !== id));
   };
@@ -37,12 +33,7 @@ const UsersList = () => {
     );
   };
 
-  return (
-    <>
-      {<SearchStatus users={users} />}
-      {renderUsersTable()}
-    </>
-  );
+  return renderUsersTable();
 };
 
 export default UsersList;
