@@ -3,8 +3,8 @@ import Qualities from "./quality";
 import Bookmark from "./bookmark";
 
 const User = ({
-  user,
   onDeleteUser,
+  user,
   user: { profession, completedMeetings, rate },
 }) => {
   return (
