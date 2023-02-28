@@ -10,7 +10,10 @@ const User = ({ user, onDeleteUser }) => {
         <Bookmark />
       </td>
       <td>
-        <button className="btn btn-outline-dark btn-sm" onClick={onDeleteUser}>
+        <button
+          className="btn btn-outline-dark btn-sm"
+          onClick={() => onDeleteUser(user._id)}
+        >
           Delete
         </button>
       </td>

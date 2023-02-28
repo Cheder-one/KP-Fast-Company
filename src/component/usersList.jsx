@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import User from "./user";
 import Pagination from "./pagination";
 
 const UsersList = ({ users, setUsers }) => {
   const count = users.length;
   const pageSize = 4;
+  const [currentPage, setCurrentPage] = useState();
 
   const handlePageChange = (pageIndex) => {
-    console.log("page:", pageIndex);
+    setCurrentPage(pageIndex);
   };
 
   const handleDeleteUser = (id) => {
@@ -35,7 +36,7 @@ const UsersList = ({ users, setUsers }) => {
                 <User
                   key={user._id}
                   user={user}
-                  onDeleteUser={() => handleDeleteUser(user._id)}
+                  onDeleteUser={handleDeleteUser}
                 />
               ))}
             </tbody>
@@ -45,6 +46,7 @@ const UsersList = ({ users, setUsers }) => {
           itemsCount={count}
           pageSize={pageSize}
           onPageChange={handlePageChange}
+          currentPage={currentPage}
         />
       </>
     );
