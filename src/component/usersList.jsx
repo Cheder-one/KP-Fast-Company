@@ -1,11 +1,7 @@
 import React from "react";
 import User from "./user";
 
-const UsersList = ({ users, setUsers }) => {
-  const handleDeleteUser = (id) => {
-    setUsers((prevState) => prevState.filter((user) => user._id !== id));
-  };
-
+const UsersList = ({ users, onDeleteUser }) => {
   const renderUsersTable = () => {
     return (
       <table className="table">
@@ -22,11 +18,7 @@ const UsersList = ({ users, setUsers }) => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <User
-              key={user._id}
-              user={user}
-              onDeleteUser={() => handleDeleteUser(user._id)}
-            />
+            <User key={user._id} user={user} onDeleteUser={onDeleteUser} />
           ))}
         </tbody>
       </table>
