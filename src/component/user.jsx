@@ -5,6 +5,7 @@ import Bookmark from "./bookmark";
 const User = (props) => {
   const {
     user,
+    active,
     onDeleteUser,
     onAddBookmark,
     user: { profession, completedMeetings, rate },
@@ -17,7 +18,7 @@ const User = (props) => {
       <td>{completedMeetings}</td>
       <td>{rate}/5</td>
       <td className="text-center">
-        <Bookmark user={user} onAddBookmark={onAddBookmark} />
+        <Bookmark user={user} onAddBookmark={onAddBookmark} active={active} />
       </td>
       <td>
         <button

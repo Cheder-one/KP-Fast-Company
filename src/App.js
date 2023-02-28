@@ -10,17 +10,12 @@ const App = () => {
     setUsers((prevState) => prevState.filter((user) => user._id !== id));
   };
 
-  const handleAddBookmark = (id) => {
-    console.log(id);
-  }
-
   return (
     <>
       <SearchStatus numberOfUsers={users.length} />
       <UsersList
         users={users}
         onDeleteUser={handleDeleteUser}
-        onAddBookmark={handleAddBookmark}
       />
     </>
   )
