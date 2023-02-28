@@ -1,7 +1,7 @@
 import React from "react";
 import User from "./user";
 
-const UsersList = ({ users, onDeleteUser }) => {
+const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
   const renderUsersTable = () => {
     return (
       <table className="table">
@@ -18,7 +18,12 @@ const UsersList = ({ users, onDeleteUser }) => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <User key={user._id} user={user} onDeleteUser={onDeleteUser} />
+            <User
+              key={user._id}
+              user={user}
+              onDeleteUser={onDeleteUser}
+              onAddBookmark={onAddBookmark}
+            />
           ))}
         </tbody>
       </table>

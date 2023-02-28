@@ -17,7 +17,11 @@ const App = () => {
   return (
     <>
       <SearchStatus numberOfUsers={users.length} />
-      <UsersList users={users} onDeleteUser={handleDeleteUser} onAddBookmark={handleAddBookmark} />
+      <UsersList
+        users={users}
+        onDeleteUser={handleDeleteUser}
+        onAddBookmark={handleAddBookmark}
+      />
     </>
   )
 }

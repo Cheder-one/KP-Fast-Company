@@ -2,11 +2,14 @@ import React from "react";
 import Qualities from "./quality";
 import Bookmark from "./bookmark";
 
-const User = ({
-  onDeleteUser,
-  user,
-  user: { profession, completedMeetings, rate },
-}) => {
+const User = (props) => {
+  const {
+    user,
+    onDeleteUser,
+    onAddBookmark,
+    user: { profession, completedMeetings, rate },
+  } = props;
+
   return (
     <tr>
       <Qualities user={user} />
@@ -14,7 +17,7 @@ const User = ({
       <td>{completedMeetings}</td>
       <td>{rate}/5</td>
       <td className="text-center">
-        <Bookmark />
+        <Bookmark user={user} onAddBookmark={onAddBookmark} />
       </td>
       <td>
         <button
