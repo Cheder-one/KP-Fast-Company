@@ -34,6 +34,3 @@ const Bookmark = ({ onAddBookmark, isBookmark }) => {
 };
 
 export default Bookmark;
-
-// TODO При клике, значение bookmark пользователя в объекте должно измениться на противоположное
-// TODO Так же в модуле Bookmark должна быть проверка, если у текущего пользователя bookmark: true, значит выводим bookmarkLike
