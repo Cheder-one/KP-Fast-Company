@@ -6,7 +6,7 @@ const Qualities = ({ user: { name, qualities } }) => {
       <td>{name}</td>
       <td>
         {qualities.map((el) => (
-          <span className={`badge bg-${el.color}`} key={el._id}>
+          <span key={el._id} className={`badge bg-${el.color}`}>
             {el.name}
           </span>
         ))}
