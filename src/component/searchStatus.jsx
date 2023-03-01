@@ -1,8 +1,6 @@
 import React from "react";
 
-const SearchStatus = ({ users }) => {
-  const numberOfUsers = users.length;
-
+const SearchStatus = ({ numberOfUsers }) => {
   const calcNumberUsers = () => {
     return numberOfUsers
       ? `${numberOfUsers} Человек готовы встретиться с тобой`

@@ -1,13 +1,19 @@
 import React from "react";
-import Qualities from "./qualitie";
+import Qualities from "./quality";
 import Bookmark from "./bookmark";
 
-const User = ({ user, onDeleteUser }) => {
+const User = ({ user, onDeleteUser, onAddBookmark }) => {
   return (
     <tr>
       <Qualities user={user} />
+      <td>{user.profession.name}</td>
+      <td>{user.completedMeetings}</td>
+      <td>{user.rate}/5</td>
       <td className="text-center">
-        <Bookmark />
+        <Bookmark
+          onAddBookmark={() => onAddBookmark(user._id)}
+          isBookmark={user.bookmark}
+        />
       </td>
       <td>
         <button

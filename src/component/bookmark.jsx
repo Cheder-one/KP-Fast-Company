@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Bookmark = () => {
-  const [add, setAdd] = useState(false);
-
+const Bookmark = ({ onAddBookmark, isBookmark }) => {
   const bookmarkLike = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -28,13 +26,9 @@ const Bookmark = () => {
     </svg>
   );
 
-  const handleBookmark = () => {
-    setAdd((prevState) => !prevState);
-  };
-
   return (
-    <button className="btn btn-light btn-sm" onClick={handleBookmark}>
-      {add ? bookmarkLike : bookmarkDefault}
+    <button className="btn btn-light btn-sm" onClick={onAddBookmark}>
+      {isBookmark ? bookmarkLike : bookmarkDefault}
     </button>
   );
 };
