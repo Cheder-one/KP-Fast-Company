@@ -1,7 +1,7 @@
 import React from "react";
 import User from "./user";
 
-const UsersList = ({ users, onDeleteUser, onAddBookmark, active }) => {
+const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
   const renderUsersTable = () => {
     return (
       <table className="table">
@@ -23,7 +23,6 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark, active }) => {
               user={user}
               onDeleteUser={onDeleteUser}
               onAddBookmark={onAddBookmark}
-              active={active}
             />
           ))}
         </tbody>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Bookmark = ({ user, onAddBookmark, active }) => {
+const Bookmark = ({ onAddBookmark, isBookmark }) => {
   const bookmarkLike = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,13 +27,13 @@ const Bookmark = ({ user, onAddBookmark, active }) => {
   );
 
   return (
-    <button
-      className="btn btn-light btn-sm"
-      onClick={() => onAddBookmark(user._id)}
-    >
-      {active ? bookmarkLike : bookmarkDefault}
+    <button className="btn btn-light btn-sm" onClick={onAddBookmark}>
+      {isBookmark ? bookmarkLike : bookmarkDefault}
     </button>
   );
 };
 
 export default Bookmark;
+
+// TODO При клике, значение bookmark пользователя в объекте должно измениться на противоположное
+// TODO Так же в модуле Bookmark должна быть проверка, если у текущего пользователя bookmark: true, значит выводим bookmarkLike
