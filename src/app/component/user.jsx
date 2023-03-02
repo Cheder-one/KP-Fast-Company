@@ -27,4 +27,10 @@ const User = ({ user, onDeleteUser, onAddBookmark }) => {
   );
 };
 
+User.propTypes = {
+  // user: PropTypes. ,
+  // onDeleteUser: PropTypes. ,
+  // onAddBookmark: PropTypes. ,
+};
+
 export default User;
