@@ -5,6 +5,7 @@ import Bookmark from "./bookmark";
 const User = ({ user, onDeleteUser, onAddBookmark }) => {
   return (
     <tr>
+      <td>{user.name}</td>
       <Qualities user={user} />
       <td>{user.profession.name}</td>
       <td>{user.completedMeetings}</td>
