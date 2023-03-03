@@ -17,7 +17,10 @@ module.exports = {
     // Отступ количество пробелов
     semi: [2, "always"],
     // Точка с запятой в конце строки
-    "space-before-function-paren": ["error", "never"],
+    "space-before-function-paren": [
+      "error",
+      { anonymous: "always", named: "never" }
+    ],
     // Ошибка при наличии пробела при обозначении функции, уберём её
     quotes: ["error", "double", { allowTemplateLiterals: true }]
   }
