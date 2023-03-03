@@ -3,6 +3,7 @@ import User from "./user";
 import Pagination from "./pagination";
 import { paginate } from "../utils/paginate";
 import PropTypes from "prop-types";
+import GroupList from "./groupList";
 
 const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
   const count = users.length;
@@ -12,11 +13,11 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
   const handlePageChange = (pageIndex) => {
     setCurrentPage(pageIndex);
   };
-
   const userCrop = paginate(users, currentPage, pageSize);
 
   return (
     <>
+      <GroupList />
       {count > 0 && (
         <table className="table">
           <thead>
