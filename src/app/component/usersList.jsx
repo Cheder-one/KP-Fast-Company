@@ -8,17 +8,17 @@ import GroupList from "./groupList";
 
 const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [profession] = useState(API.professions.fetchAll);
+  const [professions, setProfessions] = useState();
   const count = users.length;
   const pageSize = 4;
+
   useEffect(() => {
-    console.log("render");
-  }, []);
+    API.professions.fetchAll().then((data) => setProfessions(data));
+  }, [currentPage]);
 
   const handleProfessionSelect = (params) => {
     console.log(params);
   };
-  console.log(profession);
 
   const handlePageChange = (pageIndex) => {
     setCurrentPage(pageIndex);
@@ -27,7 +27,7 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
 
   return (
     <>
-      <GroupList items={profession} onClick={handleProfessionSelect} />
+      <GroupList items={professions} onClick={handleProfessionSelect} />
       {count > 0 && (
         <table className="table">
           <thead>
