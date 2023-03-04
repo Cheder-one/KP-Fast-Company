@@ -12,7 +12,7 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
   const count = users.length;
   const pageSize = 4;
   useEffect(() => {
-    console.log('render');
+    console.log("render");
   }, []);
 
   const handleProfessionSelect = (params) => {
