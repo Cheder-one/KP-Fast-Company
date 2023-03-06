@@ -31,6 +31,8 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
         <GroupList
           profs={professions}
           onProfessionSelect={handleProfessionSelect}
+          valueProperty="_id"
+          contentProperty="name"
         />
       )}
       {count > 0 && (
