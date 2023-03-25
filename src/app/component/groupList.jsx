@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const GroupList = ({ profs, valueProperty, contentProperty }) => {
+const GroupList = ({ items, valueProperty, contentProperty }) => {
   return (
     <ul className="list-group">
-      {Object.keys(profs).map((prof) => (
-        <li key={profs[prof][valueProperty]} className="list-group-item">
-          {profs[prof][contentProperty]}
+      {Object.keys(items).map((item) => (
+        <li key={items[item][valueProperty]} className="list-group-item">
+          {items[item][contentProperty]}
         </li>
       ))}
     </ul>
@@ -14,7 +14,7 @@ const GroupList = ({ profs, valueProperty, contentProperty }) => {
 };
 
 GroupList.propTypes = {
-  profs: PropTypes.object.isRequired,
+  items: PropTypes.object.isRequired,
   valueProperty: PropTypes.string.isRequired,
   contentProperty: PropTypes.string.isRequired
 };

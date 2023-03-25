@@ -29,7 +29,7 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
     <>
       {professions && (
         <GroupList
-          profs={professions}
+          items={professions}
           onProfessionSelect={handleProfessionSelect}
           valueProperty="_id"
           contentProperty="name"
