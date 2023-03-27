@@ -8,10 +8,10 @@ const Pagination = ({
   currentPage,
 }) => {
   const numberOfPages = Math.ceil(totalItems / itemsPerPage);
-  if (numberOfPages === 1) {
-    return null;
-  }
+  if (numberOfPages === 1) return null;
   const pages = _.range(1, numberOfPages + 1);
+
+  // const
 
   return (
     <nav aria-label="Page navigation">
