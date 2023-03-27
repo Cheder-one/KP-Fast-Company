@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Pagination from "./pagination";
 import User from "./user";
 
 const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
   const totalItems = users.length;
   const itemsPerPage = 4;
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
     console.log("pageNumber:", pageNumber);
   };
 
@@ -41,6 +43,7 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
         totalItems={totalItems}
         itemsPerPage={itemsPerPage}
         onPageChange={handlePageChange}
+        currentPage={currentPage}
       />
     </>
   );
