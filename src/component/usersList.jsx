@@ -3,16 +3,16 @@ import Pagination from "./pagination";
 import User from "./user";
 
 const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
-  const itemsCount = users.length;
-  const pageSize = 4;
+  const totalItems = users.length;
+  const itemsPerPage = 4;
 
-  const handlePageChange = (pageIndex) => {
-    console.log("pageIndex:", pageIndex);
+  const handlePageChange = (pageNumber) => {
+    console.log("pageNumber:", pageNumber);
   };
 
   return (
     <>
-      {itemsCount > 0 && (
+      {totalItems > 0 && (
         <table className="table">
           <thead>
             <tr>
@@ -38,8 +38,8 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
         </table>
       )}
       <Pagination
-        itemsCount={itemsCount}
-        pageSize={pageSize}
+        totalItems={totalItems}
+        itemsPerPage={itemsPerPage}
         onPageChange={handlePageChange}
       />
     </>
