@@ -11,8 +11,6 @@ const Pagination = ({
   if (numberOfPages === 1) return null;
   const pages = _.range(1, numberOfPages + 1);
 
-  // const
-
   return (
     <nav aria-label="Page navigation">
       <ul className="pagination">
