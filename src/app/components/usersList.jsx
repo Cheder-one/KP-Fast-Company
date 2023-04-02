@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Pagination from "./pagination";
 import User from "./user";
-import { paginate } from "../utils/paginate";
+import { getPageItems } from "../utils/paginate";
 
 const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
   const pageSize = users.length;
@@ -12,7 +12,7 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
     setCurrentPage(pageNumber);
   };
 
-  const userCrop = paginate(users, currentPage, itemsPerPage);
+  const itemsCurntPage = getPageItems(users, currentPage, itemsPerPage);
 
   return (
     <>
@@ -30,7 +30,7 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
             </tr>
           </thead>
           <tbody>
-            {userCrop.map((user) => (
+            {itemsCurntPage.map((user) => (
               <User
                 key={user._id}
                 user={user}

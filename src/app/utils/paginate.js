@@ -1,4 +1,4 @@
-export function paginate(users, currentPage, itemsPerPage) {
+export function getPageItems(items, currentPage, itemsPerPage) {
   const firstIndex = itemsPerPage * (currentPage - 1);
-  return [...users].splice(firstIndex, itemsPerPage);
+  return [...items].splice(firstIndex, itemsPerPage);
 }
