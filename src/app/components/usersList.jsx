@@ -3,18 +3,24 @@ import Pagination from "./pagination";
 import User from "./user";
 
 const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
-  const totalItems = users.length;
+  const pageSize = users.length;
   const itemsPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    console.log("pageNumber:", pageNumber);
   };
+
+  const paginate = (users, currentPage, itemsPerPage) => {
+    const firstIndex = itemsPerPage * (currentPage - 1);
+    return [...users].splice(firstIndex, itemsPerPage);
+  };
+
+  const userCrop = paginate(users, currentPage, itemsPerPage);
 
   return (
     <>
-      {totalItems > 0 && (
+      {pageSize > 0 && (
         <table className="table">
           <thead>
             <tr>
@@ -28,7 +34,7 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
+            {userCrop.map((user) => (
               <User
                 key={user._id}
                 user={user}
@@ -40,7 +46,7 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
         </table>
       )}
       <Pagination
-        totalItems={totalItems}
+        pageSize={pageSize}
         itemsPerPage={itemsPerPage}
         onPageChange={handlePageChange}
         currentPage={currentPage}
