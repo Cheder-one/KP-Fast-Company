@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Pagination from "./pagination";
 import User from "./user";
+import { paginate } from "../utils/paginate";
 
 const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
   const pageSize = users.length;
@@ -9,11 +10,6 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-  };
-
-  const paginate = (users, currentPage, itemsPerPage) => {
-    const firstIndex = itemsPerPage * (currentPage - 1);
-    return [...users].splice(firstIndex, itemsPerPage);
   };
 
   const userCrop = paginate(users, currentPage, itemsPerPage);
