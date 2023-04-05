@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Bookmark = ({ onAddBookmark, isBookmark }) => {
   const bookmarkLike = (
@@ -31,6 +32,11 @@ const Bookmark = ({ onAddBookmark, isBookmark }) => {
       {isBookmark ? bookmarkLike : bookmarkDefault}
     </button>
   );
+};
+
+Bookmark.propTypes = {
+  onAddBookmark: PropTypes.func.isRequired,
+  isBookmark: PropTypes.bool.isRequired
 };
 
 export default Bookmark;

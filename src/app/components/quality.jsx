@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Qualities = ({ user: { qualities } }) => {
   return (
@@ -12,6 +13,10 @@ const Qualities = ({ user: { qualities } }) => {
       </td>
     </>
   );
+};
+
+Qualities.propTypes = {
+  user: PropTypes.object.isRequired
 };
 
 export default Qualities;
