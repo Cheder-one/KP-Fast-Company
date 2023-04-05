@@ -3701,13 +3701,6 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-vite-plugin-error-overlay@^0.0.1-alpha.0:
-  version "0.0.1-alpha.0"
-  resolved "https://registry.yarnpkg.com/vite-plugin-error-overlay/-/vite-plugin-error-overlay-0.0.1-alpha.0.tgz#ee12354bd43016fc1243110ca940f5360ca39fa4"
-  integrity sha512-b8Y7zyzje2D7/bP2pKxk/zQWnPyZbZmSAVejPbT+VtBa0AmTyVdX+6bQJ74+sRpj0dP2F+h/wg5qKWAF575WOw==
-  dependencies:
-    debug "^4.1.1"
-
 vite-plugin-eslint@^1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/vite-plugin-eslint/-/vite-plugin-eslint-1.8.1.tgz#0381b8272e7f0fd8b663311b64f7608d55d8b04c"
