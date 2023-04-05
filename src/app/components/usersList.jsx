@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Pagination from "./pagination";
 import User from "./user";
+import Pagination from "./pagination";
 import { getPageItems } from "../utils/paginate";
 import PropTypes from "prop-types";
 
-const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
+const UsersList = ({ users, ...rest }) => {
   const pageSize = users.length;
   const itemsPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,12 +32,7 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
           </thead>
           <tbody>
             {itemsCurntPage.map((user) => (
-              <User
-                key={user._id}
-                user={user}
-                onDeleteUser={onDeleteUser}
-                onAddBookmark={onAddBookmark}
-              />
+              <User key={user._id} user={user} {...rest} />
             ))}
           </tbody>
         </table>
@@ -53,10 +48,7 @@ const UsersList = ({ users, onDeleteUser, onAddBookmark }) => {
 };
 
 UsersList.propTypes = {
-  users: PropTypes.array.isRequired,
-  onDeleteUser: PropTypes.func.isRequired,
-  onAddBookmark: PropTypes.func.isRequired
-
+  users: PropTypes.array.isRequired
 };
 
 export default UsersList;

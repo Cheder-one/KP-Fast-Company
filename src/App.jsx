@@ -6,8 +6,8 @@ import API from "./app/api/index.api";
 const App = () => {
   const [users, setUsers] = useState(API.users.fetchAll());
 
-  const handleDeleteUser = (id) => {
-    setUsers((prevState) => prevState.filter((user) => user._id !== id));
+  const handleDeleteUser = (userId) => {
+    setUsers((prevState) => prevState.filter((user) => user._id !== userId));
   };
 
   function handleAddBookmark(id) {
