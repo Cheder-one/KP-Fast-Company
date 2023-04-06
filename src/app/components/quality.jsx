@@ -17,7 +17,13 @@ const Qualities = ({ user: { qualities } }) => {
 
 Qualities.propTypes = {
   user: PropTypes.shape({
-    qualities: PropTypes.array
+    qualities: PropTypes.arrayOf(
+      PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        color: PropTypes.string.isRequired
+      })
+    ).isRequired
   }).isRequired
 };
 
