@@ -16,7 +16,9 @@ const Qualities = ({ user: { qualities } }) => {
 };
 
 Qualities.propTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.shape({
+    qualities: PropTypes.array
+  }).isRequired
 };
 
 export default Qualities;
