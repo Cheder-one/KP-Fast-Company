@@ -13,6 +13,8 @@ module.exports = {
   },
   plugins: ["react"],
   rules: {
+    // "block-spacing": "off",
+    // "brace-style": "off",
     indent: ["error", 2],
     // Отступ количество пробелов
     semi: [2, "always"],
