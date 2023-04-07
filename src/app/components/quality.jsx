@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Qualities = ({ user: { qualities } }) => {
+const Qualities = ({ userQuals }) => {
   return (
     <>
       <td>
-        {qualities.map((el) => (
+        {userQuals.map((el) => (
           <span className={`badge bg-${el.color}`} key={el._id}>
             {el.name}
           </span>
@@ -16,15 +16,13 @@ const Qualities = ({ user: { qualities } }) => {
 };
 
 Qualities.propTypes = {
-  user: PropTypes.shape({
-    qualities: PropTypes.arrayOf(
-      PropTypes.shape({
-        _id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        color: PropTypes.string.isRequired
-      })
-    ).isRequired
-  }).isRequired
+  userQuals: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired
+    })
+  ).isRequired
 };
 
 export default Qualities;

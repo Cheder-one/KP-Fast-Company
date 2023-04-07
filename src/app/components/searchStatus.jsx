@@ -1,4 +1,5 @@
 import React from "react";
+// import PropTypes from "prop-types";
 
 const SearchStatus = ({ numberOfUsers }) => {
   const calcNumberUsers = () => {
@@ -19,5 +20,9 @@ const SearchStatus = ({ numberOfUsers }) => {
 
   return renderBadge();
 };
+
+// SearchStatus.propTypes = {
+//   numberOfUsers: PropTypes.number
+// };
 
 export default SearchStatus;

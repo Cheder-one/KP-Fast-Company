@@ -10,7 +10,7 @@ const App = () => {
     setUsers((prevState) => prevState.filter((user) => user._id !== userId));
   };
 
-  function handleAddBookmark(id) {
+  const handleAddBookmark = (id) => {
     setUsers((prevState) =>
       prevState.map((user) => {
         if (user._id === id) {
@@ -19,7 +19,7 @@ const App = () => {
         return user;
       })
     );
-  }
+  };
 
   return (
     <>

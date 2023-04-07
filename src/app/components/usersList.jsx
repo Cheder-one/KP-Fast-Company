@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import User from "./user";
-import Pagination from "./pagination";
-import { getPageItems } from "../utils/paginate";
 import PropTypes from "prop-types";
+import { getPageItems } from "../utils/paginate";
+import Pagination from "./pagination";
+import User from "./user";
 
 const UsersList = ({ users, ...rest }) => {
+  const [currentPage, setCurrentPage] = useState(1);
   const pageSize = users.length;
   const itemsPerPage = 4;
-  const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
   const itemsCurntPage = getPageItems(users, currentPage, itemsPerPage);
 
   return (
@@ -27,12 +26,12 @@ const UsersList = ({ users, ...rest }) => {
               <th scope="col">Встречи</th>
               <th scope="col">Рейтинг</th>
               <th scope="col">Избранное</th>
-              <th scope="col"></th>
+              <th />
             </tr>
           </thead>
           <tbody>
             {itemsCurntPage.map((user) => (
-              <User key={user._id} user={user} {...rest} />
+              <User {...user} {...rest} key={user._id} />
             ))}
           </tbody>
         </table>
