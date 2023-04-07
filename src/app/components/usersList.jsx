@@ -11,7 +11,6 @@ const UsersList = ({ users, ...rest }) => {
   const [professions, setProfessions] = useState(API.professions.fetchAll());
   const pageSize = users.length;
   const itemsPerPage = 4;
-  console.log(professions);
 
   const handleProfessionSelect = (profession) => {
     setProfessions(profession);
