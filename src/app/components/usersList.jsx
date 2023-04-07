@@ -3,11 +3,19 @@ import PropTypes from "prop-types";
 import { getPageItems } from "../utils/paginate";
 import Pagination from "./pagination";
 import User from "./user";
+import GroupList from "./groupList";
+import API from "../api/index.api";
 
 const UsersList = ({ users, ...rest }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [professions, setProfessions] = useState(API.professions.fetchAll());
   const pageSize = users.length;
   const itemsPerPage = 4;
+  console.log(professions);
+
+  const handleProfessionSelect = (profession) => {
+    setProfessions(profession);
+  };
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -16,6 +24,7 @@ const UsersList = ({ users, ...rest }) => {
 
   return (
     <>
+      <GroupList items={professions} onItemSelect={handleProfessionSelect} />
       {pageSize > 0 && (
         <table className="table">
           <thead>
