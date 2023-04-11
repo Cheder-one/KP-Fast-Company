@@ -6,28 +6,37 @@ import User from "./user";
 import GroupList from "./groupList";
 import API from "../api/index.api";
 
-const UsersList = ({ users, ...rest }) => {
+const UsersList = ({ users: allUsers, ...rest }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [professions, setProfessions] = useState();
   const [selectedProf, setSelectedProf] = useState();
 
-  const pageSize = users.length;
+  const pageSize = allUsers.length;
   const itemsPerPage = 4;
 
   useEffect(() => {
-    API.professions.fetchAll().then((data) => {
-      setProfessions(data);
+    API.professions.fetchAll().then((profs) => {
+      setProfessions(profs);
     });
   }, []);
 
-  const handleProfessionSelect = (item) => {
-    setSelectedProf(item);
+  const handleProfessionSelect = (prof) => {
+    setSelectedProf(prof);
   };
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-  const itemsCurntPage = getPageItems(users, currentPage, itemsPerPage);
+
+  const filteredUsers = selectedProf
+    ? allUsers.filter((user) => user.profession === selectedProf)
+    : allUsers;
+
+  const itemsCurntPage = getPageItems(filteredUsers, currentPage, itemsPerPage);
+
+  const handleResetFilters = () => {
+    console.log("reset");
+  };
 
   return (
     <>
@@ -36,6 +45,7 @@ const UsersList = ({ users, ...rest }) => {
           items={professions}
           selectedItem={selectedProf}
           onItemSelect={handleProfessionSelect}
+          onResetFilters={handleResetFilters}
         />
       )}
       {pageSize > 0 && (
