@@ -35,18 +35,25 @@ const UsersList = ({ users: allUsers, ...rest }) => {
   const itemsCurntPage = getPageItems(filteredUsers, currentPage, itemsPerPage);
 
   const handleResetFilters = () => {
-    console.log("reset");
+    setSelectedProf(undefined);
   };
 
   return (
     <>
       {professions && (
-        <GroupList
-          items={professions}
-          selectedItem={selectedProf}
-          onItemSelect={handleProfessionSelect}
-          onResetFilters={handleResetFilters}
-        />
+        <>
+          <GroupList
+            items={professions}
+            selectedItem={selectedProf}
+            onItemSelect={handleProfessionSelect}
+          />
+          <button
+            className="btn btn-warning mt-2 mx-2"
+            onClick={handleResetFilters}
+          >
+            Сброс
+          </button>
+        </>
       )}
       {pageSize > 0 && (
         <table className="table">
