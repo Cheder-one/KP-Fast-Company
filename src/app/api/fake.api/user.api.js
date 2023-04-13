@@ -1,145 +1,156 @@
-import { professions } from "./professions.api";
+import { professionsObject as professions } from "./professions.api";
 
 const qualities = {
-  talkative: {
+  tedious: {
     _id: "67rdca3eeb7f6fgeed471198",
-    name: "Разговорчивый",
+    name: "Нудила",
     color: "primary"
   },
-  original: {
+  strange: {
     _id: "67rdca3eeb7f6fgeed471100",
-    name: "Оригинальный",
-    color: "warning"
+    name: "Странный",
+    color: "secondary"
   },
-  joker: {
+  buller: {
     _id: "67rdca3eeb7f6fgeed4711012",
-    name: "Юморист",
+    name: "Троль",
     color: "success"
   },
-  problematic: {
+  alcoholic: {
     _id: "67rdca3eeb7f6fgeed471101",
-    name: "Несговорчивый",
+    name: "Алкоголик",
     color: "danger"
   },
   handsome: {
     _id: "67rdca3eeb7f6fgeed471102",
-    name: "Привлекательный",
+    name: "Красавчик",
     color: "info"
   },
-  timid: { _id: "67rdca3eeb7f6fgeed471103", name: "Робкий", color: "secondary" }
+  uncertain: {
+    _id: "67rdca3eeb7f6fgeed471103",
+    name: "Неуверенный",
+    color: "dark"
+  }
 };
 
 const users = [
   {
-    _id: "67rdca3eeb7f6fgeed471818",
-    name: "Diane Gerlach",
-    profession: professions.waiter,
-    qualities: [qualities.timid],
-    completedMeetings: 23,
-    rate: 3.5,
-    bookmark: false
-  },
-  {
-    _id: "67rdca3eeb7f6fgeed471819",
-    name: "Terry Maz",
-    profession: professions.physics,
-    qualities: [qualities.original, qualities.talkative],
-    completedMeetings: 37,
-    rate: 4.6,
-    bookmark: false
-  },
-  {
-    _id: "67rdca3eeb7f6fgeed471820",
-    name: "April Koch",
-    profession: professions.physics,
-    qualities: [qualities.original, qualities.timid],
-    completedMeetings: 14,
-    rate: 3.5,
-    bookmark: false
-  },
-  {
     _id: "67rdca3eeb7f6fgeed471815",
-    name: "Aubrey Gleichner",
+    name: "Джон Дориан",
     profession: professions.doctor,
-    qualities: [qualities.talkative, qualities.timid, qualities.original],
+    qualities: [qualities.tedious, qualities.uncertain, qualities.strange],
     completedMeetings: 36,
     rate: 2.5,
     bookmark: false
   },
   {
     _id: "67rdca3eeb7f6fgeed471816",
-    name: "Taylor Hodkiewicz",
+    name: "Кокс",
     profession: professions.doctor,
-    qualities: [qualities.joker, qualities.handsome, qualities.problematic],
+    qualities: [qualities.buller, qualities.handsome, qualities.alcoholic],
     completedMeetings: 15,
-    rate: 3,
+    rate: 2.5,
     bookmark: false
   },
   {
     _id: "67rdca3eeb7f6fgeed471817",
-    name: "Stephanie Langosh",
+    name: "Боб Келсо",
     profession: professions.doctor,
-    qualities: [qualities.joker],
-    completedMeetings: 12,
+    qualities: [qualities.buller],
+    completedMeetings: 247,
+    rate: 3.5,
+    bookmark: false
+  },
+  {
+    _id: "67rdca3eeb7f6fgeed471818",
+    name: "Рэйчел Грин",
+    profession: professions.waiter,
+    qualities: [qualities.uncertain],
+    completedMeetings: 148,
+    rate: 3.5,
+    bookmark: false
+  },
+  {
+    _id: "67rdca3eeb7f6fgeed471819",
+    name: "Шелдон Купер",
+    profession: professions.physics,
+    qualities: [qualities.strange, qualities.tedious],
+    completedMeetings: 37,
+    rate: 4.6,
+    bookmark: false
+  },
+  {
+    _id: "67rdca3eeb7f6fgeed471820",
+    name: "Леонард Хофстедтер",
+    profession: professions.physics,
+    qualities: [qualities.strange, qualities.uncertain],
+    completedMeetings: 147,
     rate: 3.5,
     bookmark: false
   },
   {
     _id: "67rdca3eeb7f6fgeed471821",
-    name: "Agnes Bartoletti",
+    name: "Говард Воловиц",
     profession: professions.engineer,
-    qualities: [qualities.original, qualities.talkative],
-    completedMeetings: 21,
-    rate: 4.5,
+    qualities: [qualities.strange, qualities.tedious],
+    completedMeetings: 72,
+    rate: 3.5,
     bookmark: false
   },
   {
     _id: "67rdca3eeb7f6fgeed471822",
-    name: "James Schuster",
+    name: "Никола Тесла",
     profession: professions.engineer,
     qualities: [qualities.handsome],
-    completedMeetings: 55,
+    completedMeetings: 72,
     rate: 5,
     bookmark: false
   },
   {
     _id: "67rdca3eeb7f6fgeed471823",
-    name: "Ricky Shields Sr.",
+    name: "Моника Геллер",
     profession: professions.cook,
-    qualities: [qualities.original, qualities.timid],
+    qualities: [qualities.strange, qualities.uncertain],
     completedMeetings: 17,
     rate: 4.5,
     bookmark: false
   },
   {
     _id: "67rdca3eeb7f6fgeed471824",
-    name: "Bernard Kertzmann",
+    name: "Рататуй",
     profession: professions.cook,
-    qualities: [qualities.handsome, qualities.joker],
-    completedMeetings: 4,
+    qualities: [qualities.handsome, qualities.buller],
+    completedMeetings: 17,
     rate: 4.5,
     bookmark: false
   },
   {
     _id: "67rdca3eeb7f6fgeed47181f",
-    name: "Ronald Marks",
+    name: "Джоуи Триббиани",
     profession: professions.actor,
-    qualities: [qualities.timid, qualities.original],
-    completedMeetings: 34,
+    qualities: [qualities.uncertain, qualities.strange],
+    completedMeetings: 434,
     rate: 3.5,
     bookmark: false
   },
   {
     _id: "67rdca3eeb7f6fgeed47181r",
-    name: "Latoya Krajcik",
+    name: "Брэд Питт",
     profession: professions.actor,
     qualities: [qualities.handsome],
-    completedMeetings: 44,
+    completedMeetings: 434,
     rate: 5,
     bookmark: false
   }
 ];
 
-export function fetchAll() {
-  return users;
-}
+const fetchAll = () =>
+  new Promise((resolve) => {
+    setTimeout(function () {
+      resolve(users);
+    }, 500);
+  });
+
+export default {
+  fetchAll
+};

@@ -7,7 +7,7 @@ import User from "./user";
 import GroupList from "./groupList";
 import API from "../api/index.api";
 
-const UsersList = ({ users: allUsers, ...rest }) => {
+const UsersList = ({ users, isLoaded, ...rest }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [professions, setProfessions] = useState();
   const [selectedProf, setSelectedProf] = useState();
@@ -32,8 +32,8 @@ const UsersList = ({ users: allUsers, ...rest }) => {
   };
 
   const filteredUsers = selectedProf
-    ? allUsers.filter((user) => user.profession === selectedProf)
-    : allUsers;
+    ? users.filter((user) => user.profession === selectedProf)
+    : users;
 
   const pageSize = filteredUsers.length;
   const itemsCurntPage = getPageItems(filteredUsers, currentPage, itemsPerPage);
@@ -60,7 +60,7 @@ const UsersList = ({ users: allUsers, ...rest }) => {
         </div>
       )}
       <div className="d-flex flex-column">
-        <SearchStatus numberOfUsers={pageSize} />
+        {isLoaded && <SearchStatus numberOfUsers={pageSize} />}
         {pageSize > 0 && (
           <table className="table">
             <thead>
@@ -95,7 +95,8 @@ const UsersList = ({ users: allUsers, ...rest }) => {
 };
 
 UsersList.propTypes = {
-  users: PropTypes.array.isRequired
+  users: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  isLoaded: PropTypes.bool
 };
 
 export default UsersList;
