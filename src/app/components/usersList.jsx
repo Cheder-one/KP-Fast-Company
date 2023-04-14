@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { getPageItems } from "../utils/paginate";
 import SearchStatus from "./searchStatus";
 import Pagination from "./pagination";
-import User from "./user";
 import GroupList from "./groupList";
 import API from "../api/index.api";
+import UsersTable from "./usersTable";
 
 const UsersList = ({ users, isLoaded, ...rest }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -65,24 +65,7 @@ const UsersList = ({ users, isLoaded, ...rest }) => {
       <div className="d-flex flex-column">
         {isLoaded && <SearchStatus numberOfUsers={pageSize} />}
         {pageSize > 0 && (
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">Имя</th>
-                <th scope="col">Качества</th>
-                <th scope="col">Профессия</th>
-                <th scope="col">Встречи</th>
-                <th scope="col">Рейтинг</th>
-                <th scope="col">Избранное</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              {itemsCurntPage.map((user) => (
-                <User {...user} {...rest} key={user._id} />
-              ))}
-            </tbody>
-          </table>
+          <UsersTable usersCurntPage={itemsCurntPage} {...rest} />
         )}
         <div className="d-flex justify-content-center">
           <Pagination

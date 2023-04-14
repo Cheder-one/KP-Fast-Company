@@ -9,16 +9,16 @@ const qualities = {
   strange: {
     _id: "67rdca3eeb7f6fgeed471100",
     name: "Странный",
-    color: "secondary"
+    color: "warning"
   },
-  buller: {
+  humorist: {
     _id: "67rdca3eeb7f6fgeed4711012",
-    name: "Троль",
+    name: "Юморист",
     color: "success"
   },
-  alcoholic: {
+  difficile: {
     _id: "67rdca3eeb7f6fgeed471101",
-    name: "Алкоголик",
+    name: "Несговорчивый",
     color: "danger"
   },
   handsome: {
@@ -28,7 +28,7 @@ const qualities = {
   },
   uncertain: {
     _id: "67rdca3eeb7f6fgeed471103",
-    name: "Неуверенный",
+    name: "Робкий",
     color: "dark"
   }
 };
@@ -47,7 +47,7 @@ const users = [
     _id: "67rdca3eeb7f6fgeed471816",
     name: "Кокс",
     profession: professions.doctor,
-    qualities: [qualities.buller, qualities.handsome, qualities.alcoholic],
+    qualities: [qualities.humorist, qualities.handsome, qualities.difficile],
     completedMeetings: 15,
     rate: 2.5,
     bookmark: false
@@ -56,7 +56,7 @@ const users = [
     _id: "67rdca3eeb7f6fgeed471817",
     name: "Боб Келсо",
     profession: professions.doctor,
-    qualities: [qualities.buller],
+    qualities: [qualities.humorist],
     completedMeetings: 247,
     rate: 3.5,
     bookmark: false
@@ -119,7 +119,7 @@ const users = [
     _id: "67rdca3eeb7f6fgeed471824",
     name: "Рататуй",
     profession: professions.cook,
-    qualities: [qualities.handsome, qualities.buller],
+    qualities: [qualities.handsome, qualities.humorist],
     completedMeetings: 17,
     rate: 4.5,
     bookmark: false
