@@ -15,12 +15,12 @@ const GroupList = ({
         <button
           className={
             "list-group-item list-group-item-action" +
-            ([item] === selectedItem ? " active" : "")
+            (item === selectedItem ? " active" : "")
           }
-          onClick={() => onItemSelect(items[item])}
-          key={[item][valueProperty]}
+          onClick={() => onItemSelect(item)}
+          key={item[valueProperty]}
         >
-          {[item][contentProperty]}
+          {item[contentProperty]}
         </button>
       ))}
     </div>

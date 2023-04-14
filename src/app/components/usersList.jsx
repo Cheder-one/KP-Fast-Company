@@ -32,7 +32,7 @@ const UsersList = ({ users, isLoaded, ...rest }) => {
   };
 
   const filteredUsers = selectedProf
-    ? users.filter((user) => user.profession === selectedProf)
+    ? users.filter((user) => user.profession._id === selectedProf._id)
     : users;
 
   const pageSize = filteredUsers.length;
