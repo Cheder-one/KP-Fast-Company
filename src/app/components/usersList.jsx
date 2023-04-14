@@ -32,7 +32,10 @@ const UsersList = ({ users, isLoaded, ...rest }) => {
   };
 
   const filteredUsers = selectedProf
-    ? users.filter((user) => user.profession._id === selectedProf._id)
+    ? users.filter(
+        (user) =>
+          JSON.stringify(user.profession) === JSON.stringify(selectedProf)
+      )
     : users;
 
   const pageSize = filteredUsers.length;

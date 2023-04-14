@@ -11,16 +11,16 @@ const GroupList = ({
 }) => {
   return (
     <div className="list-group">
-      {Object.values(items).map((item) => (
+      {Object.keys(items).map((item) => (
         <button
           className={
             "list-group-item list-group-item-action" +
-            (item === selectedItem ? " active" : "")
+            (items[item] === selectedItem ? " active" : "")
           }
-          onClick={() => onItemSelect(item)}
-          key={item[valueProperty]}
+          onClick={() => onItemSelect(items[item])}
+          key={items[item][valueProperty]}
         >
-          {item[contentProperty]}
+          {items[item][contentProperty]}
         </button>
       ))}
     </div>

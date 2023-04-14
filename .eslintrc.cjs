@@ -13,9 +13,8 @@ module.exports = {
   },
   plugins: ["react"],
   rules: {
-    // "block-spacing": "off",
-    // "brace-style": "off",
-    indent: ["error", 2],
+    // indent: ["error", 2],
+    indent: "off",
     // Отступ количество пробелов
     semi: [2, "always"],
     // Точка с запятой в конце строки
@@ -23,7 +22,7 @@ module.exports = {
       "error",
       { anonymous: "always", named: "never" }
     ],
-    // Ошибка при наличии пробела при обозначении функции, уберём её
+    // Убирает ошибку при наличии пробела при обозначении функции
     quotes: ["error", "double", { allowTemplateLiterals: true }]
     // Использование двойных кавычек
   }
