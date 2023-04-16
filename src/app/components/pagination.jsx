@@ -2,8 +2,13 @@ import _ from "lodash";
 import { PropTypes } from "prop-types";
 import React from "react";
 
-const Pagination = ({ pageSize, itemsPerPage, onPageChange, currentPage }) => {
-  const numberOfPages = Math.ceil(pageSize / itemsPerPage);
+const Pagination = ({
+  usersFilteredCount,
+  itemsPerPage,
+  onPageChange,
+  currentPage
+}) => {
+  const numberOfPages = Math.ceil(usersFilteredCount / itemsPerPage);
   if (numberOfPages === 1) return null;
   const pages = _.range(1, numberOfPages + 1);
 
@@ -26,7 +31,7 @@ const Pagination = ({ pageSize, itemsPerPage, onPageChange, currentPage }) => {
 };
 
 Pagination.propTypes = {
-  pageSize: PropTypes.number.isRequired,
+  usersFilteredCount: PropTypes.number.isRequired,
   itemsPerPage: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,
   currentPage: PropTypes.number.isRequired

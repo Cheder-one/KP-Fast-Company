@@ -6,12 +6,14 @@ import Pagination from "./pagination";
 import GroupList from "./groupList";
 import API from "../api/index.api";
 import UsersTable from "./usersTable";
+import _ from "lodash";
 
 const UsersList = ({ users, isLoaded, ...rest }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [professions, setProfessions] = useState();
   const [selectedProf, setSelectedProf] = useState();
-  const itemsPerPage = 4;
+  const [sortBy, setSortBy] = useState({ iter: "name", order: "asc" }); // значение по умолчанию
+  const itemsPerPage = 8;
 
   useEffect(() => {
     API.professions.fetchAll().then((profs) => {
@@ -38,8 +40,23 @@ const UsersList = ({ users, isLoaded, ...rest }) => {
       )
     : users;
 
-  const pageSize = filteredUsers.length;
-  const itemsCurntPage = getPageItems(filteredUsers, currentPage, itemsPerPage);
+  // Сортировка по значению столбца
+  const handleSort = (param) => {
+    // Меняем порядок сортировки если кликнули второй раз по столбцу
+    if (sortBy.iter === param) {
+      setSortBy((prevState) => ({
+        ...prevState,
+        order: prevState.order === "asc" ? "desc" : "asc"
+      }));
+    } else {
+      setSortBy({ iter: param, order: "asc" });
+    }
+  };
+
+  const usersFilteredCount = filteredUsers.length;
+  const sortedUsers = _.orderBy(filteredUsers, [sortBy.iter], [sortBy.order]);
+
+  const curntPageItems = getPageItems(sortedUsers, currentPage, itemsPerPage);
 
   const handleResetFilters = () => {
     setSelectedProf(undefined);
@@ -63,13 +80,17 @@ const UsersList = ({ users, isLoaded, ...rest }) => {
         </div>
       )}
       <div className="d-flex flex-column">
-        {isLoaded && <SearchStatus numberOfUsers={pageSize} />}
-        {pageSize > 0 && (
-          <UsersTable usersCurntPage={itemsCurntPage} {...rest} />
+        {isLoaded && <SearchStatus numberOfUsers={usersFilteredCount} />}
+        {usersFilteredCount > 0 && (
+          <UsersTable
+            usersCurntPage={curntPageItems}
+            onSort={handleSort}
+            {...rest}
+          />
         )}
         <div className="d-flex justify-content-center">
           <Pagination
-            pageSize={pageSize}
+            usersFilteredCount={usersFilteredCount}
             itemsPerPage={itemsPerPage}
             onPageChange={handlePageChange}
             currentPage={currentPage}
