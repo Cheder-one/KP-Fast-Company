@@ -1,7 +1,7 @@
 import React from "react";
-import User from "./user";
 import { PropTypes } from "prop-types";
 import TableHeader from "./tableHeader";
+import TableBody from "./tableBody";
 
 const UsersTable = ({ usersCurntPage, onSort, selectedSort, ...rest }) => {
   const colums = {
@@ -17,11 +17,12 @@ const UsersTable = ({ usersCurntPage, onSort, selectedSort, ...rest }) => {
   return (
     <table className="table">
       <TableHeader {...{ onSort, selectedSort, colums }} />
-      <tbody>
+      <TableBody {...{ colums, data: usersCurntPage }} />
+      {/* <tbody>
         {usersCurntPage.map((user) => (
           <User {...user} {...rest} key={user._id} />
         ))}
-      </tbody>
+      </tbody> */}
     </table>
   );
 };
