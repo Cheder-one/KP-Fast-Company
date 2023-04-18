@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TableHeader = (onSort, selectedSort, colums) => {
+const TableHeader = ({ onSort, selectedSort, colums }) => {
   const handleSort = (param) => {
     if (selectedSort.iter === param) {
       onSort({
@@ -16,23 +16,20 @@ const TableHeader = (onSort, selectedSort, colums) => {
   return (
     <thead>
       <tr>
-        <th onClick={() => handleSort("name")} scope="col">
-          Имя
-        </th>
-        <th scope="col">Качества</th>
-        <th onClick={() => handleSort("profession.name")} scope="col">
-          Профессия
-        </th>
-        <th onClick={() => handleSort("completedMeetings")} scope="col">
-          Встречи
-        </th>
-        <th onClick={() => handleSort("rate")} scope="col">
-          Рейтинг
-        </th>
-        <th onClick={() => handleSort("bookmark")} scope="col">
-          Избранное
-        </th>
-        <th />
+        {Object.keys(colums).map((colum) => (
+          <th
+            key={colum}
+            onClick={
+              colums[colum].iter
+                ? () => handleSort(colums[colum].iter)
+                : undefined
+            }
+            scope="col"
+            {...{ role: colums[colum].iter && "button" }}
+          >
+            {colums[colum].name}
+          </th>
+        ))}
       </tr>
     </thead>
   );
