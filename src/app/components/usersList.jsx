@@ -12,7 +12,9 @@ const UsersList = ({ users, isLoaded, ...rest }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [professions, setProfessions] = useState();
   const [selectedProf, setSelectedProf] = useState();
-  const [sortBy, setSortBy] = useState({ iter: "name", order: "asc" }); // значение по умолчанию
+  // Сортировка по значению столбца
+  const [sortBy, setSortBy] = useState({ iter: "name", order: "asc" });
+
   const itemsPerPage = 8;
 
   useEffect(() => {
@@ -40,17 +42,8 @@ const UsersList = ({ users, isLoaded, ...rest }) => {
       )
     : users;
 
-  // Сортировка по значению столбца
   const handleSort = (param) => {
-    // Меняем порядок сортировки если кликнули второй раз по столбцу
-    if (sortBy.iter === param) {
-      setSortBy((prevState) => ({
-        ...prevState,
-        order: prevState.order === "asc" ? "desc" : "asc"
-      }));
-    } else {
-      setSortBy({ iter: param, order: "asc" });
-    }
+    setSortBy(param);
   };
 
   const usersFilteredCount = filteredUsers.length;
@@ -85,6 +78,7 @@ const UsersList = ({ users, isLoaded, ...rest }) => {
           <UsersTable
             usersCurntPage={curntPageItems}
             onSort={handleSort}
+            selectedSort={sortBy}
             {...rest}
           />
         )}
