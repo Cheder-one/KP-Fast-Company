@@ -13,7 +13,7 @@ const UsersList = ({ users, isLoaded, ...rest }) => {
   const [professions, setProfessions] = useState();
   const [selectedProf, setSelectedProf] = useState();
   // Сортировка по значению столбца
-  const [sortBy, setSortBy] = useState({ iter: "name", order: "asc" });
+  const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
 
   const itemsPerPage = 8;
 
@@ -47,7 +47,7 @@ const UsersList = ({ users, isLoaded, ...rest }) => {
   };
 
   const usersFilteredCount = filteredUsers.length;
-  const sortedUsers = _.orderBy(filteredUsers, [sortBy.iter], [sortBy.order]);
+  const sortedUsers = _.orderBy(filteredUsers, [sortBy.path], [sortBy.order]);
 
   const curntPageItems = getPageItems(sortedUsers, currentPage, itemsPerPage);
 

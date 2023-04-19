@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 
 const TableHeader = ({ onSort, selectedSort, colums }) => {
   const handleSort = (param) => {
-    if (selectedSort.iter === param) {
+    if (selectedSort.path === param) {
       onSort({
         ...selectedSort,
         order: selectedSort.order === "asc" ? "desc" : "asc"
       });
     } else {
-      onSort({ iter: param, order: "asc" });
+      onSort({ path: param, order: "asc" });
     }
   };
 
@@ -20,12 +20,12 @@ const TableHeader = ({ onSort, selectedSort, colums }) => {
           <th
             key={colum}
             onClick={
-              colums[colum].iter
-                ? () => handleSort(colums[colum].iter)
+              colums[colum].path
+                ? () => handleSort(colums[colum].path)
                 : undefined
             }
             scope="col"
-            {...{ role: colums[colum].iter && "button" }}
+            {...{ role: colums[colum].path && "button" }}
           >
             {colums[colum].name}
           </th>

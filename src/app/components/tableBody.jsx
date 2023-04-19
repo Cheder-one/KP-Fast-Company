@@ -8,7 +8,7 @@ const TableBody = ({ data, colums }) => {
     if (component) {
       return typeof component === "function" ? component(item) : component;
     }
-    return _.get(item, colums[colum].iter);
+    return _.get(item, colums[colum].path);
   };
 
   return (

@@ -12,13 +12,13 @@ const UsersTable = ({
   ...rest
 }) => {
   const colums = {
-    name: { iter: "name", name: "Имя" },
+    name: { path: "name", name: "Имя" },
     quality: { name: "Качества" },
-    professions: { iter: "profession.name", name: "Профессия" },
-    completedMeetings: { iter: "completedMeetings", name: "Встречи" },
-    rate: { iter: "rate", name: "Рейтинг" },
+    professions: { path: "profession.name", name: "Профессия" },
+    completedMeetings: { path: "completedMeetings", name: "Встречи" },
+    rate: { path: "rate", name: "Рейтинг" },
     bookmark: {
-      iter: "bookmark",
+      path: "bookmark",
       name: "Избранное",
       component: (user) => (
         <Bookmark
