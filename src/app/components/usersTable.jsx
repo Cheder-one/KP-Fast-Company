@@ -1,9 +1,10 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import TableHeader from "./tableHeader";
-import TableBody from "./tableBody";
+// import TableHeader from "./tableHeader";
+// import TableBody from "./tableBody";
 import Bookmark from "./bookmark";
 import QualitiesList from "./qualitiesList";
+import Table from "./table";
 
 const UsersTable = ({
   usersCurntPage,
@@ -45,16 +46,17 @@ const UsersTable = ({
   };
 
   return (
-    <table className="table">
-      <TableHeader {...{ onSort, selectedSort, colums }} />
-      <TableBody {...{ colums, data: usersCurntPage, ...rest }} />
-    </table>
+    // <Table>
+    //   <TableHeader {...{ onSort, selectedSort, colums }} />
+    //   <TableBody {...{ colums, data: usersCurntPage }} />
+    // </Table>
+    <Table {...{ onSort, selectedSort, colums, data: usersCurntPage }} />
   );
 };
 
 UsersTable.propTypes = {
   usersCurntPage: PropTypes.array.isRequired,
-  onSort: PropTypes.func.isRequired,
+  onSort: PropTypes.func,
   selectedSort: PropTypes.object,
   onAddBookmark: PropTypes.func.isRequired,
   onDeleteUser: PropTypes.func.isRequired
