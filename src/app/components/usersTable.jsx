@@ -2,13 +2,14 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
-import Bookmark from "./bookmark";
+import Bookmark from "./features/bookmark";
 
 const UsersTable = ({
   usersCurntPage,
   onSort,
   selectedSort,
   onAddBookmark,
+  onDeleteUser,
   ...rest
 }) => {
   const colums = {
@@ -27,18 +28,22 @@ const UsersTable = ({
         />
       )
     },
-    delete: { component: "Delete" }
+    delete: {
+      component: (user) => (
+        <button
+          className="btn btn-outline-dark btn-sm"
+          onClick={() => onDeleteUser(user._id)}
+        >
+          Delete
+        </button>
+      )
+    }
   };
 
   return (
     <table className="table">
       <TableHeader {...{ onSort, selectedSort, colums }} />
       <TableBody {...{ colums, data: usersCurntPage, ...rest }} />
-      {/* <tbody>
-        {usersCurntPage.map((user) => (
-          <User {...user} {...rest} key={user._id} />
-        ))}
-      </tbody> */}
     </table>
   );
 };
@@ -47,7 +52,8 @@ UsersTable.propTypes = {
   usersCurntPage: PropTypes.array.isRequired,
   onSort: PropTypes.func.isRequired,
   selectedSort: PropTypes.object,
-  onAddBookmark: PropTypes.func.isRequired
+  onAddBookmark: PropTypes.func.isRequired,
+  onDeleteUser: PropTypes.func.isRequired
 };
 
 export default UsersTable;
