@@ -118,7 +118,15 @@ const UsersList = () => {
       </div>
     );
   }
-  return <h5 className="m-2">Loading...</h5>;
+  return (
+    <>
+      <div
+        className="spinner-border spinner-border-sm text-primary"
+        role="status"
+      ></div>
+      <span className="visually ms-2">Loading...</span>
+    </>
+  );
 };
 
 UsersList.propTypes = {
