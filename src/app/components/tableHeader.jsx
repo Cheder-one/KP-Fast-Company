@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { caretDown, caretUp } from "../assets/caret-svg";
 
-const TableHeader = ({ onSort, selectedSort, colums }) => {
+const TableHeader = ({ onSort, selectedSort, columns }) => {
   const handleSort = (param) => {
     if (selectedSort.path === param) {
       onSort({
@@ -13,21 +14,33 @@ const TableHeader = ({ onSort, selectedSort, colums }) => {
     }
   };
 
+  const getArrowToHeader = (column) => {
+    if (columns[column].path === selectedSort.path) {
+      return (
+        <div className="d-flex align-items-center gap-1">
+          {columns[column].name}
+          {selectedSort.order === "asc" ? caretUp : caretDown}
+        </div>
+      );
+    }
+    return columns[column].name;
+  };
+
   return (
     <thead>
       <tr>
-        {Object.keys(colums).map((colum) => (
+        {Object.keys(columns).map((column) => (
           <th
-            key={colum}
+            key={column}
             onClick={
-              colums[colum].path
-                ? () => handleSort(colums[colum].path)
+              columns[column].path
+                ? () => handleSort(columns[column].path)
                 : undefined
             }
             scope="col"
-            {...{ role: colums[colum].path && "button" }}
+            {...{ role: columns[column].path && "button" }}
           >
-            {colums[colum].name}
+            {getArrowToHeader(column)}
           </th>
         ))}
       </tr>
@@ -38,7 +51,7 @@ const TableHeader = ({ onSort, selectedSort, colums }) => {
 TableHeader.propTypes = {
   onSort: PropTypes.func,
   selectedSort: PropTypes.object,
-  colums: PropTypes.object
+  columns: PropTypes.object
 };
 
 export default TableHeader;

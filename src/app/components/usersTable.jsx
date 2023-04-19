@@ -4,7 +4,7 @@ import { PropTypes } from "prop-types";
 // import TableBody from "./tableBody";
 import Bookmark from "./bookmark";
 import QualitiesList from "./qualitiesList";
-import Table from "./table";
+import TableShell from "./tableShell";
 
 const UsersTable = ({
   usersCurntPage,
@@ -13,7 +13,7 @@ const UsersTable = ({
   onAddBookmark,
   onDeleteUser
 }) => {
-  const colums = {
+  const columns = {
     name: { path: "name", name: "Имя" },
     quality: {
       name: "Качества",
@@ -45,11 +45,11 @@ const UsersTable = ({
   };
 
   return (
-    // <Table>
-    //   <TableHeader {...{ onSort, selectedSort, colums }} />
-    //   <TableBody {...{ colums, data: usersCurntPage }} />
-    // </Table>
-    <Table {...{ onSort, selectedSort, colums, data: usersCurntPage }} />
+    // <TableShell>
+    //   <TableHeader {...{ onSort, selectedSort, columns}} />
+    //   <TableBody {...{ columns, data: usersCurntPage }} />
+    // </TableShell>
+    <TableShell {...{ onSort, selectedSort, columns, data: usersCurntPage }} />
   );
 };
 
