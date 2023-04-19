@@ -11,8 +11,7 @@ const UsersTable = ({
   onSort,
   selectedSort,
   onAddBookmark,
-  onDeleteUser,
-  ...rest
+  onDeleteUser
 }) => {
   const colums = {
     name: { path: "name", name: "Имя" },
