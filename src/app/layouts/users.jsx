@@ -1,14 +1,27 @@
 import React from "react";
 import UsersList from "../components/containers/usersList";
-import { useParams } from "react-router-dom";
+import { useParams, Switch, Route } from "react-router-dom";
+import User from "./user";
 // import query from "query-string";
 
 const Users = () => {
-  const queryParams = useParams();
+  const { userId } = useParams();
+  console.log(userId);
 
-  console.log(queryParams);
-
-  return <UsersList />;
+  return (
+    <>
+      {userId ? (
+        <Switch>
+          <Route
+            path="/users/67rdca3eeb7f6fgeed471817"
+            component={() => <User userId={userId} />}
+          />
+        </Switch>
+      ) : (
+        <UsersList />
+      )}
+    </>
+  );
 };
 
 export default Users;
