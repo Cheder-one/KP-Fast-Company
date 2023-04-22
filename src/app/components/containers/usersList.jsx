@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { getPageItems } from "../utils/paginate";
-import SearchStatus from "./searchStatus";
-import Pagination from "./pagination";
-import GroupList from "./groupList";
-import API from "../api/index.api";
+import { getPageItems } from "../../utils/paginate";
+import SearchStatus from "../searchStatus";
+import Pagination from "../pagination";
+import GroupList from "../groupList";
+import API from "../../api/index.api";
 import UsersTable from "./usersTable";
 import _ from "lodash";
 
@@ -81,19 +81,20 @@ const UsersList = () => {
     return (
       <div className="d-flex">
         {professions && (
-          <div className="d-flex flex-column flex-shrink-0 p-3">
-            <GroupList
-              items={professions}
-              selectedItem={selectedProf}
-              onItemSelect={handleProfessionSelect}
-            />
-            <button
-              className="btn btn-secondary btn-sm mt-2"
-              onClick={handleResetFilters}
-            >
-              Очистить
-            </button>
-          </div>
+          // <div className="d-flex flex-column flex-shrink-0 p-3">
+          <GroupList
+            items={professions}
+            selectedItem={selectedProf}
+            onItemSelect={handleProfessionSelect}
+            onResetFilters={handleResetFilters}
+          />
+          //   <button
+          //     className="btn btn-secondary btn-sm mt-2"
+          //     onClick={handleResetFilters}
+          //   >
+          //     Очистить
+          //   </button>
+          // </div>
         )}
         <div className="d-flex flex-column">
           <SearchStatus numberOfUsers={usersFilteredCount} />
