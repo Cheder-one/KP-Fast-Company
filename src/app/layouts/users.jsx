@@ -1,5 +1,5 @@
 import React from "react";
-import UsersList from "../containers/usersList";
+import UsersList from "../components/containers/usersList";
 import { useParams } from "react-router-dom";
 // import query from "query-string";
 

@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: ["react"],
   rules: {
+    "multiline-ternary": "off",
     // indent: ["error", 2],
     indent: "off",
     // Отступ количество пробелов

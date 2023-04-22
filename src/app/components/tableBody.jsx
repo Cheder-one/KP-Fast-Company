@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
+import { Link } from "react-router-dom";
 
 const TableBody = ({ data, columns }) => {
   const renderContent = (item, column) => {
@@ -15,9 +16,20 @@ const TableBody = ({ data, columns }) => {
     <tbody>
       {data.map((item) => (
         <tr key={item._id}>
-          {Object.keys(columns).map((column) => (
-            <td key={column}>{renderContent(item, column)}</td>
-          ))}
+          {Object.keys(columns).map((columnName) => {
+            const columnInfo = columns[columnName];
+            const cellContent = renderContent(item, columnName);
+
+            return (
+              <td key={columnName}>
+                {columnInfo.path === "name" ? (
+                  <Link to={`/users/${item._id}`}>{cellContent}</Link>
+                ) : (
+                  cellContent
+                )}
+              </td>
+            );
+          })}
         </tr>
       ))}
     </tbody>
@@ -26,7 +38,8 @@ const TableBody = ({ data, columns }) => {
 
 TableBody.propTypes = {
   data: PropTypes.array,
-  columns: PropTypes.object
+  columns: PropTypes.object,
+  renderContent: PropTypes.func
 };
 
 export default TableBody;
