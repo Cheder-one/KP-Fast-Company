@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { bookmarkDefault, bookmarkLike } from "../assets/bookmark-svg";
+import { bookmarkDefault, bookmarkLike } from "../../assets/bookmark-svg";
 
 const Bookmark = ({ onAddBookmark, isBookmark }) => {
   return (

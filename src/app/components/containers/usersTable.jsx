@@ -2,7 +2,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 // import TableHeader from "./tableHeader";
 // import TableBody from "./tableBody";
-import Bookmark from "../bookmark";
+import Bookmark from "../other/bookmark";
 import QualitiesList from "../qualitiesList";
 import TableShell from "./tableShell";
 
@@ -45,11 +45,11 @@ const UsersTable = ({
   };
 
   return (
+    <TableShell {...{ onSort, selectedSort, columns, data: usersCurntPage }} />
     // <TableShell>
     //   <TableHeader {...{ onSort, selectedSort, columns}} />
     //   <TableBody {...{ columns, data: usersCurntPage }} />
     // </TableShell>
-    <TableShell {...{ onSort, selectedSort, columns, data: usersCurntPage }} />
   );
 };
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { getPageItems } from "../../utils/paginate";
-import SearchStatus from "../searchStatus";
-import Pagination from "../pagination";
+import SearchStatus from "../other/searchStatus";
+import Pagination from "../other/pagination";
 import GroupList from "../groupList";
 import API from "../../api/index.api";
 import UsersTable from "./usersTable";
@@ -81,20 +81,12 @@ const UsersList = () => {
     return (
       <div className="d-flex">
         {professions && (
-          // <div className="d-flex flex-column flex-shrink-0 p-3">
           <GroupList
             items={professions}
             selectedItem={selectedProf}
             onItemSelect={handleProfessionSelect}
             onResetFilters={handleResetFilters}
           />
-          //   <button
-          //     className="btn btn-secondary btn-sm mt-2"
-          //     onClick={handleResetFilters}
-          //   >
-          //     Очистить
-          //   </button>
-          // </div>
         )}
         <div className="d-flex flex-column">
           <SearchStatus numberOfUsers={usersFilteredCount} />
@@ -118,16 +110,17 @@ const UsersList = () => {
         </div>
       </div>
     );
+  } else {
+    return (
+      <>
+        <div
+          className="spinner-border spinner-border-sm text-primary"
+          role="status"
+        ></div>
+        <span className="visually ms-2">Loading...</span>
+      </>
+    );
   }
-  return (
-    <>
-      <div
-        className="spinner-border spinner-border-sm text-primary"
-        role="status"
-      ></div>
-      <span className="visually ms-2">Loading...</span>
-    </>
-  );
 };
 
 UsersList.propTypes = {
