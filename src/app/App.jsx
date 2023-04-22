@@ -1,5 +1,5 @@
 import React from "react";
-import UsersList from "./app/components/usersList";
+import UsersList from "./components/usersList";
 
 const App = () => {
   return (
