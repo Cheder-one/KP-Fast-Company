@@ -7,6 +7,7 @@ import GroupList from "../other/groupList";
 import API from "../../api/index.api";
 import UsersTable from "./usersTable";
 import _ from "lodash";
+import Spinner from "../../utils/spinner";
 
 const UsersList = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -111,15 +112,7 @@ const UsersList = () => {
       </div>
     );
   } else {
-    return (
-      <>
-        <div
-          className="spinner-border spinner-border-sm text-primary"
-          role="status"
-        ></div>
-        <span className="visually ms-2">Loading...</span>
-      </>
-    );
+    return <Spinner text={"Loading..."} />;
   }
 };
 

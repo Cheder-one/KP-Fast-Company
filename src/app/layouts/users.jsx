@@ -1,28 +1,20 @@
 import React, { useEffect, useState } from "react";
 import UsersList from "../components/containers/usersList";
 import { useParams, useHistory, Switch, Route } from "react-router-dom";
-import User from "./userCard";
+import User from "./user";
 import PropTypes from "prop-types";
 import API from "../api/index.api";
-import query from "query-string";
+import Page404 from "./page404";
 
 const Users = () => {
   const [userById, setUserById] = useState();
   const { userId } = useParams();
-  const history = useHistory();
-  const location = useHistory().location;
 
   useEffect(() => {
     API.users.getById(userId).then((user) => {
-      if (user) {
-        setUserById(user);
-      } else {
-        // history.push("/404");
-      }
+      setUserById(user);
     });
   }, [userId]);
-
-  const search = query.parse(location.search); // {}
 
   return (
     <>
@@ -30,11 +22,14 @@ const Users = () => {
         <Switch>
           <Route
             path="/users/:userId?"
-            component={() => <User {...userById} userId={userId} />}
+            component={() => <User {...userById} />}
           />
         </Switch>
       ) : (
-        <UsersList />
+        <Switch>
+          <Route path="/users" component={UsersList} />
+          <Route component={Page404} />
+        </Switch>
       )}
     </>
   );
