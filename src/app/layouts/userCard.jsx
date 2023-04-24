@@ -5,8 +5,8 @@ import QualitiesList from "../components/qualitiesList";
 
 const User = ({ name, profession, qualities, completedMeetings, rate }) => {
   return (
-    <div className="mt-2 ms-3">
-      <h1>{name}</h1>
+    <div className="d-inline-block mt-2 ms-3">
+      <h1 className="">{name}</h1>
       <h3>{`Профессия: ${profession.name}`}</h3>
       <p>
         <QualitiesList {...{ qualities }} />
