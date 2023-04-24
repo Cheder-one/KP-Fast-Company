@@ -7,6 +7,7 @@ import Login from "./layouts/login";
 import UsersList from "./components/containers/usersList";
 import User from "./layouts/user";
 import Page404 from "./layouts/page404";
+import CamillePage from "./layouts/about";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/users/:userId" component={User} />
         <Route path="/users/" component={UsersList} />
         <Route path="/login" component={Login} />
+        <Route path="/about" component={CamillePage} />
         <Route component={Page404} />
       </Switch>
     </>
