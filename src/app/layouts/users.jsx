@@ -2,33 +2,30 @@ import React, { useEffect, useState } from "react";
 import UsersList from "../components/containers/usersList";
 import { useParams, Switch, Route } from "react-router-dom";
 import User from "./user";
-// import query from "query-string";
 import PropTypes from "prop-types";
 import API from "../api/index.api";
 
-const Users = ({ allUsers }) => {
+const Users = () => {
+  const [userById, setUserById] = useState();
   const { userId } = useParams();
-  console.log(userId);
-
-  const [users, setUsers] = useState();
-  console.log(users);
 
   useEffect(() => {
-    API.users.fetchAll().then((users) => {
-      setUsers(users);
-      <Users allUsers={users} />;
+    API.users.getById(userId).then((user) => {
+      setUserById(user);
     });
-  }, []);
+  }, [userId]);
 
   return (
     <>
       {userId ? (
-        <Switch>
-          <Route
-            path="/users/67rdca3eeb7f6fgeed471817"
-            component={() => <User userId={userId} />}
-          />
-        </Switch>
+        userById && (
+          <Switch>
+            <Route
+              path="/users/:userId"
+              component={() => <User {...userById} userId={userId} />}
+            />
+          </Switch>
+        )
       ) : (
         <UsersList />
       )}
