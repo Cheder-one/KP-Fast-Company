@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import QualitiesList from "../components/qualitiesList";
 import API from "../api/index.api";
 import Spinner from "../utils/spinner";
+import Page404 from "./page404";
 
 const User = () => {
   const [userById, setUserById] = useState();
@@ -15,28 +16,29 @@ const User = () => {
     });
   }, [userId]);
 
-  if (!userById) {
+  if (userById === undefined) {
     return <Spinner text={"Loading..."} />;
+  } else if (userById === null) {
+    return <Page404 />;
   }
+
   const { name, profession, qualities, completedMeetings, rate } = userById;
 
   return (
-    userById && (
-      <div className="d-inline-block mt-2 ms-3">
-        <h1 className="">{name}</h1>
-        <h3>{`Профессия: ${profession.name}`}</h3>
-        <p>
-          <QualitiesList {...{ qualities }} />
-        </p>
-        <h4>{`Кол-во встреч:  ${completedMeetings}`}</h4>
-        <h4>{`Рейтинг: ${rate}`}</h4>
-        <Link to={"/users"}>
-          <button className="btn btn-outline-primary mt-2">
-            Все пользователи
-          </button>
-        </Link>
-      </div>
-    )
+    <div className="d-inline-block mt-2 ms-3">
+      <h1 className="">{name}</h1>
+      <h3>{`Профессия: ${profession.name}`}</h3>
+      <p>
+        <QualitiesList {...{ qualities }} />
+      </p>
+      <h4>{`Кол-во встреч:  ${completedMeetings}`}</h4>
+      <h4>{`Рейтинг: ${rate}`}</h4>
+      <Link to={"/users"}>
+        <button className="btn btn-outline-primary mt-2">
+          Все пользователи
+        </button>
+      </Link>
+    </div>
   );
 };
 
