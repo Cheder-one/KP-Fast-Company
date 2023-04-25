@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const Login = () => {
   const [data, setData] = useState({ email: "", pass: "" });
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setData((prevState) => ({
       ...prevState,
@@ -11,29 +11,40 @@ const Login = () => {
     }));
   };
 
+  const handleSubmit = (e) => {
+    //
+  };
+
   return (
-    <form action="">
-      <div>
+    <form className="d-inline-block mx-3" onSubmit={handleSubmit}>
+      <div className="form-group">
         <label>
-          Email{" "}
+          Email:{" "}
           <input
+            className="form-control"
             type="text"
             name={"email"}
             value={data.email}
-            onChange={handleChange}
+            onChange={handleInputChange}
           />
         </label>
       </div>
-      <div>
+      <div className="form-group">
         <label>
-          Пароль{" "}
+          Пароль:{" "}
           <input
+            className="form-control"
             type="password"
             name={"pass"}
             value={data.pass}
-            onChange={handleChange}
+            onChange={handleInputChange}
           />
         </label>
+      </div>
+      <div className="d-flex justify-content-end mt-2">
+        <button className="btn btn-outline-primary" type="submit">
+          Вход
+        </button>
       </div>
     </form>
   );
