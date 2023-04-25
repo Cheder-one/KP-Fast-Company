@@ -21,6 +21,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.7",
     "bootstrap": "^5.2.3",
+    "bootswatch": "^5.2.3",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
     "query-string": "^8.1.0",
