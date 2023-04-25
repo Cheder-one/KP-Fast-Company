@@ -1,26 +1,38 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [data, setData] = useState({ email: "", pass: "" });
 
   const handleChange = (e) => {
-    setEmail(e.target.value);
+    const { name, value } = e.target;
+    setData((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
   };
-
-  const inputRef = useRef();
-  console.log(inputRef.current.value);
 
   return (
     <form action="">
       <div>
         <label>
           Email{" "}
-          <input type="text" id="email" value={email} onChange={handleChange} />
+          <input
+            type="text"
+            name={"email"}
+            value={data.email}
+            onChange={handleChange}
+          />
         </label>
       </div>
       <div>
         <label>
-          Пароль <input type="password" id="password" ref={inputRef} />
+          Пароль{" "}
+          <input
+            type="password"
+            name={"pass"}
+            value={data.pass}
+            onChange={handleChange}
+          />
         </label>
       </div>
     </form>
