@@ -13,7 +13,7 @@ const CamillePage = () => {
               <h1 className="text-primary display-2 fw-bold mb-4">Camille</h1>
               <p className="lead">
                 Camille - женское имя французского происхождения, которое
-                означает "молодая помощница".
+                означает `молодая помощница`.
               </p>
               <p className="fs-4">
                 Это имя было популярным во Франции в XIX веке и стало известным

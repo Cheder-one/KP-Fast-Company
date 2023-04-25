@@ -30,7 +30,7 @@ function Main() {
         <Container>
           <Row>
             <Col md={10}>
-              <p>Copyright © 2021</p>
+              <p>Copyright © 2023</p>
             </Col>
             <Col md={2}>
               <Button
