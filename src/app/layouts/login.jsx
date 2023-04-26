@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TextField from "../components/templates/textField";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", pass: "" });
@@ -15,31 +16,29 @@ const Login = () => {
     //
   };
 
+  const { email, pass } = data;
+
   return (
     <form className="d-inline-block mx-3" onSubmit={handleSubmit}>
       <div className="form-group">
-        <label>
-          Email:{" "}
-          <input
-            className="form-control"
-            type="text"
-            name={"email"}
-            value={data.email}
-            onChange={handleInputChange}
-          />
-        </label>
+        <TextField
+          label={"Email:"}
+          type="text"
+          id="email"
+          name="email"
+          value={email}
+          onChange={handleInputChange}
+        />
       </div>
       <div className="form-group">
-        <label>
-          Пароль:{" "}
-          <input
-            className="form-control"
-            type="password"
-            name={"pass"}
-            value={data.pass}
-            onChange={handleInputChange}
-          />
-        </label>
+        <TextField
+          label={"Пароль:"}
+          type="password"
+          id="pass"
+          name="pass"
+          value={pass}
+          onChange={handleInputChange}
+        />
       </div>
       <div className="d-flex justify-content-end mt-2">
         <button className="btn btn-outline-primary" type="submit">
