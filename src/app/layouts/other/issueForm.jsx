@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TextField from "../../components/templates/textField";
 
 const IssueForm = () => {
   const [values, setValues] = useState({
@@ -27,9 +28,9 @@ const IssueForm = () => {
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>{" "}
-          <input
-            className="form-control"
+          <TextField
+            label={"Email:"}
+            type="text"
             id="email"
             name="email"
             value={email}
@@ -37,9 +38,9 @@ const IssueForm = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="link">Ссылка на страницу с ошибкой:</label>{" "}
-          <input
-            className="form-control"
+          <TextField
+            label={"Ссылка на страницу с ошибкой:"}
+            type="text"
             id="link"
             name="link"
             value={link}
@@ -48,9 +49,9 @@ const IssueForm = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="description">Описание:</label>{" "}
-          <input
-            className="form-control"
+          <TextField
+            label={"Описание:"}
+            type="text"
             id="description"
             name="desc"
             value={desc}
