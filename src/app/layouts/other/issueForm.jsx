@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TextField from "../../components/templates/textField";
+import TextField from "../../utils/templates/textField";
 
 const IssueForm = () => {
   const [values, setValues] = useState({
@@ -8,8 +8,9 @@ const IssueForm = () => {
     desc: ""
   });
 
-  const handleSubmit = () => {
-    // do something...
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(values);
   };
 
   const handleInputChange = (e) => {

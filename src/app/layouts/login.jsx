@@ -14,8 +14,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
-    //
+    console.log(data);
   };
 
   const { email, pass } = data;
