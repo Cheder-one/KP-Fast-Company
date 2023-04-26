@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TextField from "../components/templates/textField";
+import TextField from "../utils/templates/textField";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", pass: "" });
