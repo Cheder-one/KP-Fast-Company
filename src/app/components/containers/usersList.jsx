@@ -7,7 +7,7 @@ import GroupList from "../other/groupList";
 import API from "../../api/index.api";
 import UsersTable from "./usersTable";
 import _ from "lodash";
-import Spinner from "../../utils/spinner";
+import Spinner from "../../utils/templates/spinner";
 
 const UsersList = () => {
   const [currentPage, setCurrentPage] = useState(1);

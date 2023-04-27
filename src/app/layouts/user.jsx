@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import QualitiesList from "../components/qualitiesList";
 import API from "../api/index.api";
-import Spinner from "../utils/spinner";
+import Spinner from "../utils/templates/spinner";
 import Page404 from "./page404";
 
 const User = () => {

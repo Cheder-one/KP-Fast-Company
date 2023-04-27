@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "../utils/templates/textField";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", pass: "" });
+  const [errors, setErrors] = useState();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -11,6 +12,14 @@ const Login = () => {
       [name]: value
     }));
   };
+
+  // const validate = (data) => {
+  //   const errors = {};
+  // }
+
+  // useEffect(() => {
+  //   setErrors(validate(data));
+  // }, [data]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
