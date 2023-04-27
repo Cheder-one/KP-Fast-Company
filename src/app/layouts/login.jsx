@@ -3,7 +3,7 @@ import TextField from "../utils/templates/textField";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -47,6 +47,7 @@ const Login = () => {
           name="email"
           value={email}
           onChange={handleInputChange}
+          error={errors.email}
         />
       </div>
       <div className="form-group">
@@ -57,6 +58,7 @@ const Login = () => {
           name="password"
           value={password}
           onChange={handleInputChange}
+          error={errors.password}
         />
       </div>
       <div className="d-flex justify-content-end mt-2">

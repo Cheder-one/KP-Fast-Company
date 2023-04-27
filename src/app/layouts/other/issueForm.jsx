@@ -8,7 +8,7 @@ const IssueForm = () => {
     description: ""
   });
 
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,11 +37,6 @@ const IssueForm = () => {
     <div>
       <h2>Отчёт об ошибке</h2>
 
-      {/* Для удобства просмотра */}
-      <div>
-        <pre>{JSON.stringify(errors, null, 2)}</pre>
-      </div>
-
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <TextField
@@ -51,6 +46,7 @@ const IssueForm = () => {
             name="email"
             value={email}
             onChange={handleInputChange}
+            error={errors.email}
           />
         </div>
         <div className="form-group">
@@ -61,6 +57,7 @@ const IssueForm = () => {
             name="link"
             value={link}
             onChange={handleInputChange}
+            error={errors.link}
           />
         </div>
 
@@ -72,6 +69,7 @@ const IssueForm = () => {
             name="description"
             value={description}
             onChange={handleInputChange}
+            error={errors.description}
           />
         </div>
         <br />

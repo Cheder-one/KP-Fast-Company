@@ -1,1 +1,1 @@
-export const isFilledField = (value) => Boolean(value.trim());
+export const isRequired = (value) => Boolean(value.trim());
