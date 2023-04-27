@@ -1,31 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "../../utils/templates/textField";
-
+import { validate } from "../../utils/validators/validator";
 const IssueForm = () => {
-  const [values, setValues] = useState({
+  const [inputFields, setInputFields] = useState({
     email: "",
     link: "",
-    desc: ""
+    description: ""
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(values);
-  };
+  const [errors, setErrors] = useState();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setValues((prev) => ({
+    setInputFields((prev) => ({
       ...prev,
       [name]: value
     }));
   };
 
-  const { email, link, desc } = values;
+  const foundErrors = validate(inputFields);
+
+  useEffect(() => {
+    setErrors(foundErrors);
+  }, [inputFields]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const hasErrors = Object.keys(foundErrors).length !== 0;
+    if (hasErrors) return;
+    console.log(inputFields);
+  };
+
+  const { email, link, description } = inputFields;
 
   return (
     <div>
       <h2>Отчёт об ошибке</h2>
+
+      {/* Для удобства просмотра */}
+      <div>
+        <pre>{JSON.stringify(errors, null, 2)}</pre>
+      </div>
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -54,8 +69,8 @@ const IssueForm = () => {
             label={"Описание:"}
             type="text"
             id="description"
-            name="desc"
-            value={desc}
+            name="description"
+            value={description}
             onChange={handleInputChange}
           />
         </div>

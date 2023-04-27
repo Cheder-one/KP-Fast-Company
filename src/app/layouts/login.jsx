@@ -14,16 +14,14 @@ const Login = () => {
   };
 
   const validate = () => {
-    const validationErrors = {};
+    const foundErrors = {};
     for (const fieldName in data) {
       if (data[fieldName].trim() === "") {
-        validationErrors[
-          fieldName
-        ] = `Поле "${fieldName}" не может быть пустым`;
+        foundErrors[fieldName] = `Поле "${fieldName}" не может быть пустым`;
       }
     }
-    setErrors(validationErrors);
-    return Object.keys(validationErrors).length === 0;
+    setErrors(foundErrors);
+    return Object.keys(foundErrors).length === 0;
   };
 
   useEffect(() => {
