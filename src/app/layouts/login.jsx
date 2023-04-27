@@ -1,41 +1,33 @@
 import React, { useEffect, useState } from "react";
 import TextField from "../utils/templates/textField";
+import { validate } from "../utils/validators/validator";
 
 const Login = () => {
-  const [data, setData] = useState({ email: "", password: "" });
+  const [inputFields, setInputFields] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setData((prevState) => ({
+    setInputFields((prevState) => ({
       ...prevState,
       [name]: value
     }));
   };
 
-  const validate = () => {
-    const foundErrors = {};
-    for (const fieldName in data) {
-      if (data[fieldName].trim() === "") {
-        foundErrors[fieldName] = `Поле "${fieldName}" не может быть пустым`;
-      }
-    }
-    setErrors(foundErrors);
-    return Object.keys(foundErrors).length === 0;
-  };
+  const foundErrors = validate(inputFields);
 
   useEffect(() => {
-    validate();
-  }, [data]);
+    setErrors(foundErrors);
+  }, [inputFields]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isValid = validate();
-    if (!isValid) return;
-    console.log(data);
+    const hasErrors = Object.keys(foundErrors).length !== 0;
+    if (hasErrors) return;
+    console.log(inputFields);
   };
 
-  const { email, password } = data;
+  const { email, password } = inputFields;
 
   return (
     <form className="d-inline-block mx-3" onSubmit={handleSubmit}>
