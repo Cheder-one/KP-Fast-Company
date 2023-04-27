@@ -1,6 +1,6 @@
 import { isRequired } from "./validateRules";
 
-export const validate = (inputFields) => {
+export const validate = (inputFields, config) => {
   const errors = {};
 
   for (const field in inputFields) {
