@@ -11,7 +11,7 @@ export const validate = (inputFields, config) => {
     for (const rule in rulesForField) {
       const { message, allowValue } = rulesForField[rule];
 
-      // Запускаем проверку значения поля с по набору названий правил установленных для поля (isRequired, isEmail).
+      // Запускаем проверку значения поля по набору названий правил установленных него. (isRequired, isEmail).
       const hasError = !validator(rule, fieldVal);
 
       if (hasError) {

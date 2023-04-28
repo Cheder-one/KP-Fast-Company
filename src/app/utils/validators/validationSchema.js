@@ -22,10 +22,10 @@ export const issueFormSchema = {
   email: {
     isRequired: {
       message: "Поле Email обязательно"
-    },
-    isEmail: {
-      message: "Введите корректный Email"
     }
+    // isEmail: {
+    //   message: "Введите корректный Email"
+    // }
   },
   link: {
     isRequired: {
@@ -35,10 +35,10 @@ export const issueFormSchema = {
   description: {
     isRequired: {
       message: "Поле Description обязательно"
-    },
-    maxLength: {
-      allowValue: 250,
-      message: "Максимальная длина поля 250 символов"
     }
+    // maxLength: {
+    //   allowValue: 250,
+    //   message: "Максимальная длина поля 250 символов"
+    // }
   }
 };
