@@ -10,11 +10,11 @@ export const loginSchema = {
   password: {
     isRequired: {
       message: "Поле Password обязательно"
-    },
-    minLength: {
-      value: 6,
-      message: "Минимальная длина пароля 6 символов"
     }
+    // minLength: {
+    //   allowValue: 6,
+    //   message: "Минимальная длина пароля 6 символов"
+    // }
   }
 };
 
@@ -37,7 +37,7 @@ export const issueFormSchema = {
       message: "Поле Description обязательно"
     },
     maxLength: {
-      value: 250,
+      allowValue: 250,
       message: "Максимальная длина поля 250 символов"
     }
   }

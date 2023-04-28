@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TextField from "../../utils/templates/textField";
 import { validate } from "../../utils/validators/validator";
+import { issueFormSchema } from "../../utils/validators/validationSchema";
 const IssueForm = () => {
   const [inputFields, setInputFields] = useState({
     email: "",
@@ -18,7 +19,7 @@ const IssueForm = () => {
     }));
   };
 
-  const foundErrors = validate(inputFields);
+  const foundErrors = validate(inputFields, issueFormSchema);
 
   useEffect(() => {
     setErrors(foundErrors);

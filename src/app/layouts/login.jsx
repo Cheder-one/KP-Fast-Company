@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TextField from "../utils/templates/textField";
 import { validate } from "../utils/validators/validator";
+import { loginSchema } from "../utils/validators/validationSchema";
 
 const Login = () => {
   const [inputFields, setInputFields] = useState({ email: "", password: "" });
@@ -14,7 +15,7 @@ const Login = () => {
     }));
   };
 
-  const foundErrors = validate(inputFields);
+  const foundErrors = validate(inputFields, loginSchema);
 
   useEffect(() => {
     setErrors(foundErrors);
