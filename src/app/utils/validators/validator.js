@@ -30,9 +30,8 @@ const validator = (ruleName, value) => {
       return isRequired(value);
     case "isEmail":
       return isEmail(value);
-    case "isPassword": {
+    case "isPassword":
       return isPassword(value);
-    }
     default:
       return true;
   }

@@ -6,20 +6,11 @@ export const isEmail = (value) => {
 };
 
 export const isPassword = (value) => {
-  const capitalRegex = /[A-ZА-Я]+/;
-  const digitRegex = /\d+/;
-  const lengthRegex = /.{8,}/;
-  const regex = /^[A-Za-zА-Яа-я\d]+$/g;
-  return regex.test(value);
+  const regexps = {
+    capital: /[A-ZА-Я]+/,
+    digit: /\d+/
+  };
+  return Object.values(regexps)
+    .map((regex) => regex.test(value))
+    .every((check) => check === true);
 };
-
-isPassword(" ");
-isPassword("%d");
-isPassword("Abc123");
-isPassword("Passw0rd");
-isPassword("PassWord123");
-
-isPassword("password");
-isPassword("PASSWORD");
-isPassword("123456");
-isPassword("Pass word 123");
