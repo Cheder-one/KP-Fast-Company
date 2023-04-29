@@ -1,4 +1,4 @@
-import { isRequired } from "./validateRules";
+import { isEmail, isPassword, isRequired } from "./validateRules";
 
 export const validate = (inputFields, config) => {
   const errors = {};
@@ -25,11 +25,14 @@ export const validate = (inputFields, config) => {
 
 const validator = (ruleName, value) => {
   switch (ruleName) {
-    // Для ruleName isRequired вызываем таковую функцию проверки
+    // Для ruleName === isRequired вызываем таковую функцию проверки
     case "isRequired":
       return isRequired(value);
-    // case "isEmail":
-    //   return isEmail(value);
+    case "isEmail":
+      return isEmail(value);
+    case "isPassword": {
+      return isPassword(value);
+    }
     default:
       return true;
   }
