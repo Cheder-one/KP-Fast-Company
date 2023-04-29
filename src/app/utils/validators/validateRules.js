@@ -6,7 +6,10 @@ export const isEmail = (value) => {
 };
 
 export const isPassword = (value) => {
-  const regex = /^[^\s]+[A-Z|А-Я]$/g;
+  const capitalRegex = /[A-ZА-Я]+/;
+  const digitRegex = /\d+/;
+  const lengthRegex = /.{8,}/;
+  const regex = /^[A-Za-zА-Яа-я\d]+$/g;
   return regex.test(value);
 };
 
