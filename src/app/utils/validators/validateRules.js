@@ -5,4 +5,18 @@ export const isEmail = (value) => {
   return regex.test(value);
 };
 
-export const isPassword = (value) => Boolean(value.trim());
+export const isPassword = (value) => {
+  const regex = /^[^\s]+[A-Z|А-Я]$/g;
+  return regex.test(value);
+};
+
+isPassword(" ");
+isPassword("%d");
+isPassword("Abc123");
+isPassword("Passw0rd");
+isPassword("PassWord123");
+
+isPassword("password");
+isPassword("PASSWORD");
+isPassword("123456");
+isPassword("Pass word 123");
