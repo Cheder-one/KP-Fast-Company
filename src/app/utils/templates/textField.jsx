@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 const TextField = ({ label, type, id, name, value, onChange, error }) => {
   return (
-    <>
-      <label htmlFor="email">{label}</label>
+    <div>
+      <label htmlFor={id}>{label}</label>
       <input
         className="form-control"
         type={type}
@@ -13,8 +13,10 @@ const TextField = ({ label, type, id, name, value, onChange, error }) => {
         value={value}
         onChange={onChange}
       />
-      <p className="text-danger">{error}</p>
-    </>
+      <p className="text-danger" style={{ fontSize: "15px" }}>
+        {error}
+      </p>
+    </div>
   );
 };
 

@@ -31,7 +31,11 @@ const Login = () => {
   const { email, password } = inputFields;
 
   return (
-    <form className="d-inline-block mx-3" onSubmit={handleSubmit}>
+    <form
+      className="mx-3"
+      style={{ maxWidth: "250px" }}
+      onSubmit={handleSubmit}
+    >
       <div className="form-group">
         <TextField
           label={"Email:"}

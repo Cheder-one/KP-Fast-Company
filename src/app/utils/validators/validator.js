@@ -1,4 +1,4 @@
-import { isEmail, isPassword, isRequired } from "./validateRules";
+import { isEmail, isStrongPass, isRequired, minLength } from "./validateRules";
 
 export const validate = (inputFields, config) => {
   const errors = {};
@@ -7,11 +7,8 @@ export const validate = (inputFields, config) => {
     const fieldVal = inputFields[field];
     const rulesForField = config[field];
 
-    // Смотрим поле на установленные правила для него
     for (const rule in rulesForField) {
-      const { message, allowValue } = rulesForField[rule];
-
-      // Запускаем проверку значения поля по набору названий правил установленных него. (isRequired, isEmail).
+      const { message } = rulesForField[rule];
       const hasError = !validator(rule, fieldVal);
 
       if (hasError) {
@@ -21,18 +18,20 @@ export const validate = (inputFields, config) => {
     }
   }
   return errors;
-};
 
-const validator = (ruleName, value) => {
-  switch (ruleName) {
-    // Для ruleName === isRequired вызываем таковую функцию проверки
-    case "isRequired":
-      return isRequired(value);
-    case "isEmail":
-      return isEmail(value);
-    case "isPassword":
-      return isPassword(value);
-    default:
-      return true;
+  function validator(ruleName, value) {
+    const { allowValue } = config.password.minLength;
+    switch (ruleName) {
+      case "isRequired":
+        return isRequired(value);
+      case "isEmail":
+        return isEmail(value);
+      case "isStrongPass":
+        return isStrongPass(value);
+      case "minLength":
+        return minLength(value, allowValue);
+      default:
+        return true;
+    }
   }
 };
