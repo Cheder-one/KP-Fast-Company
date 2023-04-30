@@ -21,9 +21,9 @@ const Login = () => {
     setErrors(foundErrors);
   }, [inputFields]);
 
+  const hasErrors = Object.keys(foundErrors).length !== 0;
   const handleSubmit = (e) => {
     e.preventDefault();
-    const hasErrors = Object.keys(foundErrors).length !== 0;
     if (hasErrors) return;
     console.log(inputFields);
   };
@@ -59,7 +59,10 @@ const Login = () => {
         />
       </div>
       <div className="d-flex justify-content-end mt-2">
-        <button className="btn btn-outline-primary" type="submit">
+        <button
+          className={"btn btn-primary " + (hasErrors ? "disabled" : "")}
+          type="submit"
+        >
           Вход
         </button>
       </div>
