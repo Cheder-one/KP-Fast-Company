@@ -1,21 +1,29 @@
-const isRequired = (value) => Boolean(value.trim());
+export const isRequired = (value) => Boolean(value.trim());
 
-const isEmail = (value) => {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(value);
-};
+export const isEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
-const isStrongPass = (value) => {
-  const regexps = {
-    capital: /[A-ZА-Я]+/,
-    digit: /\d+/
-  };
-  const results = Object.values(regexps).map((regexp) => regexp.test(value));
-  return results.every((result) => result);
-};
+export const isUrl = (value) => /^https?:\/\/\S+$/.test(value);
 
-const minLength = (value, allowValue) => {
+export const isStrongPass = (value) =>
+  /(?=.*[A-ZА-Я])(?=.*[a-zа-я])(?=.*\d).+/g.test(value);
+isStrongPass("1Вв");
+isStrongPass("1fff @ffffП   ");
+
+export const minLength = (value, allowValue) => {
+  // const { allowValue } = config.password.minLength;
   return value.length > allowValue;
 };
 
-export { isRequired, isEmail, isStrongPass, minLength };
+export const maxLength = (value, allowValue) => {
+  // const { allowValue } = config.description.maxLength;
+  return value.length < allowValue;
+};
+
+export default {
+  isRequired: (value) => Boolean(value.trim()),
+  isEmail: (value) => /^https?:\/\/(www.)?[^\s]+$/g.test(value),
+
+  min: (value, length) => value.length >= length,
+  isCapitalSymbol: (value) => /[A-Z]+/g.test(value),
+  isContainDigit: (value) => /d+/g.test(value)
+};
