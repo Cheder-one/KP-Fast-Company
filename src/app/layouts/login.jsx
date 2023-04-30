@@ -31,42 +31,44 @@ const Login = () => {
   const { email, password } = inputFields;
 
   return (
-    <form
-      className="mx-3"
-      style={{ maxWidth: "250px" }}
-      onSubmit={handleSubmit}
-    >
-      <div className="form-group">
-        <TextField
-          label={"Email:"}
-          type="text"
-          id="email"
-          name="email"
-          value={email}
-          onChange={handleInputChange}
-          error={errors.email}
-        />
+    <div className="container mt-5">
+      <div className="row">
+        <div className="col-md-6 offset-md-3 shadow p-4">
+          <form className="mx-3" onSubmit={handleSubmit}>
+            <h3 className="mb-4">Login</h3>
+            <div className="form-group">
+              <TextField
+                label={"Email:"}
+                type="text"
+                id="email"
+                name="email"
+                value={email}
+                onChange={handleInputChange}
+                error={errors.email}
+              />
+            </div>
+            <div className="form-group">
+              <TextField
+                label={"Пароль:"}
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={handleInputChange}
+                error={errors.password}
+              />
+            </div>
+            <button
+              disabled={hasErrors}
+              className={"btn btn-primary w-100 mx-auto"}
+              type="submit"
+            >
+              Вход
+            </button>
+          </form>
+        </div>
       </div>
-      <div className="form-group">
-        <TextField
-          label={"Пароль:"}
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={handleInputChange}
-          error={errors.password}
-        />
-      </div>
-      <div className="d-flex justify-content-end mt-2">
-        <button
-          className={"btn btn-primary " + (hasErrors ? "disabled" : "")}
-          type="submit"
-        >
-          Вход
-        </button>
-      </div>
-    </form>
+    </div>
   );
 };
 

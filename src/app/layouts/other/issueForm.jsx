@@ -35,10 +35,9 @@ const IssueForm = () => {
   const { email, link, description } = inputFields;
 
   return (
-    <div>
-      <h2>Отчёт об ошибке</h2>
-
+    <div className="container p-4">
       <form onSubmit={handleSubmit}>
+        <h2 className="mb-4">Отчёт об ошибке</h2>
         <div className="form-group">
           <TextField
             label={"Email:"}
@@ -61,7 +60,6 @@ const IssueForm = () => {
             error={errors.link}
           />
         </div>
-
         <div className="form-group">
           <TextField
             label={"Описание:"}
@@ -73,15 +71,13 @@ const IssueForm = () => {
             error={errors.description}
           />
         </div>
-        <br />
-        <div className="d-flex justify-content-end">
-          <button
-            className={"btn btn-primary " + (hasErrors ? "disabled" : "")}
-            type="submit"
-          >
-            Отправить
-          </button>
-        </div>
+        <button
+          disabled={hasErrors}
+          className="btn btn-primary w-100 mx-auto"
+          type="submit"
+        >
+          Отправить
+        </button>
       </form>
     </div>
   );
