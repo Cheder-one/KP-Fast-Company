@@ -13,7 +13,7 @@ const TextField = ({ label, type, id, name, value, onChange, error }) => {
         value={value}
         onChange={onChange}
       />
-      <p className="text-danger" style={{ fontSize: "15px" }}>
+      <p className="text-danger " style={{ fontSize: "15px" }}>
         {error}
       </p>
     </div>

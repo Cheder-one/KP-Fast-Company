@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TextField from "../utils/templates/textField";
-import { validate } from "../utils/validators/validator";
+import { validate } from "../utils/validators/validate";
 import { loginSchema } from "../utils/validators/validationSchema";
 
 const Login = () => {

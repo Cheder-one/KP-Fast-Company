@@ -33,6 +33,9 @@ export const issueFormSchema = {
   link: {
     isRequired: {
       message: "Поле Link обязательно"
+    },
+    isUrl: {
+      message: "Введите корректный URL"
     }
   },
   description: {
