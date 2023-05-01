@@ -72,9 +72,10 @@ const IssueForm = () => {
             error={errors.description}
           />
         </div>
+        <hr />
         <div className="form-group">
           <TextField
-            label="Пароль:"
+            label="Введите пароль:"
             type="password"
             id="password"
             name="password"
