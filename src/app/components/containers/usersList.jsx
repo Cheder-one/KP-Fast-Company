@@ -8,6 +8,7 @@ import API from "../../api/index.api";
 import UsersTable from "./usersTable";
 import _ from "lodash";
 import Spinner from "../../utils/templates/spinner";
+import SearchBox from "../other/searchBox";
 
 const UsersList = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -91,6 +92,7 @@ const UsersList = () => {
         )}
         <div className="d-flex flex-column">
           <SearchStatus numberOfUsers={usersFilteredCount} />
+          <SearchBox />
           {usersFilteredCount > 0 && (
             <UsersTable
               usersCurntPage={curntPageItems}
