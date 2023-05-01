@@ -46,5 +46,17 @@ export const issueFormSchema = {
       allowValue: 250,
       message: "Максимальная длина поля 250 символов"
     }
+  },
+  password: {
+    isRequired: {
+      message: "Поле Password обязательно"
+    },
+    isStrongPass: {
+      message: "Пароль должен состоять из заглавных, строчных букв и цифр"
+    },
+    minLength: {
+      allowValue: 8,
+      message: "Минимальная длина пароля 8 символов"
+    }
   }
 };

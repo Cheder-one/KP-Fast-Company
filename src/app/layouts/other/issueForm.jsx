@@ -6,7 +6,8 @@ const IssueForm = () => {
   const [inputFields, setInputFields] = useState({
     email: "",
     link: "",
-    description: ""
+    description: "",
+    password: ""
   });
 
   const [errors, setErrors] = useState({});
@@ -32,7 +33,7 @@ const IssueForm = () => {
     console.log(inputFields);
   };
 
-  const { email, link, description } = inputFields;
+  const { email, link, description, password } = inputFields;
 
   return (
     <div className="container p-4">
@@ -40,7 +41,7 @@ const IssueForm = () => {
         <h2 className="mb-4">Отчёт об ошибке</h2>
         <div className="form-group">
           <TextField
-            label={"Email:"}
+            label="Email:"
             type="text"
             id="email"
             name="email"
@@ -51,7 +52,7 @@ const IssueForm = () => {
         </div>
         <div className="form-group">
           <TextField
-            label={"Ссылка на страницу с ошибкой:"}
+            label="Ссылка на страницу с ошибкой:"
             type="text"
             id="link"
             name="link"
@@ -62,13 +63,24 @@ const IssueForm = () => {
         </div>
         <div className="form-group">
           <TextField
-            label={"Описание:"}
+            label="Описание:"
             type="text"
             id="description"
             name="description"
             value={description}
             onChange={handleInputChange}
             error={errors.description}
+          />
+        </div>
+        <div className="form-group">
+          <TextField
+            label="Пароль:"
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={handleInputChange}
+            error={errors.password}
           />
         </div>
         <button
