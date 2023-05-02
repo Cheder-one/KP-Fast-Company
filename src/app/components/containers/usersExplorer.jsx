@@ -16,7 +16,8 @@ const UsersExplorer = () => {
   const [selectedProf, setSelectedProf] = useState();
   // Сортировка по значению столбца
   const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
-  const [searchResults, setSearchResults] = useState();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [queryResult, setQueryResult] = useState();
 
   const [users, setUsers] = useState();
   const itemsPerPage = 8;
@@ -50,15 +51,26 @@ const UsersExplorer = () => {
 
   const handleProfessionSelect = (prof) => {
     setSelectedProf(prof);
+    setSearchQuery("");
   };
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedProf]);
+  }, [selectedProf, searchQuery]);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  const getUsersBySearch = () => {
+    const regex = new RegExp(searchQuery, "gi");
+    const searchResult = users.filter((user) => user.name.match(regex));
+    setQueryResult(searchResult);
+  };
+
+  // useEffect(() => {
+  //   getUsersBySearch();
+  // }, []);
 
   if (users) {
     const filteredUsers = selectedProf
@@ -66,6 +78,13 @@ const UsersExplorer = () => {
           (user) =>
             JSON.stringify(user.profession) === JSON.stringify(selectedProf)
         )
+      : searchQuery
+      ? users.filter((user) => {
+          const regex = new RegExp(searchQuery, "gi");
+          const searchResult = users.filter((user) => user.name.match(regex));
+          setQueryResult(searchResult);
+          return JSON.stringify(user) === JSON.stringify(searchResult);
+        })
       : users;
 
     const handleSort = (param) => {
@@ -81,10 +100,12 @@ const UsersExplorer = () => {
       setSelectedProf(undefined);
     };
 
-    function handleSearch(search) {
-      const regex = new RegExp(search, "gi");
-      const searchResults = users.filter((user) => user.name.match(regex));
-    }
+    // Вызывается при изменении строки поиска и устанавливает ее новое значение
+    const handleSearchChange = (event) => {
+      const { value } = event.target;
+      setSearchQuery(value);
+      setSelectedProf(undefined);
+    };
 
     return (
       <div className="d-flex">
@@ -98,7 +119,10 @@ const UsersExplorer = () => {
         )}
         <div className="d-flex flex-column">
           <SearchStatus numberOfUsers={usersFilteredCount} />
-          <SearchBox onSearch={handleSearch} />
+          <SearchBox
+            searchQuery={searchQuery}
+            onSearchChange={handleSearchChange}
+          />
           {usersFilteredCount > 0 && (
             <UsersTable
               usersCurntPage={curntPageItems}
@@ -125,8 +149,7 @@ const UsersExplorer = () => {
 };
 
 UsersExplorer.propTypes = {
-  users: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-  isLoaded: PropTypes.bool
+  users: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
 };
 
 export default UsersExplorer;

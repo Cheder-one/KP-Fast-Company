@@ -1,14 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-const SearchBox = ({ onSearch }) => {
-  const [fieldVal, setFieldVal] = useState("");
-  const handleChange = (event) => {
-    const { value } = event.target;
-    setFieldVal(value.trim());
-    onSearch(value);
-  };
-
+const SearchBox = ({ onSearchChange, searchQuery }) => {
   return (
     <nav className="mx-1 mb-3">
       <form
@@ -20,8 +13,8 @@ const SearchBox = ({ onSearch }) => {
           className="form-control"
           placeholder="Search"
           type="search"
-          value={fieldVal}
-          onChange={handleChange}
+          value={searchQuery}
+          onChange={onSearchChange}
         />
       </form>
     </nav>
@@ -29,7 +22,8 @@ const SearchBox = ({ onSearch }) => {
 };
 
 SearchBox.propTypes = {
-  onSearch: PropTypes.func
+  onSearchChange: PropTypes.func,
+  searchQuery: PropTypes.string
 };
 
 export default SearchBox;

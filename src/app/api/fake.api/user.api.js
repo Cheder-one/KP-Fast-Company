@@ -167,10 +167,9 @@ export default {
 // console.log(users);
 
 const getUserBySearch = (search, users) => {
-  const regex = new RegExp(`${search}`, "gi");
-  return users
-    .filter((user) => user.name.match(regex))
-    .map((user) => user.name);
+  return users.filter((user) =>
+    user.name.toLowerCase().includes(search.toLowerCase())
+  );
 };
 
 getUserBySearch("ни", users);
