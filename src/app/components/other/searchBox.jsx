@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 const SearchBox = ({ onSearch }) => {
   const [fieldVal, setFieldVal] = useState("");
   const handleChange = (event) => {
     const { value } = event.target;
-    setFieldVal(value);
+    setFieldVal(value.trim());
     onSearch(value);
   };
 
@@ -25,6 +26,10 @@ const SearchBox = ({ onSearch }) => {
       </form>
     </nav>
   );
+};
+
+SearchBox.propTypes = {
+  onSearch: PropTypes.func
 };
 
 export default SearchBox;

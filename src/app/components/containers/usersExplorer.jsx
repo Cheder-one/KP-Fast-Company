@@ -16,9 +16,10 @@ const UsersExplorer = () => {
   const [selectedProf, setSelectedProf] = useState();
   // Сортировка по значению столбца
   const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
-  const itemsPerPage = 8;
+  const [searchResults, setSearchResults] = useState();
 
   const [users, setUsers] = useState();
+  const itemsPerPage = 8;
 
   useEffect(() => {
     API.users.fetchAll().then((users) => {
@@ -80,6 +81,11 @@ const UsersExplorer = () => {
       setSelectedProf(undefined);
     };
 
+    function handleSearch(search) {
+      const regex = new RegExp(search, "gi");
+      const searchResults = users.filter((user) => user.name.match(regex));
+    }
+
     return (
       <div className="d-flex">
         {professions && (
@@ -92,7 +98,7 @@ const UsersExplorer = () => {
         )}
         <div className="d-flex flex-column">
           <SearchStatus numberOfUsers={usersFilteredCount} />
-          <SearchBox />
+          <SearchBox onSearch={handleSearch} />
           {usersFilteredCount > 0 && (
             <UsersTable
               usersCurntPage={curntPageItems}
