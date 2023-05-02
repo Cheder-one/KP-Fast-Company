@@ -1,38 +1,3 @@
-import { professionsObject as professions } from "./professions.api";
-
-const qualities = {
-  tedious: {
-    _id: "67rdca3eeb7f6fgeed471198",
-    name: "Нудила",
-    color: "primary"
-  },
-  strange: {
-    _id: "67rdca3eeb7f6fgeed471100",
-    name: "Странный",
-    color: "warning"
-  },
-  humorist: {
-    _id: "67rdca3eeb7f6fgeed4711012",
-    name: "Юморист",
-    color: "success"
-  },
-  difficile: {
-    _id: "67rdca3eeb7f6fgeed471101",
-    name: "Несговорчивый",
-    color: "danger"
-  },
-  handsome: {
-    _id: "67rdca3eeb7f6fgeed471102",
-    name: "Красавчик",
-    color: "info"
-  },
-  uncertain: {
-    _id: "67rdca3eeb7f6fgeed471103",
-    name: "Робкий",
-    color: "dark"
-  }
-};
-
 const users = [
   {
     _id: "67rdca3eeb7f6fgeed471815",
@@ -143,34 +108,3 @@ const users = [
     bookmark: false
   }
 ];
-
-const fetchAll = () =>
-  new Promise((resolve) => {
-    setTimeout(function () {
-      resolve(users);
-    }, 2000);
-  });
-
-const getById = (id) =>
-  new Promise((resolve) => {
-    setTimeout(function () {
-      const user = users.find((user) => user._id === id);
-      resolve(user || null);
-    }, 1000);
-  });
-
-export default {
-  fetchAll,
-  getById
-};
-
-// console.log(users);
-
-const getUserBySearch = (search, users) => {
-  const regex = new RegExp(`${search}`, "gi");
-  return users
-    .filter((user) => user.name.match(regex))
-    .map((user) => user.name);
-};
-
-getUserBySearch("ни", users);
