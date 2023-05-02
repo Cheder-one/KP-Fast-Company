@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 // import TableHeader from "./tableHeader";
 // import TableBody from "./tableBody";
 import Bookmark from "../other/bookmark";
-import QualitiesList from "../qualitiesList";
+import QualitiesList from "../qualities/qualitiesList";
 import TableShell from "./tableShell";
 
 const UsersTable = ({
