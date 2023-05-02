@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { caretDown, caretUp } from "../assets/caret-svg";
+import { caretDown, caretUp } from "../../assets/caret-svg";
 
 const TableHeader = ({ onSort, selectedSort, columns }) => {
   const handleSort = (param) => {

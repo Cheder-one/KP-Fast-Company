@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
-import QualitiesList from "../components/qualitiesList";
+import QualitiesList from "../components/qualities/qualitiesList";
 import API from "../api/index.api";
 import Spinner from "../utils/templates/spinner";
 import Page404 from "./page404";
