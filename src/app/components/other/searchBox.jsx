@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const SearchBox = () => {
+const SearchBox = ({ onSearch }) => {
   const [fieldVal, setFieldVal] = useState("");
   const handleChange = (event) => {
     const { value } = event.target;
     setFieldVal(value);
+    onSearch(value);
   };
 
   return (

@@ -10,7 +10,7 @@ import _ from "lodash";
 import Spinner from "../../utils/templates/spinner";
 import SearchBox from "../other/searchBox";
 
-const UsersList = () => {
+const UsersExplorer = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [professions, setProfessions] = useState();
   const [selectedProf, setSelectedProf] = useState();
@@ -118,9 +118,9 @@ const UsersList = () => {
   }
 };
 
-UsersList.propTypes = {
+UsersExplorer.propTypes = {
   users: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   isLoaded: PropTypes.bool
 };
 
-export default UsersList;
+export default UsersExplorer;
