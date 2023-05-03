@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { getPageItems } from "../../utils/paginate";
-import SearchStatus from "../other/searchStatus";
-import Pagination from "../other/pagination";
-import GroupList from "../other/groupList";
-import API from "../../api/index.api";
-import UsersTable from "./usersTable";
+import { getPageItems } from "../../../utils/paginate";
+import SearchStatus from "../../ui/searchStatus.jsx";
+import Pagination from "../../common/pagination.jsx";
+import GroupList from "../../common/groupList";
+import API from "../../../api/index.api";
+import UsersTable from "../../ui/usersTable";
 import _ from "lodash";
-import Spinner from "../../utils/templates/spinner";
-import SearchBox from "../other/searchBox";
+import Spinner from "../../../layouts/other/spinner";
+import SearchBox from "../../common/searchBox";
 
-const UsersExplorer = () => {
+const UsersListPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [professions, setProfessions] = useState();
   const [selectedProf, setSelectedProf] = useState();
@@ -135,8 +135,8 @@ const UsersExplorer = () => {
   }
 };
 
-UsersExplorer.propTypes = {
+UsersListPage.propTypes = {
   users: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
 };
 
-export default UsersExplorer;
+export default UsersListPage;

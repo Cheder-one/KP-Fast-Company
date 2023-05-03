@@ -2,9 +2,9 @@ import React from "react";
 import { PropTypes } from "prop-types";
 // import TableHeader from "./tableHeader";
 // import TableBody from "./tableBody";
-import Bookmark from "../other/bookmark";
-import QualitiesList from "../qualities/qualitiesList";
-import TableShell from "./tableShell";
+import Bookmark from "../common/bookmark.jsx";
+import QualitiesList from "./qualities/qualitiesList.jsx";
+import TableShell from "../common/table/tableShell.jsx";
 
 const UsersTable = ({
   usersCurntPage,

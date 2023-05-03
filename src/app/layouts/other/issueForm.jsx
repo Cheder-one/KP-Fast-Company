@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TextField from "../../utils/templates/textField";
+import TextField from "../../components/common/form/textField.jsx";
 import { validate } from "../../utils/validators/validate";
 import { issueFormSchema } from "../../utils/validators/validationSchema";
 const IssueForm = () => {

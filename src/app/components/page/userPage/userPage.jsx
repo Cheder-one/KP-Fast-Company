@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
-import QualitiesList from "../components/qualities/qualitiesList";
-import API from "../api/index.api";
-import Spinner from "../utils/templates/spinner";
-import Page404 from "./page404";
+import QualitiesList from "../../ui/qualities/qualitiesList.jsx";
+import API from "../../../api/index.api";
+import Spinner from "../../../layouts/other/spinner";
+import Page404 from "../../../layouts/other/page404";
 
-const User = () => {
+const UserPage = () => {
   const [userById, setUserById] = useState();
   const { userId } = useParams();
 
@@ -42,7 +42,7 @@ const User = () => {
   );
 };
 
-User.propTypes = {
+UserPage.propTypes = {
   name: PropTypes.string,
   profession: PropTypes.shape({
     name: PropTypes.string
@@ -52,4 +52,4 @@ User.propTypes = {
   rate: PropTypes.number
 };
 
-export default User;
+export default UserPage;
