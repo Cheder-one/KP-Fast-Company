@@ -12,6 +12,11 @@ module.exports = {
     sourceType: "module"
   },
   plugins: ["react"],
+  settings: {
+    react: {
+      version: "detect"
+    }
+  },
   rules: {
     "multiline-ternary": "off",
     // indent: ["error", 2],
