@@ -1,10 +1,8 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-// import TableHeader from "./tableHeader";
-// import TableBody from "./tableBody";
 import Bookmark from "../common/bookmark.jsx";
-import QualitiesList from "./qualities/qualitiesList.jsx";
-import TableShell from "../common/table/tableShell.jsx";
+import Qualities from "./qualities";
+import TableShell from "../common/table";
 
 const UsersTable = ({
   usersCurntPage,
@@ -17,7 +15,7 @@ const UsersTable = ({
     name: { path: "name", name: "Имя" },
     quality: {
       name: "Качества",
-      component: (user) => <QualitiesList {...user} />
+      component: (user) => <Qualities {...user} />
     },
     professions: { path: "profession.name", name: "Профессия" },
     completedMeetings: { path: "completedMeetings", name: "Встречи" },
