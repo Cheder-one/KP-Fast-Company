@@ -17,7 +17,6 @@ const UsersExplorer = () => {
   // Сортировка по значению столбца
   const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
   const [searchQuery, setSearchQuery] = useState("");
-  const [queryResult, setQueryResult] = useState();
 
   const [users, setUsers] = useState();
   const itemsPerPage = 8;
@@ -62,16 +61,6 @@ const UsersExplorer = () => {
     setCurrentPage(pageNumber);
   };
 
-  const getUsersBySearch = () => {
-    const regex = new RegExp(searchQuery, "gi");
-    const searchResult = users.filter((user) => user.name.match(regex));
-    setQueryResult(searchResult);
-  };
-
-  // useEffect(() => {
-  //   getUsersBySearch();
-  // }, []);
-
   if (users) {
     const filteredUsers = selectedProf
       ? users.filter(
@@ -81,9 +70,7 @@ const UsersExplorer = () => {
       : searchQuery
       ? users.filter((user) => {
           const regex = new RegExp(searchQuery, "gi");
-          const searchResult = users.filter((user) => user.name.match(regex));
-          setQueryResult(searchResult);
-          return JSON.stringify(user) === JSON.stringify(searchResult);
+          return user.name.match(regex);
         })
       : users;
 
