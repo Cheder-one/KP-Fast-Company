@@ -163,13 +163,3 @@ export default {
   fetchAll,
   getById
 };
-
-// console.log(users);
-
-const getUserBySearch = (search, users) => {
-  return users.filter((user) =>
-    user.name.toLowerCase().includes(search.toLowerCase())
-  );
-};
-
-getUserBySearch("ни", users);

@@ -17,10 +17,8 @@ const User = () => {
   }, [userId]);
 
   if (userById === undefined) {
-    // Если userById еще не установлен, то выводим спиннер
     return <Spinner text={"Loading..."} />;
   } else if (userById === null) {
-    // Если сервер не нашел пользователя, он вернет null. Если null, то 404
     return <Page404 />;
   }
 

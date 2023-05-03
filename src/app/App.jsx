@@ -1,9 +1,9 @@
 import React from "react";
-import NavBar from "./components/other/navBar";
+import NavBar from "./components/ui/navBar.jsx";
 import { Switch, Route } from "react-router-dom";
 import Main from "./layouts/main";
 import Login from "./layouts/login";
-import UsersExplorer from "./components/containers/usersExplorer";
+import UsersExplorer from "./components(old)/containers/usersExplorer.jsx";
 import User from "./layouts/user";
 import Page404 from "./layouts/page404";
 import CamillePage from "./layouts/other/about";

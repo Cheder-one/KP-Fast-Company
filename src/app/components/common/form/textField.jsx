@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { eyeFill, eyeSlash } from "../../assets/show-hide-pass-svg";
+import { eyeFill, eyeSlash } from "../../../assets/show-hide-pass-svg";
 
 const TextField = ({ label, type, id, name, value, onChange, error }) => {
   const [showPass, setShowPass] = useState(false);
