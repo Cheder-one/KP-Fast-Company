@@ -45,7 +45,12 @@ const UsersTable = ({
   };
 
   return (
-    <TableShell {...{ onSort, selectedSort, columns, data: usersCurntPage }} />
+    <TableShell
+      onSort={onSort}
+      selectedSort={selectedSort}
+      columns={columns}
+      data={usersCurntPage}
+    />
     // <TableShell>
     //   <TableHeader {...{ onSort, selectedSort, columns}} />
     //   <TableBody {...{ columns, data: usersCurntPage }} />
