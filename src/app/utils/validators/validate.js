@@ -1,4 +1,5 @@
 import validateRules from "./validateRules";
+
 export const validate = (inputFields, config) => {
   const errors = {};
 

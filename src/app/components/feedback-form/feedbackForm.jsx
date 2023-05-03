@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import TextField from "../../components/common/form/textField.jsx";
-import { validate } from "../../utils/validators/validate";
-import { issueFormSchema } from "../../utils/validators/validationSchema";
-const IssueForm = () => {
+import TextField from "../common/form/textField.jsx";
+import { validate } from "../../utils/validators/validate.js";
+import { issueFormSchema } from "../../utils/validators/validationSchema.js";
+
+const FeedbackForm = () => {
   const [inputFields, setInputFields] = useState({
     email: "",
     link: "",
@@ -96,4 +97,4 @@ const IssueForm = () => {
   );
 };
 
-export default IssueForm;
+export default FeedbackForm;
