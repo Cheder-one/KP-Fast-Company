@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import TextField from "../../common/form/textField";
 import { validate } from "../../../utils/validators/validate";
 import { loginSchema } from "../../../utils/validators/validationSchema";
@@ -63,6 +64,10 @@ const LoginForm = ({ text }) => {
       </button>
     </form>
   );
+};
+
+LoginForm.propTypes = {
+  text: PropTypes.string
 };
 
 export default LoginForm;
