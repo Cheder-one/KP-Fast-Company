@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 const Page404 = () => {
   return (
@@ -11,9 +12,9 @@ const Page404 = () => {
             Oops! The page you are looking for does not exist.
           </p>
           <div className="text-center">
-            <Button href="/" variant="primary">
-              Return to homepage
-            </Button>
+            <Link to="/">
+              <Button variant="primary">Return to homepage</Button>
+            </Link>
           </div>
         </Col>
       </Row>

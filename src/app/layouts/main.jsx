@@ -1,8 +1,8 @@
 import React from "react";
-import MainPage from "../components/ui/mainPage";
+import MainPage from "../components/page/mainPage.jsx";
 
-function Main() {
+const Main = () => {
   return <MainPage />;
-}
+};
 
 export default Main;

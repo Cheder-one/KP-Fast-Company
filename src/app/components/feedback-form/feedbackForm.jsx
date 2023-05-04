@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TextField from "../common/form/textField.jsx";
 import { validate } from "../../utils/validators/validate.js";
 import { issueFormSchema } from "../../utils/validators/validationSchema.js";
+import FormLayout from "../../layouts/formLayout.jsx";
 
 const FeedbackForm = () => {
   const [inputFields, setInputFields] = useState({
@@ -38,61 +39,62 @@ const FeedbackForm = () => {
 
   return (
     <div className="container p-4">
-      <form onSubmit={handleSubmit}>
-        <h2 className="mb-4">Отчёт об ошибке</h2>
-        <div className="form-group">
-          <TextField
-            label="Email:"
-            type="text"
-            id="email"
-            name="email"
-            value={email}
-            onChange={handleInputChange}
-            error={errors.email}
-          />
-        </div>
-        <div className="form-group">
-          <TextField
-            label="Ссылка на страницу с ошибкой:"
-            type="text"
-            id="link"
-            name="link"
-            value={link}
-            onChange={handleInputChange}
-            error={errors.link}
-          />
-        </div>
-        <div className="form-group">
-          <TextField
-            label="Описание:"
-            type="text"
-            id="description"
-            name="description"
-            value={description}
-            onChange={handleInputChange}
-            error={errors.description}
-          />
-        </div>
-        <hr />
-        <div className="form-group">
-          <TextField
-            label="Введите пароль:"
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={handleInputChange}
-            error={errors.password}
-          />
-        </div>
-        <button
-          disabled={hasErrors}
-          className="btn btn-primary w-100 mx-auto"
-          type="submit"
-        >
-          Отправить
-        </button>
-      </form>
+      <FormLayout title="Отчет об ошибке">
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <TextField
+              label="Email:"
+              type="text"
+              id="email"
+              name="email"
+              value={email}
+              onChange={handleInputChange}
+              error={errors.email}
+            />
+          </div>
+          <div className="form-group">
+            <TextField
+              label="Ссылка на страницу с ошибкой:"
+              type="text"
+              id="link"
+              name="link"
+              value={link}
+              onChange={handleInputChange}
+              error={errors.link}
+            />
+          </div>
+          <div className="form-group">
+            <TextField
+              label="Описание:"
+              type="text"
+              id="description"
+              name="description"
+              value={description}
+              onChange={handleInputChange}
+              error={errors.description}
+            />
+          </div>
+          <hr />
+          <div className="form-group">
+            <TextField
+              label="Введите пароль:"
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={handleInputChange}
+              error={errors.password}
+            />
+          </div>
+          <button
+            disabled={hasErrors}
+            className="btn btn-primary w-100 mx-auto"
+            type="submit"
+          >
+            Отправить
+          </button>
+        </form>
+      </FormLayout>
     </div>
   );
 };

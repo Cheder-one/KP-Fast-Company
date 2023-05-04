@@ -104,7 +104,7 @@ const UsersListPage = () => {
             onResetFilters={handleResetFilters}
           />
         )}
-        <div className="d-flex flex-column">
+        <div className="d-flex flex-column w-100">
           <SearchStatus numberOfUsers={usersFilteredCount} />
           <SearchBox
             searchQuery={searchQuery}
