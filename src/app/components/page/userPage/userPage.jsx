@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import QualitiesList from "../../ui/qualities/qualitiesList.jsx";
 import API from "../../../api/index.api";
-import Spinner from "../../../layouts/other/spinner";
-import Page404 from "../../../layouts/other/page404";
+import Spinner from "../templates/spinner.jsx";
+import Page404 from "../templates/page404.jsx";
 
 const UserPage = ({ userId }) => {
   const [userById, setUserById] = useState("");

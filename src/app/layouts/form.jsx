@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const FormLayout = ({ children, title }) => {
+const Form = ({ children, title }) => {
   return (
     <div className="container mt-5">
       <div className="row">
@@ -14,7 +14,7 @@ const FormLayout = ({ children, title }) => {
   );
 };
 
-FormLayout.propTypes = {
+Form.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
@@ -22,4 +22,4 @@ FormLayout.propTypes = {
   title: PropTypes.string.isRequired
 };
 
-export default FormLayout;
+export default Form;

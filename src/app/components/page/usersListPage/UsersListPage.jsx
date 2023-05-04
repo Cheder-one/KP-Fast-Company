@@ -7,7 +7,7 @@ import GroupList from "../../common/groupList";
 import API from "../../../api/index.api";
 import UsersTable from "../../ui/usersTable";
 import _ from "lodash";
-import Spinner from "../../../layouts/other/spinner";
+import Spinner from "../templates/spinner";
 import SearchBox from "../../common/searchBox";
 
 const UsersListPage = () => {

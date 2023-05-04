@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TextField from "../common/form/textField.jsx";
 import { validate } from "../../utils/validators/validate.js";
 import { issueFormSchema } from "../../utils/validators/validationSchema.js";
-import FormLayout from "../../layouts/formLayout.jsx";
+import Form from "../../layouts/form.jsx";
 
 const FeedbackForm = () => {
   const [inputFields, setInputFields] = useState({
@@ -39,7 +39,7 @@ const FeedbackForm = () => {
 
   return (
     <div className="container p-4">
-      <FormLayout title="Отчет об ошибке">
+      <Form title="Отчет об ошибке">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <TextField
@@ -94,7 +94,7 @@ const FeedbackForm = () => {
             Отправить
           </button>
         </form>
-      </FormLayout>
+      </Form>
     </div>
   );
 };
