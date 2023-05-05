@@ -49,7 +49,6 @@ const RegisterForm = ({ text }) => {
       <TextField
         label={"Email:"}
         type="text"
-        id="email"
         name="email"
         value={email}
         onChange={handleInputChange}
@@ -58,7 +57,6 @@ const RegisterForm = ({ text }) => {
       <TextField
         label={"Пароль:"}
         type="password"
-        id="password"
         name="password"
         value={password}
         onChange={handleInputChange}
@@ -68,8 +66,8 @@ const RegisterForm = ({ text }) => {
         lable="Ваша профессия:"
         name="profession"
         value={profession}
-        onChange={handleInputChange}
         options={professions}
+        onChange={handleInputChange}
         error={errors.profession}
       />
       <button

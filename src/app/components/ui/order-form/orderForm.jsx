@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Form from "../../../layouts/form.jsx";
-import TextField from "../../common/form/textField.jsx";
-import { validate } from "../../../utils/validators/validate.js";
-import { orderFormSchema } from "../../../utils/validators/validationSchema.js";
+import Form from "../../../layouts/form";
+import TextField from "../../common/form/textField";
+import { validate } from "../../../utils/validators/validate";
+import { orderFormSchema } from "../../../utils/validators/validationSchema";
+import SelectField2 from "../../../../archive/selectField2";
 
 const OrderForm = () => {
   const [inputFields, setInputFields] = useState({
     fio: "",
-    email: ""
+    email: "",
+    delivery: ""
   });
-  const { fio, email } = inputFields;
+  const { fio, email, delivery } = inputFields;
   const [errors, setErrors] = useState({});
 
   const isValid = Object.keys(errors).length === 0;
@@ -52,6 +54,13 @@ const OrderForm = () => {
           value={email}
           onChange={handleChange}
           error={errors.email}
+        />
+        <SelectField2
+          label="Выберете вариант доставки:"
+          name="delivery"
+          value={delivery}
+          onChange={handleChange}
+          error={errors.delivery}
         />
         <button className="btn btn-primary w-100 mx-auto" type="submit">
           Оформить
