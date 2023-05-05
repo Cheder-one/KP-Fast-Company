@@ -1,3 +1,22 @@
+export const orderFormSchema = {
+  fio: {
+    isRequired: {
+      message: "Поле ФИО обязательно"
+    },
+    isFio: {
+      message: "Введите корректное ФИО"
+    }
+  },
+  email: {
+    isRequired: {
+      message: "Поле Email обязательно"
+    },
+    isEmail: {
+      message: "Введите корректный Email"
+    }
+  }
+};
+
 export const loginSchema = {
   email: {
     isRequired: {

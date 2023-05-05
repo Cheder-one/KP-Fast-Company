@@ -4,7 +4,9 @@ export default {
   isUrl: (value) => /^https?:\/\/(www.)?[^\s]+$/g.test(value),
   isStrongPass: (value) => /(?=.*[A-ZА-Я])(?=.*[a-zа-я])(?=.*\d)/g.test(value),
   minLength: (value, allowValue) => value.length > allowValue,
-  maxLength: (value, allowValue) => value.length < allowValue
+  maxLength: (value, allowValue) => value.length < allowValue,
+  isFio: (value) =>
+    /^(([a-zA-Zа-яА-Я]+)\s){1,}(([a-zA-Zа-яА-Я]+)\s?){1,}$/.test(value)
 };
 
 /*
