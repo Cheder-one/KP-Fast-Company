@@ -10,9 +10,9 @@ const RegisterForm = ({ text }) => {
   const [inputFields, setInputFields] = useState({
     email: "",
     password: "",
-    profSelect: ""
+    profession: ""
   });
-  const { email, password, profSelect } = inputFields;
+  const { email, password, profession } = inputFields;
 
   const [errors, setErrors] = useState({});
 
@@ -66,10 +66,11 @@ const RegisterForm = ({ text }) => {
       />
       <SelectField
         lable="Ваша профессия:"
-        value={profSelect}
+        name="profession"
+        value={profession}
         onChange={handleInputChange}
         options={professions}
-        error={errors.profSelect}
+        error={errors.profession}
       />
       <button
         disabled={hasErrors}

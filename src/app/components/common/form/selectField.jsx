@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const SelectField = ({
   lable,
+  name,
   value,
   onChange,
   defaultOptions,
@@ -15,13 +16,13 @@ const SelectField = ({
 
   return (
     <div className="mb-4">
-      <label htmlFor="profFormSelect" className="form-label">
+      <label htmlFor="selectionForm01" className="form-label">
         {lable}
       </label>
       <select
         className={getInputClasses()}
-        id="profFormSelect"
-        name="profSelect"
+        id="selectionForm01"
+        name={name}
         value={value}
         onChange={onChange}
       >
@@ -55,6 +56,7 @@ SelectField.defaultProps = {
 
 SelectField.propTypes = {
   lable: PropTypes.string,
+  name: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   defaultOptions: PropTypes.string,
