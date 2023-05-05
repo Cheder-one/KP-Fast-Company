@@ -4,6 +4,7 @@ import TextField from "../../common/form/textField";
 import { validate } from "../../../utils/validators/validate";
 import { orderFormSchema } from "../../../utils/validators/validationSchema";
 import SelectField2 from "../../../../archive/selectField2";
+import { deliveryTypeList } from "./fieldsOptions";
 
 const OrderForm = () => {
   const [inputFields, setInputFields] = useState({
@@ -60,7 +61,7 @@ const OrderForm = () => {
           name="delivery"
           value={delivery}
           onChange={handleChange}
-          options={{}}
+          options={deliveryTypeList}
           error={errors.delivery}
         />
         <button className="btn btn-primary w-100 mx-auto" type="submit">
