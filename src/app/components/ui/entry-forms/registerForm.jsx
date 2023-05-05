@@ -4,14 +4,15 @@ import TextField from "../../common/form/textField";
 import { validate } from "../../../utils/validators/validate";
 import { loginSchema } from "../../../utils/validators/validationSchema";
 import API from "../../../api/index.api";
+import SelectField from "../../common/form/selectField";
 
 const RegisterForm = ({ text }) => {
   const [inputFields, setInputFields] = useState({
     email: "",
     password: "",
-    profession: ""
+    profSelect: ""
   });
-  const { email, password, profession: selectedProf } = inputFields;
+  const { email, password, profSelect } = inputFields;
 
   const [errors, setErrors] = useState({});
 
@@ -63,32 +64,13 @@ const RegisterForm = ({ text }) => {
         onChange={handleInputChange}
         error={errors.password}
       />
-      <div className="mb-4">
-        <label htmlFor="profFormSelect" className="form-label">
-          Ваша профессия:
-        </label>
-        <select
-          className="form-select"
-          id="profFormSelect"
-          name="profession"
-          value={selectedProf}
-          onChange={handleInputChange}
-        >
-          <option disabled value="">
-            Choose...
-          </option>
-          {professions &&
-            Object.keys(professions).map((profName) => {
-              const profInfo = professions[profName];
-              return (
-                <option key={profInfo._id} value={profInfo._id}>
-                  {profInfo.name}
-                </option>
-              );
-            })}
-        </select>
-        <div className="invalid-feedback">Please select a valid state.</div>
-      </div>
+      <SelectField
+        lable="Ваша профессия:"
+        value={profSelect}
+        onChange={handleInputChange}
+        options={professions}
+        error={errors.profSelect}
+      />
       <button
         disabled={hasErrors}
         className={"btn btn-primary w-100 mx-auto"}

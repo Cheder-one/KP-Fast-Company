@@ -37,6 +37,11 @@ export const loginSchema = {
       allowValue: 8,
       message: "Минимальная длина пароля 8 символов"
     }
+  },
+  profSelect: {
+    isRequired: {
+      message: "Необходимо выбрать профессию"
+    }
   }
 };
 
