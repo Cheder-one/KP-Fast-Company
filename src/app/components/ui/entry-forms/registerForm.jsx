@@ -66,8 +66,8 @@ const RegisterForm = ({ text }) => {
         lable="Ваша профессия:"
         name="profession"
         value={profession}
-        options={professions}
         onChange={handleInputChange}
+        options={professions}
         error={errors.profession}
       />
       <button

@@ -14,6 +14,11 @@ export const orderFormSchema = {
     isEmail: {
       message: "Введите корректный Email"
     }
+  },
+  delivery: {
+    isRequired: {
+      message: "Необходимо выбрать вариант доставки"
+    }
   }
 };
 

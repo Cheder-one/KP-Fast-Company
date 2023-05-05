@@ -60,6 +60,7 @@ const OrderForm = () => {
           name="delivery"
           value={delivery}
           onChange={handleChange}
+          options={{}}
           error={errors.delivery}
         />
         <button className="btn btn-primary w-100 mx-auto" type="submit">
