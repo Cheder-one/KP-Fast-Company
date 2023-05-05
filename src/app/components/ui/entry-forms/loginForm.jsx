@@ -32,29 +32,26 @@ const LoginForm = ({ text }) => {
   const { email, password } = inputFields;
 
   return (
-    <form className="mx-3" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <TextField
-          label={"Email:"}
-          type="text"
-          id="email"
-          name="email"
-          value={email}
-          onChange={handleInputChange}
-          error={errors.email}
-        />
-      </div>
-      <div className="form-group">
-        <TextField
-          label={"Пароль:"}
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={handleInputChange}
-          error={errors.password}
-        />
-      </div>
+    <form onSubmit={handleSubmit}>
+      <TextField
+        label={"Email:"}
+        type="text"
+        id="email"
+        name="email"
+        value={email}
+        onChange={handleInputChange}
+        error={errors.email}
+      />
+      <TextField
+        label={"Пароль:"}
+        type="password"
+        id="password"
+        name="password"
+        value={password}
+        onChange={handleInputChange}
+        error={errors.password}
+      />
+
       <button
         disabled={hasErrors}
         className={"btn btn-primary w-100 mx-auto"}
