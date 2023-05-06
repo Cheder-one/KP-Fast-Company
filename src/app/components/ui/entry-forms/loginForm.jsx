@@ -62,6 +62,10 @@ const LoginForm = ({ entryBtnText }) => {
   );
 };
 
+LoginForm.defaultProps = {
+  entryBtnText: "Войти"
+};
+
 LoginForm.propTypes = {
   entryBtnText: PropTypes.string
 };

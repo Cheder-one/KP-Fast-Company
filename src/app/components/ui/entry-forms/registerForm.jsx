@@ -94,6 +94,10 @@ const RegisterForm = ({ entryBtnText }) => {
   );
 };
 
+RegisterForm.defaultProps = {
+  entryBtnText: "Регистрация"
+};
+
 RegisterForm.propTypes = {
   entryBtnText: PropTypes.string
 };

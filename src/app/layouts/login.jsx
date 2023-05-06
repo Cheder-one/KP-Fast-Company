@@ -25,7 +25,7 @@ const Login = () => {
           </h3>
           {formType === "register" ? (
             <>
-              <RegisterForm text={"Регистрация"} />
+              <RegisterForm />
               <div className="mt-1">
                 Already have an account?{" "}
                 <a role="button" onClick={toggleFormType}>
@@ -35,7 +35,7 @@ const Login = () => {
             </>
           ) : (
             <>
-              <LoginForm text={"Вход"} />
+              <LoginForm />
               <div className="mt-1">
                 Don't have an account?{" "}
                 <a role="button" onClick={toggleFormType}>
