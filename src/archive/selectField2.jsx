@@ -3,29 +3,34 @@ import PropTypes from "prop-types";
 
 const SelectField2 = ({
   label,
-  name,
+  name: fieldName,
   value,
   onChange,
-  defaultOption,
   options,
-  error
+  error,
+  defaultOption
 }) => {
+  const getClassName = () => {
+    return "form-select " + (error ? "is-invalid" : "is-valid");
+  };
+
   return (
     <div className="mb-4">
-      <label htmlFor={name} className="form-label">
+      <label htmlFor={fieldName} className="form-label">
         {label}
       </label>
       <select
-        className="form-select"
-        id={name}
-        onChange={onChange}
+        className={getClassName()}
+        id={fieldName}
+        name={fieldName}
         value={value}
+        onChange={onChange}
       >
         <option disabled value="">
           {defaultOption}
         </option>
         {options.map((option) => (
-          <option key={option.value} value={value}>
+          <option key={option.value} value={option.value}>
             {option.label}
           </option>
         ))}
