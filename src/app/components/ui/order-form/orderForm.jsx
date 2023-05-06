@@ -10,18 +10,22 @@ const OrderForm = () => {
   const [inputFields, setInputFields] = useState({
     fio: "",
     email: "",
-    delivery: ""
+    deliveryType: ""
   });
-  const { fio, email, delivery } = inputFields;
+
+  const {
+    fio: fioValue,
+    email: emailValue,
+    deliveryType: selectedDelivery
+  } = inputFields;
+
   const [errors, setErrors] = useState({});
 
-  const isValid = Object.keys(errors).length === 0;
-
   const handleChange = (e) => {
-    const { value, name } = e.target;
+    const { name: fieldName, value } = e.target;
     setInputFields((prev) => ({
       ...prev,
-      [name]: value
+      [fieldName]: value
     }));
   };
 
@@ -30,10 +34,16 @@ const OrderForm = () => {
     setErrors(foundErrors);
   }, [inputFields]);
 
+  const isFormValid = Object.keys(errors).length === 0;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isValid) {
-      console.log("Отправлено");
+    const formData = new FormData(e.target);
+    const fio = formData.get("fio");
+    const email = formData.get("email");
+
+    if (isFormValid) {
+      console.log({ fio, email });
     }
   };
 
@@ -42,28 +52,27 @@ const OrderForm = () => {
       <form onSubmit={handleSubmit}>
         <TextField
           label="ФИО"
-          id="fio"
           name="fio"
-          value={fio}
+          value={fioValue}
           onChange={handleChange}
           error={errors.fio}
         />
         <TextField
           label="Email"
-          id="email"
           name="email"
-          value={email}
+          value={emailValue}
           onChange={handleChange}
           error={errors.email}
         />
         <SelectField2
-          label="Выберете вариант доставки:"
-          name="delivery"
-          value={delivery}
+          label="Выберите тип доставки"
+          name="deliveryType"
+          value={selectedDelivery}
           onChange={handleChange}
           options={deliveryTypeList}
-          error={errors.delivery}
+          error={errors.deliveryType}
         />
+
         <button className="btn btn-primary w-100 mx-auto" type="submit">
           Оформить
         </button>
