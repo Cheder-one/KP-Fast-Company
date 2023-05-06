@@ -4,8 +4,9 @@ import TextField from "../../common/form/textField";
 import { validate } from "../../../utils/validators/validate";
 import { loginSchema } from "../../../utils/validators/validationSchema";
 
-const LoginForm = ({ text }) => {
+const LoginForm = ({ entryBtnText }) => {
   const [inputFields, setInputFields] = useState({ email: "", password: "" });
+
   const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
@@ -29,8 +30,6 @@ const LoginForm = ({ text }) => {
     console.log(inputFields);
   };
 
-  const { email, password } = inputFields;
-
   return (
     <form onSubmit={handleSubmit}>
       <TextField
@@ -38,7 +37,7 @@ const LoginForm = ({ text }) => {
         type="text"
         id="email"
         name="email"
-        value={email}
+        value={inputFields.email}
         onChange={handleInputChange}
         error={errors.email}
       />
@@ -47,7 +46,7 @@ const LoginForm = ({ text }) => {
         type="password"
         id="password"
         name="password"
-        value={password}
+        value={inputFields.password}
         onChange={handleInputChange}
         error={errors.password}
       />
@@ -57,14 +56,14 @@ const LoginForm = ({ text }) => {
         className={"btn btn-primary w-100 mx-auto"}
         type="submit"
       >
-        {text}
+        {entryBtnText}
       </button>
     </form>
   );
 };
 
 LoginForm.propTypes = {
-  text: PropTypes.string
+  entryBtnText: PropTypes.string
 };
 
 export default LoginForm;
