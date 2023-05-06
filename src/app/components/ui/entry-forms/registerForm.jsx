@@ -12,7 +12,12 @@ const RegisterForm = ({ text }) => {
     password: "",
     profession: ""
   });
-  const { email, password, profession } = inputFields;
+
+  const {
+    email: emailValue,
+    password: passwordValue,
+    profession: selectedProfession
+  } = inputFields;
 
   const [errors, setErrors] = useState({});
 
@@ -50,7 +55,7 @@ const RegisterForm = ({ text }) => {
         label={"Email:"}
         type="text"
         name="email"
-        value={email}
+        value={emailValue}
         onChange={handleInputChange}
         error={errors.email}
       />
@@ -58,14 +63,14 @@ const RegisterForm = ({ text }) => {
         label={"Пароль:"}
         type="password"
         name="password"
-        value={password}
+        value={passwordValue}
         onChange={handleInputChange}
         error={errors.password}
       />
       <SelectField
         lable="Ваша профессия:"
         name="profession"
-        value={profession}
+        value={selectedProfession}
         onChange={handleInputChange}
         options={professions}
         error={errors.profession}

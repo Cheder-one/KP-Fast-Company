@@ -38,12 +38,8 @@ const OrderForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const fio = formData.get("fio");
-    const email = formData.get("email");
-
     if (isFormValid) {
-      console.log({ fio, email });
+      console.log(inputFields);
     }
   };
 
