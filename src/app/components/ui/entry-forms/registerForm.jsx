@@ -6,6 +6,7 @@ import { loginSchema } from "../../../utils/validators/validationSchema";
 import API from "../../../api/index.api";
 import SelectField from "../../common/form/selectField";
 import RadioField from "../../common/form/radioField";
+import Select from "react-select";
 
 const RegisterForm = ({ entryBtnText }) => {
   const [inputFields, setInputFields] = useState({
@@ -83,6 +84,7 @@ const RegisterForm = ({ entryBtnText }) => {
         onChange={handleInputChange}
         error={errors.gender}
       />
+      <Select />
       <button
         disabled={hasErrors}
         className={"btn btn-primary w-100 mx-auto"}
