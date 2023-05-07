@@ -4,13 +4,15 @@ import TextField from "../../common/form/textField";
 import { validate } from "../../../utils/validators/validate";
 import { orderFormSchema } from "../../../utils/validators/validationSchema";
 import SelectField2 from "../../../../archive/selectField2";
-import { deliveryTypeList } from "./fieldsOptions";
+import { deliveryTypeList, needLiftFloorOptions } from "./fieldsOptions";
+import RadioField2 from "../../../../archive/radioField2";
 
 const OrderForm = () => {
   const [inputFields, setInputFields] = useState({
     fio: "",
     email: "",
-    deliveryType: ""
+    deliveryType: "",
+    needLift: ""
   });
 
   const {
@@ -68,7 +70,14 @@ const OrderForm = () => {
           options={deliveryTypeList}
           error={errors.deliveryType}
         />
-
+        <RadioField2
+          label="Нужен подъем на этаж?"
+          name="needLift"
+          value={inputFields.needLift}
+          onChange={handleChange}
+          options={needLiftFloorOptions}
+          error={errors.needLift}
+        />
         <button className="btn btn-primary w-100 mx-auto" type="submit">
           Оформить
         </button>

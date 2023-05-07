@@ -19,6 +19,11 @@ export const orderFormSchema = {
     isRequired: {
       message: "Необходимо выбрать вариант доставки"
     }
+  },
+  needLift: {
+    isRequired: {
+      message: "Укажите, нужен ли подъём на этаж"
+    }
   }
 };
 
