@@ -88,6 +88,7 @@ const RegisterForm = ({ entryBtnText }) => {
         isMulti="isMulti"
         options={qualities}
         name="qualities"
+        label={"Ваши качества:"}
         className="basic-multi-select"
         classNamePrefix="select"
         onChange={handleInputChange}

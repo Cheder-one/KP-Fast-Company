@@ -26,7 +26,7 @@ const MultiSelectField = ({ options, name: fieldName, label, onChange }) => {
 
   return (
     <div className="mb-4">
-      <label>{label}</label>
+      <label className="form-label">{label}</label>
       <Select
         isMulti
         closeMenuOnSelect={false}
