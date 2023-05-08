@@ -65,7 +65,7 @@ const RegisterForm = ({ entryBtnText }) => {
         error={errors.password}
       />
       <SelectField
-        lable="Ваша профессия:"
+        label="Ваша профессия:"
         name="profession"
         value={inputFields.profession}
         onChange={handleInputChange}
@@ -78,7 +78,7 @@ const RegisterForm = ({ entryBtnText }) => {
           { name: "Жен", value: "female" },
           { name: "Боевой Вертолет", value: "other" }
         ]}
-        lable="Ваш пол:"
+        label="Ваш пол:"
         name="gender"
         value={inputFields.gender}
         onChange={handleInputChange}

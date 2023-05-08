@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const SelectField = ({
-  lable,
+  label,
   name,
   value,
   onChange,
@@ -17,7 +17,7 @@ const SelectField = ({
   return (
     <div className="mb-4">
       <label htmlFor={name} className="form-label">
-        {lable}
+        {label}
       </label>
       <select
         className={getInputClasses()}
@@ -55,7 +55,7 @@ SelectField.defaultProps = {
 };
 
 SelectField.propTypes = {
-  lable: PropTypes.string,
+  label: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
