@@ -1,8 +1,13 @@
-/* eslint-disable react/jsx-key */
 import React from "react";
 import PropTypes from "prop-types";
 
-const RadioField = ({ options, label, name: fieldName, value, onChange }) => {
+const RadioField = ({
+  options,
+  label,
+  name: fName,
+  value: fValue,
+  onChange
+}) => {
   const getOptionId = (option) => `${option.name}_${option.value}`;
 
   return (
@@ -14,11 +19,11 @@ const RadioField = ({ options, label, name: fieldName, value, onChange }) => {
             <input
               className="form-check-input"
               type="radio"
-              name={fieldName}
+              name={fName}
               id={getOptionId(option)}
               value={option.value}
               onChange={onChange}
-              checked={option.value === value}
+              checked={option.value === fValue}
             />
             <label className="form-check-label" htmlFor={getOptionId(option)}>
               {option.name}

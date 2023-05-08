@@ -8,6 +8,7 @@ import SelectField from "../../common/form/selectField";
 import RadioField from "../../common/form/radioField";
 import MultiSelectField from "../../common/form/multiSelectField";
 import { genderOptions } from "../order-form/fieldsOptions";
+import CheckboxField from "../../common/form/checkboxField";
 
 const RegisterForm = ({ entryBtnText }) => {
   const [inputFields, setInputFields] = useState({
@@ -15,7 +16,8 @@ const RegisterForm = ({ entryBtnText }) => {
     password: "",
     profession: "",
     gender: "other",
-    qualities: []
+    qualities: [],
+    privacyPolicy: false
   });
   const [errors, setErrors] = useState({});
   const [professions, setProfessions] = useState();
@@ -82,14 +84,20 @@ const RegisterForm = ({ entryBtnText }) => {
         error={errors.gender}
       />
       <MultiSelectField
-        isMulti="isMulti"
-        options={qualities}
-        name="qualities"
         label={"Ваши качества:"}
+        name="qualities"
+        options={qualities}
         className="basic-multi-select"
         classNamePrefix="select"
         onChange={handleInputChange}
       />
+      <CheckboxField
+        name="privacyPolicy"
+        value={inputFields.privacyPolicy}
+        onChange={handleInputChange}
+      >
+        Согласен с <a href="#">политикой конфиденциальности</a>
+      </CheckboxField>
       <button
         disabled={hasErrors}
         className={"btn btn-primary w-100 mx-auto"}

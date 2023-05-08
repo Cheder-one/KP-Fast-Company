@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Select from "react-select";
 
-const MultiSelectField = ({ options, name: fieldName, label, onChange }) => {
+const MultiSelectField = ({ options, name: fName, label, onChange }) => {
   const optionsArray =
     !Array.isArray(options) && typeof options === "object"
       ? Object.keys(options).map((key) => {
@@ -17,7 +17,7 @@ const MultiSelectField = ({ options, name: fieldName, label, onChange }) => {
   const handleChange = (event) => {
     const fakeEvent = {
       target: {
-        name: fieldName,
+        name: fName,
         value: event
       }
     };

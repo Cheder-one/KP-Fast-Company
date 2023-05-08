@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { eyeFill, eyeSlash } from "../../../assets/show-hide-pass-svg";
 
-const TextField = ({ label, type, name, value, onChange, error }) => {
+const TextField = ({
+  label,
+  type,
+  name: fName,
+  value: fValue,
+  onChange,
+  error
+}) => {
   const [showPass, setShowPass] = useState(false);
 
   const getInputClasses = () => {
@@ -15,14 +22,14 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
 
   return (
     <div className="mb-4">
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={fName}>{label}</label>
       <div className="input-group has-validation">
         <input
           className={getInputClasses()}
           type={showPass ? "text" : type}
-          id={name}
-          name={name}
-          value={value}
+          id={fName}
+          name={fName}
+          value={fValue}
           onChange={onChange}
         />
         {type === "password" && (

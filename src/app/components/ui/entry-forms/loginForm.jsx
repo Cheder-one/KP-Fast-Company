@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import TextField from "../../common/form/textField";
 import { validate } from "../../../utils/validators/validate";
 import { loginSchema } from "../../../utils/validators/validationSchema";
+import CheckboxField from "../../common/form/checkboxField";
 
 const LoginForm = ({ entryBtnText }) => {
   const [inputFields, setInputFields] = useState({ email: "", password: "" });
@@ -50,7 +51,13 @@ const LoginForm = ({ entryBtnText }) => {
         onChange={handleInputChange}
         error={errors.password}
       />
-
+      <CheckboxField
+        name="privacyPolicy"
+        value={inputFields.privacyPolicy}
+        onChange={handleInputChange}
+      >
+        Согласен с <a href="#">политикой конфиденциальности</a>
+      </CheckboxField>
       <button
         disabled={hasErrors}
         className={"btn btn-primary w-100 mx-auto"}

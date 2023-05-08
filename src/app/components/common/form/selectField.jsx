@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 const SelectField = ({
   label,
-  name,
-  value,
+  name: fName,
+  value: fValue,
   onChange,
   defaultOptions,
   options,
@@ -16,14 +16,14 @@ const SelectField = ({
 
   return (
     <div className="mb-4">
-      <label htmlFor={name} className="form-label">
+      <label htmlFor={fName} className="form-label">
         {label}
       </label>
       <select
         className={getInputClasses()}
-        id={name}
-        name={name}
-        value={value}
+        id={fName}
+        name={fName}
+        value={fValue}
         onChange={onChange}
       >
         <option disabled value="">
