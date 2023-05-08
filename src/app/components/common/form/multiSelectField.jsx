@@ -17,7 +17,7 @@ const MultiSelectField = ({ options, name: fieldName, label, onChange }) => {
   const handleChange = (event) => {
     const fakeEvent = {
       target: {
-        fieldName,
+        name: fieldName,
         value: event
       }
     };

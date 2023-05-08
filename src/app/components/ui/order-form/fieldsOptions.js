@@ -8,3 +8,15 @@ export const needLiftFloorOptions = [
   { label: "Да", value: "yes" },
   { label: "Нет", value: "no" }
 ];
+
+export const giftList = [
+  { label: "Скидка 3%", value: "1" },
+  { label: "Книга", value: "2" },
+  { label: "Бесплатный подъём на этаж", value: "3" }
+];
+
+export const genderOptions = [
+  { name: "Муж", value: "male" },
+  { name: "Жен", value: "female" },
+  { name: "Трансформер", value: "other" }
+];

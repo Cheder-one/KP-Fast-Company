@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import FeedbackForm from "../feedback-form/feedbackForm.jsx";
 
-function MainPage() {
+function MainPage2() {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => setShowModal(true);
@@ -53,4 +53,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default MainPage2;

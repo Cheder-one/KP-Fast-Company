@@ -7,6 +7,7 @@ import API from "../../../api/index.api";
 import SelectField from "../../common/form/selectField";
 import RadioField from "../../common/form/radioField";
 import MultiSelectField from "../../common/form/multiSelectField";
+import { genderOptions } from "../order-form/fieldsOptions";
 
 const RegisterForm = ({ entryBtnText }) => {
   const [inputFields, setInputFields] = useState({
@@ -73,11 +74,7 @@ const RegisterForm = ({ entryBtnText }) => {
         error={errors.profession}
       />
       <RadioField
-        options={[
-          { name: "Муж", value: "male" },
-          { name: "Жен", value: "female" },
-          { name: "Трансформер", value: "other" }
-        ]}
+        options={genderOptions}
         label="Ваш пол:"
         name="gender"
         value={inputFields.gender}
