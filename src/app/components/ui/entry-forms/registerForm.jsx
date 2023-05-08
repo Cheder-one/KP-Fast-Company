@@ -18,7 +18,7 @@ const RegisterForm = ({ entryBtnText }) => {
   });
   const [errors, setErrors] = useState({});
   const [professions, setProfessions] = useState();
-  const [qualities, setQualities] = useState();
+  const [qualities, setQualities] = useState({});
 
   useEffect(() => {
     API.professions.fetchAll().then((profs) => setProfessions(profs));
@@ -76,7 +76,7 @@ const RegisterForm = ({ entryBtnText }) => {
         options={[
           { name: "Муж", value: "male" },
           { name: "Жен", value: "female" },
-          { name: "Боевой Вертолет", value: "other" }
+          { name: "Трансформер", value: "other" }
         ]}
         label="Ваш пол:"
         name="gender"
@@ -85,8 +85,9 @@ const RegisterForm = ({ entryBtnText }) => {
         error={errors.gender}
       />
       <MultiSelectField
-        // isMulti="isMulti"
+        isMulti="isMulti"
         options={qualities}
+        name="qualities"
         className="basic-multi-select"
         classNamePrefix="select"
         onChange={handleInputChange}
