@@ -7,25 +7,25 @@ const RadioField = ({ options, label, name: fieldName, value, onChange }) => {
 
   return (
     <div className="mb-4">
-      <p>
-        <label>{label}</label>
-      </p>
-      {options.map((option) => (
-        <div key={option.value} className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="radio"
-            name={fieldName}
-            id={getOptionId(option)}
-            value={option.value}
-            onChange={onChange}
-            checked={option.value === value}
-          />
-          <label className="form-check-label" htmlFor={getOptionId(option)}>
-            {option.name}
-          </label>
-        </div>
-      ))}
+      <label className="form-label">{label}</label>
+      <div>
+        {options.map((option) => (
+          <div key={option.value} className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name={fieldName}
+              id={getOptionId(option)}
+              value={option.value}
+              onChange={onChange}
+              checked={option.value === value}
+            />
+            <label className="form-check-label" htmlFor={getOptionId(option)}>
+              {option.name}
+            </label>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
