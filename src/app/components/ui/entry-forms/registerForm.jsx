@@ -6,23 +6,23 @@ import { loginSchema } from "../../../utils/validators/validationSchema";
 import API from "../../../api/index.api";
 import SelectField from "../../common/form/selectField";
 import RadioField from "../../common/form/radioField";
-import Select from "react-select";
+import MultiSelectField from "../../common/form/multiSelectField";
 
 const RegisterForm = ({ entryBtnText }) => {
   const [inputFields, setInputFields] = useState({
     email: "",
     password: "",
     profession: "",
-    gender: "other"
+    gender: "other",
+    qualities: []
   });
-
   const [errors, setErrors] = useState({});
-
   const [professions, setProfessions] = useState();
+  const [qualities, setQualities] = useState();
+
   useEffect(() => {
-    API.professions.fetchAll().then((profs) => {
-      setProfessions(profs);
-    });
+    API.professions.fetchAll().then((profs) => setProfessions(profs));
+    API.qualities.fetchAll().then((quals) => setQualities(quals));
   }, []);
 
   const handleInputChange = (e) => {
@@ -84,7 +84,13 @@ const RegisterForm = ({ entryBtnText }) => {
         onChange={handleInputChange}
         error={errors.gender}
       />
-      <Select />
+      <MultiSelectField
+        // isMulti="isMulti"
+        options={qualities}
+        className="basic-multi-select"
+        classNamePrefix="select"
+        onChange={handleInputChange}
+      />
       <button
         disabled={hasErrors}
         className={"btn btn-primary w-100 mx-auto"}
