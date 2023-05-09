@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Form from "../../../layouts/form";
 import TextField from "../../common/form/textField";
+import SelectField2 from "../../../../archive/selectField2";
+import RadioField2 from "../../../../archive/radioField2";
+import MultiSelectField2 from "../../../../archive/multiSelectField2";
+import CheckboxField2 from "../../../../archive/checkboxField2";
 import { validate } from "../../../utils/validators/validate";
 import { orderFormSchema } from "../../../utils/validators/validationSchema";
-import SelectField2 from "../../../../archive/selectField2";
 import {
   deliveryTypeList,
   giftList,
-  needLiftFloorOptions
+  needLiftFloorOptions,
+  agreements
 } from "./fieldsOptions";
-import RadioField2 from "../../../../archive/radioField2";
-import MultiSelectField2 from "../../../../archive/multiSelectField2";
 
 const OrderForm = () => {
   const [inputFields, setInputFields] = useState({
@@ -18,16 +20,9 @@ const OrderForm = () => {
     email: "",
     deliveryType: "",
     needLift: "",
-    gifts: []
+    gifts: [],
+    agreements: []
   });
-
-  const {
-    fio: fioValue,
-    email: emailValue,
-    deliveryType: selectedDelivery,
-    needLift: isNeedLift,
-    gifts: selectedGifts
-  } = inputFields;
 
   const [errors, setErrors] = useState({});
 
@@ -38,6 +33,7 @@ const OrderForm = () => {
       [fieldName]: value
     }));
   };
+  console.log(inputFields);
 
   useEffect(() => {
     const foundErrors = validate(inputFields, orderFormSchema);
@@ -59,21 +55,21 @@ const OrderForm = () => {
         <TextField
           label="ФИО"
           name="fio"
-          value={fioValue}
+          value={inputFields.fio}
           onChange={handleChange}
           error={errors.fio}
         />
         <TextField
           label="Email"
           name="email"
-          value={emailValue}
+          value={inputFields.email}
           onChange={handleChange}
           error={errors.email}
         />
         <SelectField2
           label="Выберите тип доставки"
           name="deliveryType"
-          value={selectedDelivery}
+          value={inputFields.deliveryType}
           onChange={handleChange}
           options={deliveryTypeList}
           error={errors.deliveryType}
@@ -81,7 +77,7 @@ const OrderForm = () => {
         <RadioField2
           label="Нужен подъем на этаж?"
           name="needLift"
-          value={isNeedLift}
+          value={inputFields.needLift}
           onChange={handleChange}
           options={needLiftFloorOptions}
           error={errors.needLift}
@@ -89,9 +85,16 @@ const OrderForm = () => {
         <MultiSelectField2
           label="Выберите подарок за первый заказ"
           name="gifts"
-          value={selectedGifts}
+          value={inputFields.gifts}
           options={giftList}
           onChange={handleChange}
+        />
+        <CheckboxField2
+          options={agreements}
+          name="agreements"
+          value={inputFields.agreements}
+          onChange={handleChange}
+          error={errors.agreements}
         />
         <button className="btn btn-primary w-100 mx-auto" type="submit">
           Оформить

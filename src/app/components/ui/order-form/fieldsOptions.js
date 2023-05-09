@@ -15,6 +15,13 @@ export const giftList = [
   { label: "Бесплатный подъём на этаж", value: "3" }
 ];
 
+export const agreements = [
+  { label: "Согласие на обработку данных", value: "1" },
+  { label: "Сохранить данные для будущих заказов", value: "2" }
+];
+
+// ---------------------------------------------------------
+
 export const genderOptions = [
   { name: "Муж", value: "male" },
   { name: "Жен", value: "female" },
