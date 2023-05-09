@@ -1,5 +1,6 @@
 export default {
-  isRequired: (value) => Boolean(value.trim()),
+  isRequired: (value) =>
+    typeof value === "boolean" ? value : Boolean(value.trim()),
   isEmail: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
   isUrl: (value) => /^https?:\/\/(www.)?[^\s]+$/g.test(value),
   isStrongPass: (value) => /(?=.*[A-ZА-Я])(?=.*[a-zа-я])(?=.*\d)/g.test(value),

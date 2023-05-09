@@ -95,6 +95,7 @@ const RegisterForm = ({ entryBtnText }) => {
         name="privacyPolicy"
         value={inputFields.privacyPolicy}
         onChange={handleInputChange}
+        error={errors.privacyPolicy}
       >
         Согласен с <a href="#">политикой конфиденциальности</a>
       </CheckboxField>

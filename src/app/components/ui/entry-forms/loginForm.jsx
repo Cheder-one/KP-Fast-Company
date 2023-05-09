@@ -6,7 +6,11 @@ import { loginSchema } from "../../../utils/validators/validationSchema";
 import CheckboxField from "../../common/form/checkboxField";
 
 const LoginForm = ({ entryBtnText }) => {
-  const [inputFields, setInputFields] = useState({ email: "", password: "" });
+  const [inputFields, setInputFields] = useState({
+    email: "",
+    password: "",
+    stayOn: false
+  });
 
   const [errors, setErrors] = useState({});
 
@@ -52,11 +56,11 @@ const LoginForm = ({ entryBtnText }) => {
         error={errors.password}
       />
       <CheckboxField
-        name="privacyPolicy"
-        value={inputFields.privacyPolicy}
+        name="stayOn"
+        value={inputFields.stayOn}
         onChange={handleInputChange}
       >
-        Согласен с <a href="#">политикой конфиденциальности</a>
+        Оставаться в системе
       </CheckboxField>
       <button
         disabled={hasErrors}

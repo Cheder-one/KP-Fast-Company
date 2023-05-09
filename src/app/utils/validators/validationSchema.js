@@ -50,7 +50,12 @@ export const loginSchema = {
   },
   profession: {
     isRequired: {
-      message: "Необходимо выбрать профессию"
+      message: "Выберите профессию"
+    }
+  },
+  privacyPolicy: {
+    isRequired: {
+      message: "Необходимо согласие с политикой конфиденциальности"
     }
   }
 };
