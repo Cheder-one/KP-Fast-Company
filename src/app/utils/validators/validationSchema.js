@@ -30,6 +30,11 @@ export const orderFormSchema = {
       message: "Необходимо согласие с политикой конфиденциальности",
       param: "1"
     }
+  },
+  test: {
+    isRequired: {
+      message: "Проверка работоспособности полей"
+    }
   }
 };
 

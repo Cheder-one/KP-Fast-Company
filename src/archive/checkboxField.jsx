@@ -24,8 +24,8 @@ const CheckboxField = ({ options, name, value, onChange, error }) => {
   return (
     <div className="mb-4">
       <p className={getInputClasses()}></p>
-      {options.map((option) => {
-        return (
+      {options &&
+        options.map((option) => (
           <SingleCheckboxField
             key={option.value}
             name={name}
@@ -34,8 +34,7 @@ const CheckboxField = ({ options, name, value, onChange, error }) => {
             checked={getIsChecked(option.value)}
             onChange={handleChange}
           />
-        );
-      })}
+        ))}
       {error && <div className="invalid-feedback">{error}</div>}
     </div>
   );
@@ -50,7 +49,7 @@ CheckboxField.propTypes = {
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired
-    })
+    }).isRequired
   ),
   error: PropTypes.string
 };

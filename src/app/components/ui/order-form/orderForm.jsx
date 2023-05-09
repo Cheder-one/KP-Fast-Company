@@ -102,6 +102,8 @@ const OrderForm = () => {
           onChange={handleChange}
           value={inputFields.test}
           label="Проверка"
+          checked={inputFields.test}
+          error={errors.test}
         />
         <button className="btn btn-primary w-100 mx-auto" type="submit">
           Оформить

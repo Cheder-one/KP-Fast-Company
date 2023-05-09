@@ -1,10 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SingleCheckboxField = ({ name, label, value, checked, onChange }) => {
-  const getOptionId = () => `${label}_${value}`;
-  const id = getOptionId();
-
+const SingleCheckboxField = ({
+  name,
+  label,
+  value,
+  checked,
+  onChange,
+  error
+}) => {
   const handleChange = (e) => {
     typeof value === "boolean"
       ? onChange({
@@ -16,20 +20,26 @@ const SingleCheckboxField = ({ name, label, value, checked, onChange }) => {
       : onChange(e);
   };
 
+  const getOptionId = () => `${label}_${value}`;
+
+  const getInputClasses = () =>
+    "form-check-input " + (error ? "is-invalid" : "");
+
   return (
     <div className="form-check">
       <input
-        className="form-check-input"
+        className={getInputClasses()}
         type="checkbox"
-        id={id}
+        id={getOptionId()}
         name={name}
         value={value}
         checked={checked}
         onChange={handleChange}
       />
-      <label className="form-check-label" htmlFor={id}>
+      <label className="form-check-label" htmlFor={getOptionId()}>
         {label}
       </label>
+      {error && <div className="invalid-feedback">{error}</div>}
     </div>
   );
 };
@@ -39,7 +49,8 @@ SingleCheckboxField.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
   checked: PropTypes.bool,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  error: PropTypes.string
 };
 
 export default SingleCheckboxField;
