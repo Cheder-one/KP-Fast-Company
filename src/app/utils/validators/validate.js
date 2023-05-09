@@ -8,10 +8,10 @@ export const validate = (inputFields, config) => {
     const rulesForField = config[field];
 
     for (const ruleName in rulesForField) {
-      const { message, allowValue } = rulesForField[ruleName];
+      const { message, param } = rulesForField[ruleName];
 
       const validator = validateRules[ruleName];
-      const hasError = validator && !validator(fieldVal, allowValue);
+      const hasError = validator && !validator(fieldVal, param);
 
       if (hasError) {
         errors[field] = message;

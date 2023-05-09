@@ -26,8 +26,9 @@ export const orderFormSchema = {
     }
   },
   agreements: {
-    isRequired: {
-      message: "Необходимо согласие с политикой конфиденциальности"
+    isContainValue: {
+      message: "Необходимо согласие с политикой конфиденциальности",
+      param: "1"
     }
   }
 };
@@ -49,7 +50,7 @@ export const loginSchema = {
       message: "Пароль должен состоять из заглавных, строчных букв и цифр"
     },
     minLength: {
-      allowValue: 8,
+      param: 8,
       message: "Минимальная длина пароля 8 символов"
     }
   },
@@ -87,7 +88,7 @@ export const issueFormSchema = {
       message: "Поле Description обязательно"
     },
     maxLength: {
-      allowValue: 250,
+      param: 250,
       message: "Максимальная длина поля 250 символов"
     }
   },
@@ -99,7 +100,7 @@ export const issueFormSchema = {
       message: "Пароль должен состоять из заглавных, строчных букв и цифр"
     },
     minLength: {
-      allowValue: 8,
+      param: 8,
       message: "Минимальная длина пароля 8 символов"
     }
   }

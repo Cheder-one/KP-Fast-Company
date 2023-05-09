@@ -4,7 +4,7 @@ import TextField from "../../common/form/textField";
 import SelectField2 from "../../../../archive/selectField2";
 import RadioField2 from "../../../../archive/radioField2";
 import MultiSelectField2 from "../../../../archive/multiSelectField2";
-import CheckboxField2 from "../../../../archive/checkboxField2";
+import CheckboxField from "../../../../archive/checkboxField";
 import { validate } from "../../../utils/validators/validate";
 import { orderFormSchema } from "../../../utils/validators/validationSchema";
 import {
@@ -13,6 +13,7 @@ import {
   needLiftFloorOptions,
   agreements
 } from "./fieldsOptions";
+import SingleCheckboxField from "../../../../archive/singleCheckboxField";
 
 const OrderForm = () => {
   const [inputFields, setInputFields] = useState({
@@ -21,7 +22,8 @@ const OrderForm = () => {
     deliveryType: "",
     needLift: "",
     gifts: [],
-    agreements: []
+    agreements: [],
+    test: false
   });
 
   const [errors, setErrors] = useState({});
@@ -33,7 +35,6 @@ const OrderForm = () => {
       [fieldName]: value
     }));
   };
-  console.log(inputFields);
 
   useEffect(() => {
     const foundErrors = validate(inputFields, orderFormSchema);
@@ -89,12 +90,18 @@ const OrderForm = () => {
           options={giftList}
           onChange={handleChange}
         />
-        <CheckboxField2
+        <CheckboxField
           options={agreements}
           name="agreements"
           value={inputFields.agreements}
           onChange={handleChange}
           error={errors.agreements}
+        />
+        <SingleCheckboxField
+          name="test"
+          onChange={handleChange}
+          value={inputFields.test}
+          label="Проверка"
         />
         <button className="btn btn-primary w-100 mx-auto" type="submit">
           Оформить
