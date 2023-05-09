@@ -13,7 +13,6 @@ import {
   needLiftFloorOptions,
   agreements
 } from "./fieldsOptions";
-import SingleCheckboxField from "../../../../archive/singleCheckboxField";
 
 const OrderForm = () => {
   const [inputFields, setInputFields] = useState({
@@ -22,8 +21,7 @@ const OrderForm = () => {
     deliveryType: "",
     needLift: "",
     gifts: [],
-    agreements: [],
-    test: false
+    agreements: []
   });
 
   const [errors, setErrors] = useState({});
@@ -96,14 +94,6 @@ const OrderForm = () => {
           value={inputFields.agreements}
           onChange={handleChange}
           error={errors.agreements}
-        />
-        <SingleCheckboxField
-          name="test"
-          onChange={handleChange}
-          value={inputFields.test}
-          label="Проверка"
-          checked={inputFields.test}
-          error={errors.test}
         />
         <button className="btn btn-primary w-100 mx-auto" type="submit">
           Оформить
