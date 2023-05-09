@@ -24,6 +24,11 @@ export const orderFormSchema = {
     isRequired: {
       message: "Укажите, нужен ли подъём на этаж"
     }
+  },
+  agreements: {
+    isRequired: {
+      message: "Необходимо согласие с политикой конфиденциальности"
+    }
   }
 };
 
