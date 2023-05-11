@@ -76,20 +76,21 @@ const RegisterForm = ({ entryBtnText }) => {
         error={errors.profession}
       />
       <RadioField
-        options={genderOptions}
         label="Ваш пол:"
         name="gender"
         value={inputFields.gender}
+        options={genderOptions}
         onChange={handleInputChange}
         error={errors.gender}
       />
       <MultiSelectField
         label={"Ваши качества:"}
         name="qualities"
+        defaultValue={inputFields.qualities}
         options={qualities}
+        onChange={handleInputChange}
         className="basic-multi-select"
         classNamePrefix="select"
-        onChange={handleInputChange}
       />
       <CheckboxField
         name="privacyPolicy"

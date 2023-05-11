@@ -14,6 +14,11 @@ const SelectField = ({
     return "form-select " + (error ? "is-invalid" : "is-valid");
   };
 
+  const optionsArray =
+    !Array.isArray(options) && typeof options === "object"
+      ? Object.values(options)
+      : options;
+
   return (
     <div className="mb-4">
       <label htmlFor={fName} className="form-label">
@@ -29,21 +34,12 @@ const SelectField = ({
         <option disabled value="">
           {defaultOptions}
         </option>
-        {options &&
-          (Array.isArray(options)
-            ? options.map((option) => (
-                <option key={option._id} value={option._id}>
-                  {option.name}
-                </option>
-              ))
-            : Object.keys(options).map((optionName) => {
-                const optionInfo = options[optionName];
-                return (
-                  <option key={optionInfo._id} value={optionInfo._id}>
-                    {optionInfo.name}
-                  </option>
-                );
-              }))}
+        {optionsArray &&
+          optionsArray.map((option) => (
+            <option key={option._id} value={option._id}>
+              {option.name}
+            </option>
+          ))}
       </select>
       <div className="invalid-feedback">{error}</div>
     </div>
