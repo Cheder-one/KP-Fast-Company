@@ -20,12 +20,26 @@ const RegisterForm = ({ entryBtnText }) => {
     privacyPolicy: false
   });
   const [errors, setErrors] = useState({});
-  const [professions, setProfessions] = useState();
-  const [qualities, setQualities] = useState({});
+  const [professions, setProfessions] = useState([]);
+  const [qualities, setQualities] = useState([]);
 
   useEffect(() => {
-    API.professions.fetchAll().then((profs) => setProfessions(profs));
-    API.qualities.fetchAll().then((quals) => setQualities(quals));
+    API.professions.fetchAll().then((profs) => {
+      const professionsList = Object.keys(profs).map((profName) => ({
+        label: profs[profName].name,
+        value: profs[profName]._id
+      }));
+      setProfessions(professionsList);
+    });
+
+    API.qualities.fetchAll().then((quals) => {
+      const qualitiesList = Object.keys(quals).map((profName) => ({
+        label: quals[profName].name,
+        value: quals[profName]._id,
+        color: quals[profName].color
+      }));
+      setQualities(qualitiesList);
+    });
   }, []);
 
   const handleInputChange = (e) => {
@@ -37,16 +51,46 @@ const RegisterForm = ({ entryBtnText }) => {
   };
 
   const foundErrors = validate(inputFields, loginSchema);
+  const hasErrors = Object.keys(foundErrors).length !== 0;
 
   useEffect(() => {
     setErrors(foundErrors);
   }, [inputFields]);
 
-  const hasErrors = Object.keys(foundErrors).length !== 0;
   const handleSubmit = (e) => {
     e.preventDefault();
     if (hasErrors) return;
-    console.log(inputFields);
+    const { profession: profId, qualities: selectedQuals } = inputFields;
+
+    console.log({
+      ...inputFields,
+      profession: getProfessionById(profId),
+      qualities: getQualities(selectedQuals)
+    });
+  };
+
+  const getProfessionById = (id) => {
+    for (const prof of professions) {
+      if (prof.value === id) {
+        return { _id: prof.value, name: prof.label };
+      }
+    }
+  };
+
+  const getQualities = (elements) => {
+    const qualitiesArray = [];
+    for (const elem of elements) {
+      for (const quality in qualities) {
+        if (elem.value === qualities[quality].value) {
+          qualitiesArray.push({
+            _id: qualities[quality].value,
+            name: qualities[quality].label,
+            color: qualities[quality].color
+          });
+        }
+      }
+    }
+    return qualitiesArray;
   };
 
   return (
