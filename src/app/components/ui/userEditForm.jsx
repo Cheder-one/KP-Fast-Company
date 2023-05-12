@@ -4,8 +4,8 @@ import TextField from "../common/form/textField";
 import SelectField from "../common/form/selectField";
 import RadioField from "../common/form/radioField";
 import MultiSelectField from "../common/form/multiSelectField";
-import { professions } from "../../api/fake.api/professions.api";
-import { qualities } from "../../api/fake.api/qualities.api";
+// import { professions } from "../../api/fake.api/professions.api";
+// import { qualities } from "../../api/fake.api/qualities.api";
 
 const UserEditForm = () => {
   const [inputFields, setInputFields] = useState({
