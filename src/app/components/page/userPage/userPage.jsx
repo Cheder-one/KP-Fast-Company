@@ -17,7 +17,7 @@ const UserPage = ({ userId }) => {
 
   if (userById === "") {
     return <Spinner text={"Loading..."} />;
-  } else if (userById === null) {
+  } else if (userById === undefined) {
     return <Page404 />;
   }
 

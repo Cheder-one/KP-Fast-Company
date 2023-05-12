@@ -31,7 +31,6 @@ const RegisterForm = ({ entryBtnText }) => {
       }));
       setProfessions(professionsList);
     });
-
     API.qualities.fetchAll().then((quals) => {
       const qualitiesList = Object.keys(quals).map((profName) => ({
         label: quals[profName].name,
