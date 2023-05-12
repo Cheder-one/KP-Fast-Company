@@ -19,11 +19,12 @@ const OrderForm = () => {
   const [inputFields, setInputFields] = useState({
     fio: "",
     email: "",
+    address: "",
     deliveryType: "",
     needLift: "",
     gifts: [],
     agreements: [],
-    test: false
+    test: true
   });
 
   const [errors, setErrors] = useState({});
@@ -67,6 +68,15 @@ const OrderForm = () => {
           onChange={handleChange}
           error={errors.email}
         />
+        <TextField
+          id="address"
+          name="address"
+          label="Адрес"
+          value={inputFields.address}
+          onChange={handleChange}
+          error={errors.address}
+        />
+
         <SelectField2
           label="Выберите тип доставки"
           name="deliveryType"

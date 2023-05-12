@@ -11,13 +11,7 @@ const MultiSelectField = ({
 }) => {
   const optionsArray =
     !Array.isArray(options) && typeof options === "object"
-      ? Object.keys(options).map((key) => {
-          const option = options[key];
-          return {
-            value: option._id,
-            label: option.name
-          };
-        })
+      ? Object.values(options)
       : options;
 
   const handleChange = (event) => {

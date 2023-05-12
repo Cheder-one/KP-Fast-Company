@@ -50,12 +50,12 @@ const RegisterForm = ({ entryBtnText }) => {
     }));
   };
 
-  const foundErrors = validate(inputFields, loginSchema);
-  const hasErrors = Object.keys(foundErrors).length !== 0;
-
   useEffect(() => {
+    const foundErrors = validate(inputFields, loginSchema);
     setErrors(foundErrors);
   }, [inputFields]);
+
+  const hasErrors = Object.keys(errors).length !== 0;
 
   const handleSubmit = (e) => {
     e.preventDefault();
