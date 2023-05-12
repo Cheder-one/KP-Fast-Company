@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Link, Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 import QualitiesList from "../../ui/qualities/qualitiesList.jsx";
 import API from "../../../api/index.api";
 import Spinner from "../templates/spinner.jsx";
 import Page404 from "../templates/page404.jsx";
 import UserEditPage from "./userEditPage.jsx";
+import { Link } from "react-router-dom/cjs/react-router-dom.js";
 
 const UserPage = ({ userId, edit }) => {
   const [userById, setUserById] = useState("");
@@ -40,9 +40,6 @@ const UserPage = ({ userId, edit }) => {
       <Link to={`/users/${userId}/edit`}>
         <button className="btn btn-outline-primary mt-2">Редактировать</button>
       </Link>
-      <Switch>
-        <Route path={`/users/${userId}/edit`} component={UserEditPage} />
-      </Switch>
     </div>
   );
 };

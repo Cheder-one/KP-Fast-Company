@@ -19,7 +19,7 @@ Form.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
   ]),
-  title: PropTypes.string.isRequired
+  title: PropTypes.string
 };
 
 export default Form;

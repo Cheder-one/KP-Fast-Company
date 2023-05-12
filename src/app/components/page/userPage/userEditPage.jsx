@@ -1,7 +1,8 @@
 import React from "react";
+import UserEditForm from "../../ui/userEditForm";
 
 const UserEditPage = () => {
-  return <h1>UserEditPage</h1>;
+  return <UserEditForm />;
 };
 
 export default UserEditPage;

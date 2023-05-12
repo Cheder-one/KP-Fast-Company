@@ -41,7 +41,7 @@ const RegisterForm = ({ entryBtnText }) => {
     });
   }, []);
 
-  const handleInputChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setInputFields((prevState) => ({
       ...prevState,
@@ -99,7 +99,7 @@ const RegisterForm = ({ entryBtnText }) => {
         type="text"
         name="email"
         value={inputFields.email}
-        onChange={handleInputChange}
+        onChange={handleChange}
         error={errors.email}
       />
       <TextField
@@ -107,14 +107,14 @@ const RegisterForm = ({ entryBtnText }) => {
         type="password"
         name="password"
         value={inputFields.password}
-        onChange={handleInputChange}
+        onChange={handleChange}
         error={errors.password}
       />
       <SelectField
         label="Ваша профессия:"
         name="profession"
         value={inputFields.profession}
-        onChange={handleInputChange}
+        onChange={handleChange}
         options={professions}
         error={errors.profession}
       />
@@ -123,7 +123,7 @@ const RegisterForm = ({ entryBtnText }) => {
         name="gender"
         value={inputFields.gender}
         options={genderOptions}
-        onChange={handleInputChange}
+        onChange={handleChange}
         error={errors.gender}
       />
       <MultiSelectField
@@ -131,14 +131,14 @@ const RegisterForm = ({ entryBtnText }) => {
         name="qualities"
         defaultValue={inputFields.qualities}
         options={qualities}
-        onChange={handleInputChange}
+        onChange={handleChange}
         className="basic-multi-select"
         classNamePrefix="select"
       />
       <CheckboxField
         name="privacyPolicy"
         value={inputFields.privacyPolicy}
-        onChange={handleInputChange}
+        onChange={handleChange}
         error={errors.privacyPolicy}
       >
         Согласен с <a href="#">политикой конфиденциальности</a>
