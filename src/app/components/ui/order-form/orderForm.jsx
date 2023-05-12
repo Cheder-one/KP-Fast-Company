@@ -14,6 +14,7 @@ import {
   agreements
 } from "./fieldsOptions";
 import SingleCheckboxField from "../../../../archive/singleCheckboxField";
+import * as yup from "yup";
 
 const OrderForm = () => {
   const [inputFields, setInputFields] = useState({
@@ -37,7 +38,19 @@ const OrderForm = () => {
     }));
   };
 
+  const addressSchema = yup.string().required("Введите адрес");
+
   useEffect(() => {
+    addressSchema
+      .validate(inputFields.address)
+      .then()
+      .catch((err) => {
+        setErrors((prev) => ({
+          ...prev,
+          address: err.message
+        }));
+      });
+
     const foundErrors = validate(inputFields, orderFormSchema);
     setErrors(foundErrors);
   }, [inputFields]);
