@@ -15,7 +15,7 @@ const App = () => {
     <>
       <NavBar />
       <Switch>
-        <Route path="/users/:userId/edit" component={UserEditPage} />
+        <Route path="/users/:userId/:edit" component={UserEditPage} />
         <Route path="/users/:userId?" component={Users} />
         <Route path="/login/:type?" component={Login} />
         <Route path="/order" component={OrderPage} />

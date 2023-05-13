@@ -7,13 +7,14 @@ import MultiSelectField from "../common/form/multiSelectField";
 // import { professions } from "../../api/fake.api/professions.api";
 // import { qualities } from "../../api/fake.api/qualities.api";
 
-const UserEditForm = () => {
+const UserEditForm = ({ userId, name, profession, qualities }) => {
+  console.log("|> userId:", userId);
   const [inputFields, setInputFields] = useState({
-    fio: "",
+    fio: name,
     email: "",
-    profession: "",
+    profession,
     gender: "",
-    qualities: []
+    qualities: [qualities]
   });
 
   const [errors, setErrors] = useState({});

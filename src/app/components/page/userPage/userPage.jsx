@@ -4,10 +4,9 @@ import QualitiesList from "../../ui/qualities/qualitiesList.jsx";
 import API from "../../../api/index.api";
 import Spinner from "../templates/spinner.jsx";
 import Page404 from "../templates/page404.jsx";
-import UserEditPage from "./userEditPage.jsx";
 import { Link } from "react-router-dom/cjs/react-router-dom.js";
 
-const UserPage = ({ userId, edit }) => {
+const UserPage = ({ userId }) => {
   const [userById, setUserById] = useState("");
 
   useEffect(() => {
@@ -23,10 +22,6 @@ const UserPage = ({ userId, edit }) => {
   }
 
   const { name, profession, qualities, completedMeetings, rate } = userById;
-
-  if (edit) {
-    return <UserEditPage userId={userId} />;
-  }
 
   return (
     <div className="d-inline-block mt-2 ms-3">
