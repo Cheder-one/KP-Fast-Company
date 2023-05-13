@@ -1,14 +1,13 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Form from "../../layouts/form";
 import TextField from "../common/form/textField";
 import SelectField from "../common/form/selectField";
 import RadioField from "../common/form/radioField";
 import MultiSelectField from "../common/form/multiSelectField";
-// import { professions } from "../../api/fake.api/professions.api";
-// import { qualities } from "../../api/fake.api/qualities.api";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const UserEditForm = ({ userId, name, profession, qualities }) => {
-  console.log("|> userId:", userId);
   const [inputFields, setInputFields] = useState({
     fio: name,
     email: "",
@@ -18,6 +17,8 @@ const UserEditForm = ({ userId, name, profession, qualities }) => {
   });
 
   const [errors, setErrors] = useState({});
+
+  const history = useHistory();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -69,11 +70,24 @@ const UserEditForm = ({ userId, name, profession, qualities }) => {
         className="basic-multi-select"
         classNamePrefix="select"
       />
-      <button type="submit" className="btn btn-primary">
+      <button
+        type="submit"
+        className="btn btn-primary"
+        onClick={() => history.push(`/users/${userId}`)}
+      >
         Сохранить
       </button>
     </Form>
   );
+};
+
+UserEditForm.propTypes = {
+  userId: PropTypes.string,
+  name: PropTypes.string,
+  profession: PropTypes.shape({
+    name: PropTypes.string
+  }),
+  qualities: PropTypes.array
 };
 
 export default UserEditForm;

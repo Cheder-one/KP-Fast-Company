@@ -16,12 +16,12 @@ const App = () => {
       <NavBar />
       <Switch>
         <Route exact path="/users/:userId/edit" component={UserEditPage} />
-        <Route exact path="/users/:userId?" component={Users} />
+        <Route path="/users/:userId?" component={Users} />
         <Route path="/login/:type?" component={Login} />
         <Route path="/order" component={OrderPage} />
         <Route path="/feedback" component={FeedbackPage} />
         <Route path="/about" component={CamillePage} />
-        <Route exact path="/" component={Main} />
+        <Route path="/" component={Main} />
         <Route component={Page404} />
       </Switch>
     </>
