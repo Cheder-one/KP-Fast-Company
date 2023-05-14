@@ -23,7 +23,7 @@ export const agreements = [
 // ---------------------------------------------------------
 
 export const genderOptions = [
-  { name: "Муж", value: "male" },
-  { name: "Жен", value: "female" },
-  { name: "Трансформер", value: "other" }
+  { name: "Мужской", value: "male" },
+  { name: "Женский", value: "female" },
+  { name: "Не указан", value: "other" }
 ];
