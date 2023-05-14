@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import UserEditForm from "../../ui/userEditForm";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 
-const UserEditPage = ({ myProps }) => {
-  console.log(myProps);
+const UserEditPage = () => {
   const { userId } = useParams();
+
   return <UserEditForm userId={userId} />;
 };
 

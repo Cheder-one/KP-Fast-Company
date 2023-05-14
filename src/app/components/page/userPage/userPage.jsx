@@ -4,8 +4,7 @@ import QualitiesList from "../../ui/qualities/qualitiesList.jsx";
 import API from "../../../api/index.api";
 import Spinner from "../templates/spinner.jsx";
 import Page404 from "../templates/page404.jsx";
-import { Link, Route } from "react-router-dom/cjs/react-router-dom.js";
-import UserEditPage from "./userEditPage.jsx";
+import { Link } from "react-router-dom/cjs/react-router-dom.js";
 
 const UserPage = ({ userId }) => {
   const [userById, setUserById] = useState("");
@@ -36,9 +35,6 @@ const UserPage = ({ userId }) => {
       <Link to={`/users/${userId}/edit`}>
         <button className="btn btn-outline-primary mt-2">Редактировать</button>
       </Link>
-      <Route path="/users/:userId/edit">
-        <UserEditPage myProps="123" />
-      </Route>
     </div>
   );
 };

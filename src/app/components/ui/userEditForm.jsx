@@ -25,7 +25,13 @@ const UserEditForm = ({ userId }) => {
 
   useEffect(() => {
     API.users.getById(userId).then((user) => setUserById(user));
-    API.professions.fetchAll().then((profs) => setProfessions(profs));
+    API.professions.fetchAll().then((profs) => {
+      const professionsList = Object.keys(profs).map((profName) => ({
+        label: profs[profName].name,
+        value: profs[profName]._id
+      }));
+      setProfessions(professionsList);
+    });
     API.qualities.fetchAll().then((quals) => setQualities(quals));
   }, []);
 
@@ -35,15 +41,15 @@ const UserEditForm = ({ userId }) => {
       ...prev,
       name: userById.name,
       email: userById.email,
-      profession: userById.profession?.name,
+      profession: userById.profession,
       gender: userById.gender,
       qualities: userById.qualities
     }));
+    console.log(userById.profession);
+    console.log(userById);
   }, [userById]);
 
   const history = useHistory();
-
-  console.log({ professions });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -56,6 +62,10 @@ const UserEditForm = ({ userId }) => {
 
   const handleClickSave = () => {
     API.users.update(userId, inputFields);
+    history.push(`/users/${userId}`);
+  };
+
+  const handleClickBack = () => {
     history.push(`/users/${userId}`);
   };
 
@@ -81,7 +91,7 @@ const UserEditForm = ({ userId }) => {
             label="Профессия"
             name="profession"
             value={inputFields.profession}
-            defaultOptions={inputFields.profession}
+            defaultOptions={inputFields.profession.name}
             options={professions}
             onChange={handleChange}
             error={errors.profession}
@@ -105,10 +115,17 @@ const UserEditForm = ({ userId }) => {
           />
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-outline-primary"
             onClick={handleClickSave}
           >
             Сохранить
+          </button>
+          <button
+            type="submit"
+            className="btn btn-primary ms-2"
+            onClick={handleClickBack}
+          >
+            Назад
           </button>
         </>
       ) : (
@@ -120,11 +137,13 @@ const UserEditForm = ({ userId }) => {
 
 UserEditForm.propTypes = {
   userId: PropTypes.string,
-  name: PropTypes.string,
-  profession: PropTypes.shape({
-    name: PropTypes.string
-  }),
-  qualities: PropTypes.array
+  userById: PropTypes.shape({
+    name: PropTypes.string,
+    email: PropTypes.string,
+    profession: PropTypes.object,
+    gender: PropTypes.string,
+    qualities: PropTypes.array
+  })
 };
 
 export default UserEditForm;
