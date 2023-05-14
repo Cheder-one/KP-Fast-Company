@@ -9,6 +9,7 @@ import MultiSelectField from "../common/form/multiSelectField";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { genderOptions } from "./order-form/fieldsOptions";
 import { convertProfKeys, convertQualKeys } from "../../utils/convertKeys";
+import { Spinner } from "react-bootstrap";
 
 const UserEditForm = ({ userId }) => {
   const [userById, setUserById] = useState({});
@@ -167,7 +168,11 @@ const UserEditForm = ({ userId }) => {
           </button>
         </>
       ) : (
-        <h1>Loading...</h1>
+        <Spinner
+          animation="border"
+          className="mb-3 mt-3 mx-auto d-block"
+          style={{ height: "3rem", width: "3rem" }}
+        />
       )}
     </Form>
   );
