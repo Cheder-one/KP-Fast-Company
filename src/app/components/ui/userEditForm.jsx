@@ -10,10 +10,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { genderOptions } from "./order-form/fieldsOptions";
 
 const UserEditForm = ({ userId }) => {
-  const [userById, setUserById] = useState({});
-  const [professions, setProfessions] = useState();
-  const [qualities, setQualities] = useState();
-
   const [inputFields, setInputFields] = useState({
     name,
     email: "",
@@ -21,6 +17,10 @@ const UserEditForm = ({ userId }) => {
     gender: "",
     qualities: []
   });
+
+  const [userById, setUserById] = useState({});
+  const [professions, setProfessions] = useState([]);
+  const [qualities, setQualities] = useState([]);
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
@@ -43,10 +43,13 @@ const UserEditForm = ({ userId }) => {
 
   const history = useHistory();
 
+  console.log({ professions });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputFields((prev) => ({
       ...prev,
+
       [name]: value
     }));
   };
@@ -79,7 +82,7 @@ const UserEditForm = ({ userId }) => {
             name="profession"
             value={inputFields.profession}
             defaultOptions={inputFields.profession}
-            options={[]}
+            options={professions}
             onChange={handleChange}
             error={errors.profession}
           />
