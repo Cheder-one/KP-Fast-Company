@@ -24,6 +24,11 @@ const MultiSelectField = ({
     onChange(fakeEvent);
   };
 
+  // const defaultValues = [
+  //   { label: "Option 1", value: "option1" },
+  //   { label: "Option 2", value: "option2" }
+  // ];
+
   return (
     <div className="mb-4">
       <label className="form-label">{label}</label>

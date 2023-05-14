@@ -8,54 +8,62 @@ import RadioField from "../common/form/radioField";
 import MultiSelectField from "../common/form/multiSelectField";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { genderOptions } from "./order-form/fieldsOptions";
+import { convertProfKeys, convertQualKeys } from "../../utils/convertKeys";
 
 const UserEditForm = ({ userId }) => {
+  const [userById, setUserById] = useState({});
   const [inputFields, setInputFields] = useState({
-    name,
+    name: "",
     email: "",
     profession: "",
     gender: "",
     qualities: []
   });
-
-  const [userById, setUserById] = useState({});
   const [professions, setProfessions] = useState([]);
   const [qualities, setQualities] = useState([]);
-  const [errors, setErrors] = useState({});
 
+  /** Получение данных */
   useEffect(() => {
-    API.users.getById(userId).then((user) => setUserById(user));
+    API.users.getById(userId).then((user) => {
+      setUserById({
+        ...user,
+        profession: convertProfKeys([user.profession])[0],
+        qualities: convertQualKeys(user.qualities)
+      });
+    });
+
     API.professions.fetchAll().then((profs) => {
-      const professionsList = Object.keys(profs).map((profName) => ({
-        label: profs[profName].name,
-        value: profs[profName]._id
-      }));
+      const professionsList = convertProfKeys(profs);
       setProfessions(professionsList);
     });
-    API.qualities.fetchAll().then((quals) => setQualities(quals));
+
+    API.qualities.fetchAll().then((quals) => {
+      const qualitiesList = convertQualKeys(quals);
+      setQualities(qualitiesList);
+    });
   }, []);
 
-  // Заполняет данные полей формы из ответа сервера
+  const isUserHasData = Object.keys(userById).length > 0;
+
+  /** Установка данных в досье */
   useEffect(() => {
-    setInputFields((prev) => ({
-      ...prev,
-      name: userById.name,
-      email: userById.email,
-      profession: userById.profession,
-      gender: userById.gender,
-      qualities: userById.qualities
-    }));
-    console.log(userById.profession);
-    console.log(userById);
+    isUserHasData &&
+      setInputFields(() => ({
+        name: userById.name,
+        email: userById.email,
+        profession: userById.profession.value,
+        gender: userById.gender,
+        qualities: userById.qualities
+      }));
   }, [userById]);
 
   const history = useHistory();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log({ name, value });
     setInputFields((prev) => ({
       ...prev,
-
       [name]: value
     }));
   };
@@ -71,30 +79,30 @@ const UserEditForm = ({ userId }) => {
 
   return (
     <Form>
-      {Object.keys(userById).length > 0 ? (
+      {isUserHasData ? (
         <>
           <TextField
             label="Имя"
             name="name"
             value={inputFields.name}
             onChange={handleChange}
-            error={errors.name}
+            // error={errors.name}
           />
           <TextField
             label="Электронная почта"
             name="email"
             value={inputFields.email}
             onChange={handleChange}
-            error={errors.email}
+            // error={errors.email}
           />
           <SelectField
             label="Профессия"
             name="profession"
             value={inputFields.profession}
-            defaultOptions={inputFields.profession.name}
+            defaultOptions={userById.profession.label}
             options={professions}
             onChange={handleChange}
-            error={errors.profession}
+            // error={errors.profession}
           />
           <RadioField
             label="Ваш пол"
@@ -102,13 +110,13 @@ const UserEditForm = ({ userId }) => {
             value={inputFields.gender}
             options={genderOptions}
             onChange={handleChange}
-            error={errors.gender}
+            // error={errors.gender}
           />
           <MultiSelectField
             label={"Ваши качества"}
             name="qualities"
-            value={inputFields.qualities}
-            options={[]}
+            defaultValue={userById.qualities}
+            options={qualities}
             onChange={handleChange}
             className="basic-multi-select"
             classNamePrefix="select"
