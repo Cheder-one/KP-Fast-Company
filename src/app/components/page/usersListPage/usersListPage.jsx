@@ -13,7 +13,7 @@ import SearchBox from "../../common/searchBox";
 const UsersListPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [professions, setProfessions] = useState();
-  const [selectedProf, setSelectedProf] = useState();
+  const [filteredProf, setFilteredProf] = useState();
   // Сортировка по значению столбца
   const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
   const [searchQuery, setSearchQuery] = useState("");
@@ -49,23 +49,23 @@ const UsersListPage = () => {
   }, []);
 
   const handleProfessionSelect = (prof) => {
-    setSelectedProf(prof);
+    setFilteredProf(prof);
     setSearchQuery("");
   };
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedProf, searchQuery]);
+  }, [filteredProf, searchQuery]);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   if (users) {
-    const filteredUsers = selectedProf
+    const filteredUsers = filteredProf
       ? users.filter(
           (user) =>
-            JSON.stringify(user.profession) === JSON.stringify(selectedProf)
+            JSON.stringify(user.profession) === JSON.stringify(filteredProf)
         )
       : searchQuery
       ? users.filter((user) => {
@@ -84,14 +84,14 @@ const UsersListPage = () => {
     const curntPageItems = getPageItems(sortedUsers, currentPage, itemsPerPage);
 
     const handleResetFilters = () => {
-      setSelectedProf(undefined);
+      setFilteredProf(undefined);
     };
 
     // Вызывается при изменении строки поиска и устанавливает ее новое значение
     const handleSearchChange = (event) => {
       const { value } = event.target;
       setSearchQuery(value);
-      setSelectedProf(undefined);
+      setFilteredProf(undefined);
     };
 
     return (
@@ -99,7 +99,7 @@ const UsersListPage = () => {
         {professions && (
           <GroupList
             items={professions}
-            selectedItem={selectedProf}
+            selectedItem={filteredProf}
             onItemSelect={handleProfessionSelect}
             onResetFilters={handleResetFilters}
           />

@@ -11,6 +11,9 @@ import { genderOptions } from "./order-form/fieldsOptions";
 
 const UserEditForm = ({ userId }) => {
   const [userById, setUserById] = useState({});
+  const [professions, setProfessions] = useState();
+  const [qualities, setQualities] = useState();
+
   const [inputFields, setInputFields] = useState({
     name,
     email: "",
@@ -22,16 +25,19 @@ const UserEditForm = ({ userId }) => {
 
   useEffect(() => {
     API.users.getById(userId).then((user) => setUserById(user));
+    API.professions.fetchAll().then((profs) => setProfessions(profs));
+    API.qualities.fetchAll().then((quals) => setQualities(quals));
   }, []);
 
+  // Заполняет данные полей формы из ответа сервера
   useEffect(() => {
     setInputFields((prev) => ({
       ...prev,
       name: userById.name,
       email: userById.email,
-      // profession: userById.profession,
-      gender: userById.gender
-      // qualities: userById.qualities
+      profession: userById.profession,
+      gender: userById.gender,
+      qualities: userById.qualities
     }));
   }, [userById]);
 
