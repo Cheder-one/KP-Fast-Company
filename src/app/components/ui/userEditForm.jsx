@@ -35,7 +35,7 @@ const UserEditForm = ({ userId }) => {
       ...prev,
       name: userById.name,
       email: userById.email,
-      profession: userById.profession,
+      profession: userById.profession?.name,
       gender: userById.gender,
       qualities: userById.qualities
     }));
@@ -78,6 +78,7 @@ const UserEditForm = ({ userId }) => {
             label="Профессия"
             name="profession"
             value={inputFields.profession}
+            defaultOptions={inputFields.profession}
             options={[]}
             onChange={handleChange}
             error={errors.profession}
