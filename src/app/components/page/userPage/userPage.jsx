@@ -35,6 +35,13 @@ const UserPage = ({ userId }) => {
       <Link to={`/users/${userId}/edit`}>
         <button className="btn btn-outline-primary mt-2">Редактировать</button>
       </Link>
+      <button
+        type="submit"
+        className="btn btn-primary ms-2"
+        onClick={() => history.push(`/users/${userId}`)}
+      >
+        Назад
+      </button>
     </div>
   );
 };

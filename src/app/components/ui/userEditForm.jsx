@@ -68,7 +68,6 @@ const UserEditForm = ({ userId }) => {
       [name]: value
     }));
   };
-  console.log(inputFields);
 
   const getProfessionById = (id) => {
     for (const prof of professions) {
@@ -95,12 +94,12 @@ const UserEditForm = ({ userId }) => {
 
   const handleClickSave = () => {
     const { profession, qualities } = inputFields;
-    const unconvertedData = {
+    const initialFormatData = {
       ...inputFields,
       profession: getProfessionById(profession),
       qualities: getQualities(qualities)
     };
-    API.users.update(userId, unconvertedData);
+    API.users.update(userId, initialFormatData);
     history.push(`/users/${userId}`);
   };
 
