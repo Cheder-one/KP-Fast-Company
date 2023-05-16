@@ -16,7 +16,11 @@ const UserPage = ({ userId }) => {
   }, [userId]);
 
   if (userById === "") {
-    return <Spinner />;
+    return (
+      <div className="my-4">
+        <Spinner />
+      </div>
+    );
   } else if (userById === undefined) {
     return <Page404 />;
   }
