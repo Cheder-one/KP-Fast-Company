@@ -16,7 +16,7 @@ const UserPage = ({ userId }) => {
   }, [userId]);
 
   if (userById === "") {
-    return <Spinner text={"Loading..."} />;
+    return <Spinner />;
   } else if (userById === undefined) {
     return <Page404 />;
   }
@@ -32,16 +32,14 @@ const UserPage = ({ userId }) => {
       </p>
       <h4>{`Кол-во встреч:  ${completedMeetings}`}</h4>
       <h4>{`Рейтинг: ${rate}`}</h4>
-      <Link to={`/users/${userId}/edit`}>
-        <button className="btn btn-outline-primary mt-2">Редактировать</button>
-      </Link>
-      <button
-        type="submit"
-        className="btn btn-primary ms-2"
-        onClick={() => history.push(`/users/${userId}`)}
-      >
-        Назад
-      </button>
+      <div className="mt-2">
+        <Link to={`/users/${userId}/edit`}>
+          <button className="btn btn-outline-primary">Редактировать</button>
+        </Link>
+        <Link to={`/users`}>
+          <button className="btn btn-primary ms-2">Назад</button>
+        </Link>
+      </div>
     </div>
   );
 };

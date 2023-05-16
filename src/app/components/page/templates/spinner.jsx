@@ -3,14 +3,18 @@ import React from "react";
 
 const Spinner = ({ text }) => {
   return (
-    <div className="ms-3">
+    <div className="d-flex justify-content-center">
       <div
-        className="spinner-border spinner-border-sm text-primary"
+        className="spinner-border mb-3 mt-3 mx-auto d-block"
         role="status"
+        style={{ height: "3rem", width: "3rem" }}
       ></div>
-      <span className="visually ms-2">{text}</span>
     </div>
   );
+};
+
+Spinner.defaultProps = {
+  text: "Loading..."
 };
 
 Spinner.propTypes = {
