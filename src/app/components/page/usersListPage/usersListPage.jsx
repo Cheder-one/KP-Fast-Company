@@ -131,7 +131,11 @@ const UsersListPage = () => {
       </div>
     );
   } else {
-    return <Spinner />;
+    return (
+      <div className="ms-3">
+        <Spinner />
+      </div>
+    );
   }
 };
 

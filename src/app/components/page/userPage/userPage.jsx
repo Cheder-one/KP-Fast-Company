@@ -17,7 +17,11 @@ const UserPage = ({ userId, edit }) => {
   }, [userId]);
 
   if (userById === "") {
-    return <Spinner />;
+    return (
+      <div className="ms-3">
+        <Spinner />
+      </div>
+    );
   } else if (userById === undefined) {
     return <Page404 />;
   }
