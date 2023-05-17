@@ -5,8 +5,8 @@ import SelectField2 from "../../../../archive/selectField2";
 import RadioField2 from "../../../../archive/radioField2";
 import MultiSelectField2 from "../../../../archive/multiSelectField2";
 import CheckboxField from "../../../../archive/checkboxField";
-import { validate } from "../../../utils/validators/validate";
-import { orderFormSchema } from "../../../utils/validators/validationSchema";
+import { validate } from "../../../utils/validators/default/validate";
+import { orderFormSchema } from "../../../utils/validators/default/validationSchema";
 import {
   deliveryTypeList,
   giftList,

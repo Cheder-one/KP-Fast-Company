@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import TextField from "../../common/form/textField";
-import { validate } from "../../../utils/validators/validate";
-import { loginSchema } from "../../../utils/validators/validationSchema";
+import { validate } from "../../../utils/validators/default/validate";
+import { loginSchema } from "../../../utils/validators/default/validationSchema";
 import CheckboxField from "../../common/form/checkboxField";
 
 const LoginForm = ({ entryBtnText }) => {

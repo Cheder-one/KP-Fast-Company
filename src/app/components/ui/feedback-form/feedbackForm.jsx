@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import TextField from "../../common/form/textField.jsx";
-import { validate } from "../../../utils/validators/validate.js";
-import { issueFormSchema } from "../../../utils/validators/validationSchema.js";
-import Form from "../../../layouts/form.jsx";
+import TextField from "../../common/form/textField";
+import { validate } from "../../../utils/validators/default/validate";
+import { issueFormSchema } from "../../../utils/validators/default/validationSchema";
+import Form from "../../../layouts/form";
 
 const FeedbackForm = () => {
   const [inputFields, setInputFields] = useState({
