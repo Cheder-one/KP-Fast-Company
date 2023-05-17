@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import Form from "../../../layouts/form";
 import TextField from "../../common/form/textField";
 import validationSchema from "../../../utils/validators/yup/validationSchema";
+import SelectField from "../../common/form/selectField";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const UserEditForm = () => {
+  const params = useParams();
+  const { userId } = params;
   const [inputFields, setInputFields] = useState({
     fio: "",
     email: "",
@@ -25,13 +29,12 @@ const UserEditForm = () => {
   useEffect(() => {
     validationSchema
       .validate(inputFields, { abortEarly: false })
-      .then()
+      .then(setErrors({}))
       .catch(({ inner }) => {
         for (const error of inner) {
-          const { path, message } = error;
           setErrors((prev) => ({
             ...prev,
-            [path]: message
+            [error.path]: error.message
           }));
         }
       });
@@ -44,14 +47,23 @@ const UserEditForm = () => {
         name="fio"
         value={inputFields.fio}
         onChange={handleInputChange}
-        error=""
+        error={errors.fio}
       />
       <TextField
         label="Email"
         name="email"
         value={inputFields.email}
         onChange={handleInputChange}
-        error=""
+        error={errors.email}
+      />
+      <SelectField
+        label="Профессия"
+        name="profession"
+        value={inputFields.profession}
+        // defaultOptions=""
+        onChange={handleInputChange}
+        options={[]}
+        error={errors.profession}
       />
     </Form>
   );

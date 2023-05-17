@@ -5,8 +5,8 @@ const SelectField = ({
   label,
   name: fName,
   value: fValue,
-  onChange,
   defaultOptions,
+  onChange,
   options,
   error
 }) => {

@@ -1,11 +1,15 @@
-import * as y from "yup";
+import * as yup from "yup";
 
-const validationSchema = y.object().shape({
-  fio: y
+const validationSchema = yup.object().shape({
+  fio: yup
     .string()
-    .min(3, "Имя минимум 3 символа")
+    .min(3, "Имя должно содержать минимум 3 символа")
     .required("Имя обязательно для заполнения"),
-  email: y.string().email().required("Email обязателен для заполнения")
+  email: yup
+    .string()
+    .email("Введите корректный email")
+    .required("Email обязателен для заполнения"),
+  profession: yup.string().required("Профессия обязательно для заполнения")
 });
 
 export default validationSchema;
