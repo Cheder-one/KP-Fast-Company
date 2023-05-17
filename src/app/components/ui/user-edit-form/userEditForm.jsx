@@ -26,9 +26,14 @@ const UserEditForm = () => {
     validationSchema
       .validate(inputFields, { abortEarly: false })
       .then()
-      .catch((err) => {
-        console.log(err);
-        setErrors(err);
+      .catch(({ inner }) => {
+        for (const error of inner) {
+          const { path, message } = error;
+          setErrors((prev) => ({
+            ...prev,
+            [path]: message
+          }));
+        }
       });
   }, [inputFields]);
 
