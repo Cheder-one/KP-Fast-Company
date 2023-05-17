@@ -3,7 +3,7 @@ import React from "react";
 
 const Spinner = ({ text }) => {
   return (
-    <div className="ms-2">
+    <div className="ms-3">
       <div
         className="spinner-border spinner-border-sm text-primary"
         role="status"
@@ -11,6 +11,10 @@ const Spinner = ({ text }) => {
       <span className="visually ms-2">{text}</span>
     </div>
   );
+};
+
+Spinner.defaultProps = {
+  text: "Loading..."
 };
 
 Spinner.propTypes = {

@@ -131,7 +131,7 @@ const UsersListPage = () => {
       </div>
     );
   } else {
-    return <Spinner text={"Loading..."} />;
+    return <Spinner />;
   }
 };
 
