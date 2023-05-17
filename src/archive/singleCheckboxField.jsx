@@ -26,7 +26,7 @@ const SingleCheckboxField = ({
     "form-check-input " + (error ? "is-invalid" : "");
 
   return (
-    <div className="form-check mb-4">
+    <div className="form-check">
       <input
         className={getInputClasses()}
         type="checkbox"

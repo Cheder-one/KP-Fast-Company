@@ -12,7 +12,7 @@ import {
   giftList,
   needLiftFloorOptions,
   agreements
-} from "./fieldsOptions";
+} from "../../../utils/data/fieldsOptions";
 import SingleCheckboxField from "../../../../archive/singleCheckboxField";
 import * as yup from "yup";
 

@@ -7,7 +7,7 @@ import API from "../../../api/index.api";
 import SelectField from "../../common/form/selectField";
 import RadioField from "../../common/form/radioField";
 import MultiSelectField from "../../common/form/multiSelectField";
-import { genderOptions } from "../order-form/fieldsOptions";
+import { genderOptions } from "../../../utils/data/fieldsOptions";
 import CheckboxField from "../../common/form/checkboxField";
 
 const RegisterForm = ({ entryBtnText }) => {
