@@ -15,9 +15,6 @@ import MultiSelectField from "../../common/form/multiSelectField";
 import RadioField from "../../common/form/radioField";
 import { genderOptions } from "../../../utils/data/fieldsOptions";
 
-// TODO Исправить formatData(profession)
-// TODO Исправить value label в defaultValue
-
 const UserEditForm = () => {
   const { userId } = useParams();
   const history = useHistory();
@@ -32,7 +29,7 @@ const UserEditForm = () => {
   const [errors, setErrors] = useState({});
   const [professions, setProfessions] = useState([]);
   const [qualities, setQualities] = useState([]);
-  const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     API.users.getById(userId).then(({ profession, qualities, ...user }) => {
@@ -54,11 +51,11 @@ const UserEditForm = () => {
   }, []);
 
   useEffect(() => {
-    const isLoaded = Object.values(inputFields).every(
+    const isDataLoaded = Object.values(inputFields).every(
       (fieldVal) => fieldVal !== ""
     );
-    if (isLoaded) {
-      setIsDataLoaded(true);
+    if (isDataLoaded) {
+      setIsLoaded(true);
     }
   }, [inputFields]);
 
@@ -85,12 +82,14 @@ const UserEditForm = () => {
   }, [inputFields]);
 
   const handleBtnSave = () => {
+    // Вернуть в исходное состояние inputFields
+    API.users.update(userId, inputFields);
     history.push(`/users/${userId}`);
   };
 
   return (
     <Form>
-      {isDataLoaded ? (
+      {isLoaded ? (
         <>
           <TextField
             label="Имя"
