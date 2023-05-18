@@ -42,8 +42,6 @@ const UserEditForm = () => {
         profession: formatData(profession),
         qualities: formatData(qualities)
       }));
-
-      setIsDataLoaded(true);
     });
     API.professions.fetchAll().then((profs) => {
       const profsArray = formatData(profs);
@@ -54,6 +52,10 @@ const UserEditForm = () => {
       setQualities(qualsArray);
     });
   }, []);
+
+  useEffect(() => {
+    setIsDataLoaded(true);
+  }, [inputFields]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -103,7 +105,7 @@ const UserEditForm = () => {
             label="Профессия"
             name="profession"
             value={inputFields.profession}
-            defaultOptions={inputFields.profession}
+            // defaultOptions={inputFields.profession}
             onChange={handleInputChange}
             options={professions}
             error={errors.profession}
