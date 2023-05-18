@@ -3,13 +3,18 @@ import Form from "../../../layouts/form";
 import TextField from "../../common/form/textField";
 import validationSchema from "../../../utils/validators/yup/validationSchema";
 import SelectField from "../../common/form/selectField";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+  useParams
+} from "react-router-dom/cjs/react-router-dom.min";
+import API from "../../../api/index.api";
+import convertFormatData from "../../../utils/convertFormatData";
 
 const UserEditForm = () => {
-  const params = useParams();
-  const { userId } = params;
+  const { userId } = useParams();
+  const history = useHistory();
   const [inputFields, setInputFields] = useState({
-    fio: "",
+    name: "",
     email: "",
     profession: "",
     gender: "",
@@ -17,6 +22,29 @@ const UserEditForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [userOptions, setUserOptions] = useState({});
+  const [professions, setProfessions] = useState([]);
+  const [qualities, setQualities] = useState([]);
+
+  useEffect(() => {
+    API.users.getById(userId).then(({ profession, qualities, ...user }) => {
+      setInputFields((prev) => ({
+        ...prev,
+        ...user,
+        profession: convertFormatData(profession),
+        qualities: convertFormatData(qualities)
+      }));
+      // console.log({ profession, qualities, ...user });
+    });
+    API.professions.fetchAll().then((profs) => {
+      const profsArray = convertFormatData(profs);
+      setProfessions(profsArray);
+    });
+    API.qualities.fetchAll().then((quals) => {
+      const qualsArray = convertFormatData(quals);
+      setQualities(qualsArray);
+    });
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,10 +72,10 @@ const UserEditForm = () => {
     <Form>
       <TextField
         label="Имя"
-        name="fio"
-        value={inputFields.fio}
+        name="name"
+        value={inputFields.name}
         onChange={handleInputChange}
-        error={errors.fio}
+        error={errors.name}
       />
       <TextField
         label="Email"
@@ -62,7 +90,7 @@ const UserEditForm = () => {
         value={inputFields.profession}
         // defaultOptions=""
         onChange={handleInputChange}
-        options={[]}
+        options={professions}
         error={errors.profession}
       />
     </Form>
