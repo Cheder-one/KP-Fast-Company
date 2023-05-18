@@ -10,3 +10,7 @@ const formatData = (obj, id = "_id", name = "name") => {
 };
 
 export default formatData;
+
+formatData({
+  d: { _id: "67rdca3eeb7f6fgeed471818", name: "Доктор" }
+});

@@ -39,7 +39,7 @@ const UserEditForm = () => {
       setInputFields((prev) => ({
         ...prev,
         ...user,
-        profession: formatData(profession),
+        profession: formatData([profession])[0].value,
         qualities: formatData(qualities)
       }));
     });
@@ -54,7 +54,12 @@ const UserEditForm = () => {
   }, []);
 
   useEffect(() => {
-    setIsDataLoaded(true);
+    const isLoaded = Object.values(inputFields).every(
+      (fieldVal) => fieldVal !== ""
+    );
+    if (isLoaded) {
+      setIsDataLoaded(true);
+    }
   }, [inputFields]);
 
   const handleInputChange = (e) => {
@@ -105,7 +110,6 @@ const UserEditForm = () => {
             label="Профессия"
             name="profession"
             value={inputFields.profession}
-            // defaultOptions={inputFields.profession}
             onChange={handleInputChange}
             options={professions}
             error={errors.profession}
