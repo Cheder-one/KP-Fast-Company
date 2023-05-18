@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const RadioField = ({
-  options,
   label,
   name: fName,
   value: fValue,
+  options,
   onChange
 }) => {
   const getOptionId = (option) => `${option.name}_${option.value}`;

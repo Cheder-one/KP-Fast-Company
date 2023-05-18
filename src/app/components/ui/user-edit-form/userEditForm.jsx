@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Form from "../../../layouts/form";
+import API from "../../../api/index.api";
 import TextField from "../../common/form/textField";
 import validationSchema from "../../../utils/validators/yup/validationSchema";
 import SelectField from "../../common/form/selectField";
+import formatData from "../../../utils/formatData";
+import Spinner from "../../page/templates/spinner.jsx";
 import {
+  Link,
   useHistory,
   useParams
 } from "react-router-dom/cjs/react-router-dom.min";
-import API from "../../../api/index.api";
-import convertFormatData from "../../../utils/convertFormatData";
+import MultiSelectField from "../../common/form/multiSelectField";
+import RadioField from "../../common/form/radioField";
+import { genderOptions } from "../../../utils/data/fieldsOptions";
 
 const UserEditForm = () => {
   const { userId } = useParams();
@@ -25,23 +30,24 @@ const UserEditForm = () => {
   const [userOptions, setUserOptions] = useState({});
   const [professions, setProfessions] = useState([]);
   const [qualities, setQualities] = useState([]);
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   useEffect(() => {
     API.users.getById(userId).then(({ profession, qualities, ...user }) => {
       setInputFields((prev) => ({
         ...prev,
         ...user,
-        profession: convertFormatData(profession),
-        qualities: convertFormatData(qualities)
+        profession: formatData(profession)._id,
+        qualities: formatData(qualities)
       }));
-      // console.log({ profession, qualities, ...user });
+      setIsDataLoaded(true);
     });
     API.professions.fetchAll().then((profs) => {
-      const profsArray = convertFormatData(profs);
+      const profsArray = formatData(profs);
       setProfessions(profsArray);
     });
     API.qualities.fetchAll().then((quals) => {
-      const qualsArray = convertFormatData(quals);
+      const qualsArray = formatData(quals);
       setQualities(qualsArray);
     });
   }, []);
@@ -68,31 +74,66 @@ const UserEditForm = () => {
       });
   }, [inputFields]);
 
+  const handleBtnSave = () => {
+    history.push(`/users/${userId}`);
+  };
+
   return (
     <Form>
-      <TextField
-        label="Имя"
-        name="name"
-        value={inputFields.name}
-        onChange={handleInputChange}
-        error={errors.name}
-      />
-      <TextField
-        label="Email"
-        name="email"
-        value={inputFields.email}
-        onChange={handleInputChange}
-        error={errors.email}
-      />
-      <SelectField
-        label="Профессия"
-        name="profession"
-        value={inputFields.profession}
-        // defaultOptions=""
-        onChange={handleInputChange}
-        options={professions}
-        error={errors.profession}
-      />
+      {isDataLoaded ? (
+        <>
+          <TextField
+            label="Имя"
+            name="name"
+            value={inputFields.name}
+            onChange={handleInputChange}
+            error={errors.name}
+          />
+          <TextField
+            label="Email"
+            name="email"
+            value={inputFields.email}
+            onChange={handleInputChange}
+            error={errors.email}
+          />
+          <SelectField
+            label="Профессия"
+            name="profession"
+            value={inputFields.profession}
+            // defaultOptions={inputFields.profession}
+            onChange={handleInputChange}
+            options={professions}
+            error={errors.profession}
+          />
+          <RadioField
+            label="Пол"
+            name="gender"
+            value={inputFields.gender}
+            options={genderOptions}
+            onChange={handleInputChange}
+          />
+          <MultiSelectField
+            label="Качества"
+            name="qualities"
+            // defaultValue={}
+            options={qualities}
+            onChange={handleInputChange}
+          />
+          <button
+            className="btn btn-outline-primary me-2"
+            onClick={handleBtnSave}
+          >
+            Сохранить
+          </button>
+          <Link to={`/users/${userId}`}>
+            <button className="btn btn-primary ">Назад</button>
+          </Link>
+        </>
+      ) : (
+        <div className="ms-3">
+          <Spinner />
+        </div>
+      )}
     </Form>
   );
 };

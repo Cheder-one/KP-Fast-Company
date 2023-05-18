@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import Select from "react-select";
 
 const MultiSelectField = ({
-  options,
+  label,
   name: fName,
   defaultValue,
-  label,
+  options,
   onChange
 }) => {
   const optionsArray =

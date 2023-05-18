@@ -1,4 +1,4 @@
-const convertFormatData = (obj, id = "_id", name = "name") => {
+const formatData = (obj, id = "_id", name = "name") => {
   return Object.values(obj).map((elem) => {
     const { [id]: itemId, [name]: itemName, ...rest } = elem;
     return {
@@ -9,4 +9,4 @@ const convertFormatData = (obj, id = "_id", name = "name") => {
   });
 };
 
-export default convertFormatData;
+export default formatData;
