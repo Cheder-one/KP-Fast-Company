@@ -36,11 +36,9 @@ const UserPage = ({ userId }) => {
       </p>
       <h4>{`Кол-во встреч:  ${completedMeetings}`}</h4>
       <h4>{`Рейтинг: ${rate}`}</h4>
-      <div className="mt-2 ">
+      <div className="mt-2 d-flex gap-2">
         <Link to={`/users/${userId}/edit`}>
-          <button className="btn btn-outline-primary me-2">
-            Редактировать
-          </button>
+          <button className="btn btn-outline-primary">Редактировать</button>
         </Link>
         <Link to={`/users`}>
           <button className="btn btn-primary ">Назад</button>

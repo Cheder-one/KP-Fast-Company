@@ -15,6 +15,9 @@ import MultiSelectField from "../../common/form/multiSelectField";
 import RadioField from "../../common/form/radioField";
 import { genderOptions } from "../../../utils/data/fieldsOptions";
 
+// TODO Исправить formatData(profession)
+// TODO Исправить value label в defaultValue
+
 const UserEditForm = () => {
   const { userId } = useParams();
   const history = useHistory();
@@ -27,7 +30,6 @@ const UserEditForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [userOptions, setUserOptions] = useState({});
   const [professions, setProfessions] = useState([]);
   const [qualities, setQualities] = useState([]);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
@@ -37,9 +39,10 @@ const UserEditForm = () => {
       setInputFields((prev) => ({
         ...prev,
         ...user,
-        profession: formatData(profession)._id,
+        profession: formatData(profession),
         qualities: formatData(qualities)
       }));
+
       setIsDataLoaded(true);
     });
     API.professions.fetchAll().then((profs) => {
@@ -100,7 +103,7 @@ const UserEditForm = () => {
             label="Профессия"
             name="profession"
             value={inputFields.profession}
-            // defaultOptions={inputFields.profession}
+            defaultOptions={inputFields.profession}
             onChange={handleInputChange}
             options={professions}
             error={errors.profession}
@@ -115,19 +118,21 @@ const UserEditForm = () => {
           <MultiSelectField
             label="Качества"
             name="qualities"
-            // defaultValue={}
+            defaultValue={inputFields.qualities}
             options={qualities}
             onChange={handleInputChange}
           />
-          <button
-            className="btn btn-outline-primary me-2"
-            onClick={handleBtnSave}
-          >
-            Сохранить
-          </button>
-          <Link to={`/users/${userId}`}>
-            <button className="btn btn-primary ">Назад</button>
-          </Link>
+          <div className="d-flex gap-2">
+            <button
+              className="btn btn-outline-primary "
+              onClick={handleBtnSave}
+            >
+              Сохранить
+            </button>
+            <Link to={`/users/${userId}`}>
+              <button className="btn btn-primary">Назад</button>
+            </Link>
+          </div>
         </>
       ) : (
         <div className="ms-3">
