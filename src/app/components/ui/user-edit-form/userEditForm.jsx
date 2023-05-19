@@ -4,7 +4,7 @@ import API from "../../../api/index.api";
 import TextField from "../../common/form/textField";
 import validationSchema from "../../../utils/validators/yup/validationSchema";
 import SelectField from "../../common/form/selectField";
-import formatData from "../../../utils/formatData";
+import formatData from "../../../utils/formattingData/formatData";
 import Spinner from "../../page/templates/spinner.jsx";
 import {
   Link,
@@ -26,10 +26,10 @@ const UserEditForm = () => {
     qualities: []
   });
 
-  const [errors, setErrors] = useState({});
   const [professions, setProfessions] = useState([]);
   const [qualities, setQualities] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     API.users.getById(userId).then(({ profession, qualities, ...user }) => {
@@ -39,6 +39,7 @@ const UserEditForm = () => {
         profession: formatData([profession])[0].value,
         qualities: formatData(qualities)
       }));
+      setIsLoaded(true);
     });
     API.professions.fetchAll().then((profs) => {
       const profsArray = formatData(profs);
@@ -49,15 +50,6 @@ const UserEditForm = () => {
       setQualities(qualsArray);
     });
   }, []);
-
-  useEffect(() => {
-    const isDataLoaded = Object.values(inputFields).every(
-      (fieldVal) => fieldVal !== ""
-    );
-    if (isDataLoaded) {
-      setIsLoaded(true);
-    }
-  }, [inputFields]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -82,8 +74,11 @@ const UserEditForm = () => {
   }, [inputFields]);
 
   const handleBtnSave = () => {
-    // Вернуть в исходное состояние inputFields
-    API.users.update(userId, inputFields);
+    // const userProf = professions.find(
+    //   (prof) => prof.value === inputFields.profession
+    // );
+
+    // API.users.update(userId, inputFields);
     history.push(`/users/${userId}`);
   };
 
