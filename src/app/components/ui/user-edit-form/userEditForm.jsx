@@ -32,13 +32,21 @@ const UserEditForm = () => {
   const [loadCount, setLoadCount] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const transformData = (data) => {
+    return [...data].map(({ _id, name, ...qual }) => ({
+      label: name,
+      value: _id,
+      ...qual
+    }));
+  };
+
   useEffect(() => {
     API.users.getById(userId).then(({ profession, qualities, ...user }) => {
       setInputFields((prev) => ({
         ...prev,
         ...user,
-        profession: formatData(profession).value,
-        qualities: formatData(qualities)
+        profession: profession._id,
+        qualities: transformData(qualities)
       }));
       setLoadCount((prev) => prev + 1);
     });
@@ -80,13 +88,13 @@ const UserEditForm = () => {
     const { profession, qualities } = inputFields;
 
     const userProf = professions.find((prof) => prof.value === profession);
-    API.users.update(userId, {
-      ...inputFields,
-      profession: initialFormatData(userProf),
-      qualities: initialFormatData(qualities)
-    });
-
-    history.push(`/users/${userId}`);
+    API.users
+      .update(userId, {
+        ...inputFields,
+        profession: initialFormatData(userProf),
+        qualities: initialFormatData(qualities)
+      })
+      .then(() => history.push(`/users/${userId}`));
   };
 
   return (

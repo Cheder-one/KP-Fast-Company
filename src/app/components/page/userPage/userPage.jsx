@@ -38,10 +38,14 @@ const UserPage = ({ userId }) => {
       <h4>{`Рейтинг: ${rate}`}</h4>
       <div className="mt-2 d-flex gap-2">
         <Link to={`/users/${userId}/edit`}>
-          <button className="btn btn-outline-primary">Редактировать</button>
+          <button type="button" className="btn btn-outline-primary">
+            Редактировать
+          </button>
         </Link>
         <Link to={`/users`}>
-          <button className="btn btn-primary ">Назад</button>
+          <button type="button" className="btn btn-primary ">
+            Назад
+          </button>
         </Link>
       </div>
     </div>
