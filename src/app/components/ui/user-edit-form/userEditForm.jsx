@@ -14,6 +14,7 @@ import {
 import MultiSelectField from "../../common/form/multiSelectField";
 import RadioField from "../../common/form/radioField";
 import { genderOptions } from "../../../utils/data/fieldsOptions";
+import initialFormatData from "../../../utils/formattingData/initialFormatData";
 
 const UserEditForm = () => {
   const { userId } = useParams();
@@ -36,7 +37,7 @@ const UserEditForm = () => {
       setInputFields((prev) => ({
         ...prev,
         ...user,
-        profession: formatData([profession])[0].value,
+        profession: formatData(profession).value,
         qualities: formatData(qualities)
       }));
       setIsLoaded(true);
@@ -74,11 +75,15 @@ const UserEditForm = () => {
   }, [inputFields]);
 
   const handleBtnSave = () => {
-    // const userProf = professions.find(
-    //   (prof) => prof.value === inputFields.profession
-    // );
+    const { profession, qualities } = inputFields;
 
-    // API.users.update(userId, inputFields);
+    const userProf = professions.find((prof) => prof.value === profession);
+    API.users.update(userId, {
+      ...inputFields,
+      profession: initialFormatData(userProf),
+      qualities: initialFormatData(qualities)
+    });
+
     history.push(`/users/${userId}`);
   };
 

@@ -9,7 +9,6 @@ const validationSchema = yup.object().shape({
     .string()
     .email("Введите корректный email")
     .required("Email обязателен для заполнения")
-  // profession: yup.string().required("Профессия обязательно для заполнения")
 });
 
 export default validationSchema;
