@@ -29,7 +29,7 @@ const UserEditForm = () => {
 
   const [professions, setProfessions] = useState([]);
   const [qualities, setQualities] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [loadCount, setLoadCount] = useState(false);
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
@@ -40,15 +40,17 @@ const UserEditForm = () => {
         profession: formatData(profession).value,
         qualities: formatData(qualities)
       }));
-      setIsLoaded(true);
+      setLoadCount((prev) => prev + 1);
     });
     API.professions.fetchAll().then((profs) => {
       const profsArray = formatData(profs);
       setProfessions(profsArray);
+      setLoadCount((prev) => prev + 1);
     });
     API.qualities.fetchAll().then((quals) => {
       const qualsArray = formatData(quals);
       setQualities(qualsArray);
+      setLoadCount((prev) => prev + 1);
     });
   }, []);
 
@@ -89,7 +91,7 @@ const UserEditForm = () => {
 
   return (
     <Form>
-      {isLoaded ? (
+      {loadCount >= 3 ? (
         <>
           <TextField
             label="Имя"
