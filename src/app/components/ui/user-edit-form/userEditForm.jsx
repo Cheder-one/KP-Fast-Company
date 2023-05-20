@@ -13,11 +13,11 @@ import {
 import MultiSelectField from "../../common/form/multiSelectField";
 import RadioField from "../../common/form/radioField";
 import { genderOptions } from "../../../utils/data/fieldsOptions";
-import transformData from "../../../utils/formattingData/transformData";
 import {
+  transformData,
   undoTransformQuals,
   undoTransformProfs
-} from "../../../utils/formattingData/undoTransformData";
+} from "../../../utils/formattingData";
 
 const UserEditForm = () => {
   const { userId } = useParams();

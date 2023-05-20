@@ -1,2 +1,3 @@
 import UserPage from "./userPage";
-export default UserPage;
+import UserEditPage from "./userEditPage";
+export { UserPage, UserEditPage };
