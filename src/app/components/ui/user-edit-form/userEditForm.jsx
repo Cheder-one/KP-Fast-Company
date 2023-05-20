@@ -4,7 +4,6 @@ import API from "../../../api/index.api";
 import TextField from "../../common/form/textField";
 import validationSchema from "../../../utils/validators/yup/validationSchema";
 import SelectField from "../../common/form/selectField";
-import formatData from "../../../utils/formattingData/formatData";
 import Spinner from "../../page/templates/spinner.jsx";
 import {
   Link,
@@ -14,7 +13,11 @@ import {
 import MultiSelectField from "../../common/form/multiSelectField";
 import RadioField from "../../common/form/radioField";
 import { genderOptions } from "../../../utils/data/fieldsOptions";
-import initialFormatData from "../../../utils/formattingData/initialFormatData";
+import transformData from "../../../utils/formattingData/transformData";
+import {
+  undoTransformQuals,
+  undoTransformProfs
+} from "../../../utils/formattingData/undoTransformData";
 
 const UserEditForm = () => {
   const { userId } = useParams();
@@ -32,14 +35,6 @@ const UserEditForm = () => {
   const [loadCount, setLoadCount] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const transformData = (data) => {
-    return [...data].map(({ _id, name, ...qual }) => ({
-      label: name,
-      value: _id,
-      ...qual
-    }));
-  };
-
   useEffect(() => {
     API.users.getById(userId).then(({ profession, qualities, ...user }) => {
       setInputFields((prev) => ({
@@ -51,12 +46,12 @@ const UserEditForm = () => {
       setLoadCount((prev) => prev + 1);
     });
     API.professions.fetchAll().then((profs) => {
-      const profsArray = formatData(profs);
+      const profsArray = transformData(profs);
       setProfessions(profsArray);
       setLoadCount((prev) => prev + 1);
     });
     API.qualities.fetchAll().then((quals) => {
-      const qualsArray = formatData(quals);
+      const qualsArray = transformData(quals);
       setQualities(qualsArray);
       setLoadCount((prev) => prev + 1);
     });
@@ -86,13 +81,13 @@ const UserEditForm = () => {
 
   const handleBtnSave = () => {
     const { profession, qualities } = inputFields;
-
     const userProf = professions.find((prof) => prof.value === profession);
+
     API.users
       .update(userId, {
         ...inputFields,
-        profession: initialFormatData(userProf),
-        qualities: initialFormatData(qualities)
+        profession: undoTransformProfs(userProf),
+        qualities: undoTransformQuals(qualities)
       })
       .then(() => history.push(`/users/${userId}`));
   };
