@@ -4,7 +4,7 @@ import API from "../../../api/index.api";
 import TextField from "../../common/form/textField";
 import validationSchema from "../../../utils/validators/yup/validationSchema";
 import SelectField from "../../common/form/selectField";
-import formatData from "../../../utils/formatData";
+import formatData from "../../../utils/formatiingData/formatData";
 import Spinner from "../../page/templates/spinner.jsx";
 import {
   Link,
