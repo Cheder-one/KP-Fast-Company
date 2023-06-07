@@ -4,7 +4,6 @@ import API from "../../../api/index.api";
 import TextField from "../../common/form/textField";
 import validationSchema from "../../../utils/validators/yup/validationSchema";
 import SelectField from "../../common/form/selectField";
-import formatData from "../../../utils/formatiingData/formatData";
 import Spinner from "../../page/templates/spinner.jsx";
 import {
   Link,
@@ -14,6 +13,11 @@ import {
 import MultiSelectField from "../../common/form/multiSelectField";
 import RadioField from "../../common/form/radioField";
 import { genderOptions } from "../../../utils/data/fieldsOptions";
+import transformData from "../../../utils/formattingData/transformData";
+import {
+  undoTransformQuals,
+  undoTransformProfs
+} from "../../../utils/formattingData/undoTransformData";
 
 const UserEditForm = () => {
   const { userId } = useParams();
@@ -26,38 +30,32 @@ const UserEditForm = () => {
     qualities: []
   });
 
-  const [errors, setErrors] = useState({});
   const [professions, setProfessions] = useState([]);
   const [qualities, setQualities] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [loadCount, setLoadCount] = useState(false);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     API.users.getById(userId).then(({ profession, qualities, ...user }) => {
       setInputFields((prev) => ({
         ...prev,
         ...user,
-        profession: formatData([profession])[0].value,
-        qualities: formatData(qualities)
+        profession: profession._id,
+        qualities: transformData(qualities)
       }));
+      setLoadCount((prev) => prev + 1);
     });
     API.professions.fetchAll().then((profs) => {
-      const profsArray = formatData(profs);
+      const profsArray = transformData(profs);
       setProfessions(profsArray);
+      setLoadCount((prev) => prev + 1);
     });
     API.qualities.fetchAll().then((quals) => {
-      const qualsArray = formatData(quals);
+      const qualsArray = transformData(quals);
       setQualities(qualsArray);
+      setLoadCount((prev) => prev + 1);
     });
   }, []);
-
-  useEffect(() => {
-    const isDataLoaded = Object.values(inputFields).every(
-      (fieldVal) => fieldVal !== ""
-    );
-    if (isDataLoaded) {
-      setIsLoaded(true);
-    }
-  }, [inputFields]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -82,14 +80,21 @@ const UserEditForm = () => {
   }, [inputFields]);
 
   const handleBtnSave = () => {
-    // Вернуть в исходное состояние inputFields
-    API.users.update(userId, inputFields);
-    history.push(`/users/${userId}`);
+    const { profession, qualities } = inputFields;
+    const userProf = professions.find((prof) => prof.value === profession);
+
+    API.users
+      .update(userId, {
+        ...inputFields,
+        profession: undoTransformProfs(userProf),
+        qualities: undoTransformQuals(qualities)
+      })
+      .then(() => history.push(`/users/${userId}`));
   };
 
   return (
     <Form>
-      {isLoaded ? (
+      {loadCount >= 3 ? (
         <>
           <TextField
             label="Имя"
